@@ -72,6 +72,7 @@
     <Compile Include="Bear.cs" />
     <Compile Include="Bonus.cs" />
     <Compile Include="Cherry.cs" />
+    <Compile Include="ConsolePresentation.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="GameProcessor.cs" />
     <Compile Include="IDamagable.cs" />

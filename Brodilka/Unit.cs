@@ -34,10 +34,10 @@ namespace Brodilka
 
         }
 
-        public Unit(Pos currPos, Map currMap)
+        public Unit(Pos currentPos, Map currentMap)
         {
-            this.CurrPos = currPos;
-            this.CurrMap = currMap;
+            this.CurrPos = currentPos;
+            this.CurrMap = currentMap;
             this.IsItBlock = false;
         }
         

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 
-/*
+/* ЗАДАНИЕ:
  * Создайте иерархию классов и пропишите ключевые методы для компьютерной игры (без
 реализации функционала). Суть игры:
 • Игрок может передвигаться по прямоугольному полю размером Width на Height;
@@ -15,15 +15,18 @@ using Autofac;
 карте по какому-либо алгоритму;
 • На поле располагаются препятствия разных типов (камни, деревья и т.д.), которые игрок и
 монстры должны обходить.
+  
+Я же буду пробовать с имплементацией :-)
  */
 
 namespace Brodilka
 {
     public class Program
     {
-        private static IContainer Container { get; set; }
+        //private static IContainer Container { get; set; }
         static void Main()
         {
+            ConsolePresentation presentation = new ConsolePresentation();
             GameProcessor game = new GameProcessor();
 
             game.Run();
