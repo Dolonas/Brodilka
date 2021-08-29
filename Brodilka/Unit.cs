@@ -40,7 +40,7 @@ namespace Brodilka
             this.CurrMap = currMap;
             this.IsItBlock = false;
         }
-        public abstract void Move();
+        
 
         public void Move(int xShift, int yShift)
         {

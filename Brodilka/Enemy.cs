@@ -15,7 +15,7 @@ namespace Brodilka
         {
         }
 
-        public override void Move()
+        public void Move()
         {
             Random rnd = new Random();
             int direction = rnd.Next(3);

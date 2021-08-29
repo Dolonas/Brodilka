@@ -36,5 +36,27 @@ namespace Brodilka
             SignCode = signCode;
             Damage = maxDamage;
         }
+
+        public void Move(ConsoleKey key)
+        {
+            switch (key)
+            {
+                case ConsoleKey.RightArrow:
+                    this.CurrPos.XPos++;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    this.CurrPos.XPos--;
+                    break;
+                case ConsoleKey.UpArrow:
+                    this.CurrPos.YPos--;
+                    break;
+                case ConsoleKey.DownArrow:
+                    this.CurrPos.YPos++;
+                    break;
+            }
+
+        }
+
+        
     }
 }
