@@ -32,6 +32,13 @@ namespace Brodilka
             }
         }
 
+        public GameItem()
+        {
+            CurrMap = new Map();
+            CurrPos = new Pos();
+            
+        }
+
         public abstract bool IsItBlock { get; set; }
 
     }

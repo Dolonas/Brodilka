@@ -23,7 +23,8 @@ namespace Brodilka
         internal GameProcessor()
         {
             CurrentMap = new Map(60, 40);
-            Items.Add(new Player(new Pos(2,2), CurrentMap, "Luidgi"));
+            currentPlayer = new Player();
+            Items.Add(currentPlayer as GameItem);
             Items.Add(new Wolf(new Pos(15, 18), CurrentMap));
             Items.Add(new Wolf(new Pos(48, 3), CurrentMap));
             Items.Add(new Bear(new Pos(18, 17), CurrentMap));
