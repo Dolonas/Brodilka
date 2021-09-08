@@ -19,8 +19,9 @@ namespace Brodilka
 
         public Bonus(Pos currPos, Map currMap)
         {
-            this.CurrPos = currPos;
             this.CurrMap = currMap;
+            this.CurrPos = currPos;
+            
             this.IsItBlock = false;
 
         }

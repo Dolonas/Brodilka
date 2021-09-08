@@ -32,8 +32,8 @@ namespace Brodilka
 
         public Unit(Pos currentPos, Map currentMap)
         {
-            this.CurrPos = currentPos;
             this.CurrMap = currentMap;
+            this.CurrPos = currentPos;
             this.IsItBlock = false;
         }
         
