@@ -8,7 +8,8 @@ namespace Brodilka
 {
     internal abstract class Snag : GameItem
     {
-        public override bool IsItBlock { get => false; set => this.IsItBlock = value; }
+        private bool isItBlock;
+        public override bool IsItBlock { get => isItBlock; set => this.isItBlock = value; }
 
         public Snag() : this (new Pos(0,0), new Map())
         {
