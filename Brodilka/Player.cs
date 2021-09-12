@@ -26,10 +26,10 @@ namespace Brodilka
             }
         }
 
-        public Player() : this (new Pos(0, 0), new Map(), "Player 1")
+        public Player() : this (new Point(0, 0), new Map(), "Player 1")
         {
         }
-        public Player(Pos currPos, Map currMap, string playerName): base (currPos, currMap)
+        public Player(Point currPos, Map currMap, string playerName): base (currPos, currMap)
         {
             PlayerName = playerName;
             Health = this.startHealth;
@@ -42,16 +42,16 @@ namespace Brodilka
             switch (key)
             {
                 case ConsoleKey.RightArrow:
-                    this.CurrPos.XPos++;
+                    this.CurrPoint.XPos++;
                     break;
                 case ConsoleKey.LeftArrow:
-                    this.CurrPos.XPos--;
+                    this.CurrPoint.XPos--;
                     break;
                 case ConsoleKey.UpArrow:
-                    this.CurrPos.YPos--;
+                    this.CurrPoint.YPos--;
                     break;
                 case ConsoleKey.DownArrow:
-                    this.CurrPos.YPos++;
+                    this.CurrPoint.YPos++;
                     break;
             }
 

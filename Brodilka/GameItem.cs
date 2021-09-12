@@ -8,12 +8,12 @@ namespace Brodilka
 {
     abstract class GameItem
     {
-        private Pos currPos;
+        private Point currPos;
 
         public Map CurrMap { get; set; }
 
         public int SignCode { get; set; }
-        public Pos CurrPos
+        public Point CurrPoint
         {
             get
             {
@@ -34,8 +34,8 @@ namespace Brodilka
 
         public GameItem()
         {
-            CurrMap = new Map();
-            CurrPos = new Pos();
+            //CurrMap = new Map();
+            //CurrPoint = new Point();
             
         }
 

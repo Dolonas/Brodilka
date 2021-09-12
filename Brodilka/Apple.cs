@@ -17,7 +17,7 @@ namespace Brodilka
 
         }
 
-        public Apple(Pos currPos, Map currMap) : base(currPos, currMap)
+        public Apple(Point currPos, Map currMap) : base(currPos, currMap)
         {
             this.SignCode = appleSignCode;
             this.SpeedUpForPlayer = speedUp;

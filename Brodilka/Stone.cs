@@ -15,7 +15,7 @@ namespace Brodilka
 
         }
 
-        public Stone(Pos currPos, Map currMap) : base(currPos, currMap)
+        public Stone(Point currPos, Map currMap) : base(currPos, currMap)
         {
             this.SignCode = stoneSignCode;
         }

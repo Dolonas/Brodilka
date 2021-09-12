@@ -76,9 +76,10 @@
     <Compile Include="Enemy.cs" />
     <Compile Include="GameProcessor.cs" />
     <Compile Include="IDamagable.cs" />
+    <Compile Include="IDisplayble.cs" />
     <Compile Include="IMovable.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="Pos.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="GameItem.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Program.cs" />

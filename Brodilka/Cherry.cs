@@ -17,7 +17,7 @@ namespace Brodilka
 
         }
 
-        public Cherry(Pos currPos, Map currMap) : base(currPos, currMap)
+        public Cherry(Point currPos, Map currMap) : base(currPos, currMap)
         {
             this.SignCode = cherrySignCode;
             this.SpeedUpForPlayer = speedUp;

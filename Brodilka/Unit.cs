@@ -25,23 +25,23 @@ namespace Brodilka
 
         internal abstract int Damage { get; set;  }
 
-        public Unit() : this (new Pos ( 0, 0 ), new Map() )
+        public Unit() : this (new Point(0, 0), new Map() )
         {
 
         }
 
-        public Unit(Pos currentPos, Map currentMap)
+        public Unit(Point pos, Map currentMap)
         {
             this.CurrMap = currentMap;
-            this.CurrPos = currentPos;
+            this.CurrPoint = pos;
             this.IsItBlock = false;
         }
         
 
         public void Move(int xShift, int yShift)
         {
-            this.CurrPos.XPos += xShift;
-            this.CurrPos.YPos += yShift;
+            this.CurrPoint.XPos += xShift;
+            this.CurrPoint.YPos += yShift;
         }
 
         public void ToDamage(Unit unit, int Damage)

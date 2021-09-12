@@ -11,7 +11,7 @@ namespace Brodilka
         private int damage;
         internal override int Damage { get => damage; set => damage = value; }        
 
-        public Enemy(Pos currPos, Map currMap) : base(currPos, currMap)
+        public Enemy(Point currPos, Map currMap) : base(currPos, currMap)
         {
         }
 
@@ -22,16 +22,16 @@ namespace Brodilka
             switch (direction)
             {
                 case 0:
-                    this.CurrPos.XPos -= 1;
+                    this.CurrPoint.XPos -= 1;
                     break;
                 case 1:
-                    this.CurrPos.YPos -= 1;
+                    this.CurrPoint.YPos -= 1;
                     break;
                 case 2:
-                    this.CurrPos.XPos += 1;
+                    this.CurrPoint.XPos += 1;
                     break;
                 case 3:
-                    this.CurrPos.YPos += 1;
+                    this.CurrPoint.YPos += 1;
                     break;
                 default:
                     break;

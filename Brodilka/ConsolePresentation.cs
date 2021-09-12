@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Brodilka
 {
-    public class ConsolePresentation
+    internal class ConsolePresentation: IDisplayble
     {
         private static int windowXSize;
         private static int windowYSize;
@@ -67,8 +67,15 @@ namespace Brodilka
             
 
             Console.Title = "Brodilka";
+            
+        }
 
-            //Console.SetCursorPosition(maxXWindowSize - 1, maxYWindowSize - 3);
+         void IDisplayble.Display(GameItem gameItem)
+        {
+            Console.SetCursorPosition(gameItem.CurrPoint.XPos, gameItem.CurrPoint.YPos);
+            string str = Char.ConvertFromUtf32(Convert.ToUInt16(gameItem.SignCode));
+            Console.Write(str);
+
         }
 
     }

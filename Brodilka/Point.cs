@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Brodilka
 {
-    internal class Pos
+    internal class Point
     {
         private int xPos = 0;
         private int yPos = 0;
@@ -36,12 +36,12 @@ namespace Brodilka
             }
         }
 
-        public Pos() : this (0,0)
+        public Point() : this (0,0)
         {
 
         }
 
-        public Pos(int xPos, int yPos)
+        public Point(int xPos, int yPos)
         {
             XPos = xPos;
             YPos = yPos;

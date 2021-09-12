@@ -11,15 +11,16 @@ namespace Brodilka
         private bool isItBlock;
         public override bool IsItBlock { get => isItBlock; set => this.isItBlock = value; }
 
-        public Snag() : this (new Pos(0,0), new Map())
+        public Snag() : this (new Point(0,0), new Map())
         {
 
         }
         
-        public Snag(Pos currPos, Map currMap)
+        public Snag(Point currPoint, Map currMap)
         {
-            this.CurrPos = currPos;
             this.CurrMap = currMap;
+            this.CurrPoint = currPoint;
+            
             this.IsItBlock = true;
         }
     }
