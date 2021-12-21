@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Autofac;
 
 namespace Brodilka
 {
@@ -45,24 +44,49 @@ namespace Brodilka
 
         internal void Run()
         {
-            ConsoleKeyInfo cki;
-            do
+            Timer timer = new Timer (callback: new TimerCallback(TimerTask),
+            state: 1,
+            dueTime: 0,
+            period: 50);
+
+           
+
+        }
+
+        private void TimerTask(object timerState)
+        {
+            RequestKeyboard();
+            EnemiesMove();
+            DisplayAll();
+
+           
+        }
+
+        private void EnemiesMove()
+        {
+            foreach (var enemy in Enemies)
             {
-                cki = Console.ReadKey();
-                currentPlayer.Move(cki.Key);
-                foreach (var enemy in Enemies)
-                {
-                    enemy.Move();
-                }
+                enemy.Move();
+            }
 
-                foreach (var item in Items)
-                {
-                    ConsolePresents.Display(item);
-                }
-                Thread.Sleep(100);
+        }
 
-            } while (cki.Key != ConsoleKey.Escape);
-
+        private void DisplayAll()
+        {
+            foreach (var item in Items)
+            {
+                ConsolePresents.Display(item);
+            }
+        }
+        private void RequestKeyboard()
+        {
+            ConsoleKeyInfo cki;
+            cki = Console.ReadKey();
+            currentPlayer.Move(cki.Key);
+            if (cki.Key != ConsoleKey.Escape)
+            {
+                Environment.Exit(0);
+            }
         }
 
         internal void SortItems()
