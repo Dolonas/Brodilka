@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Brodilka
 {
@@ -44,31 +43,23 @@ namespace Brodilka
 
         internal void Run()
         {
-            Timer timer = new Timer (callback: new TimerCallback(TimerTask),
-            state: 1,
-            dueTime: 0,
-            period: 50);
-
-           
-
+            TimerCallback tm = new TimerCallback(TimerTask);
+            Timer timer = new Timer (tm, null, 0, 1000);
         }
 
-        private void TimerTask(object timerState)
+        internal void TimerTask(object timerState)
         {
             RequestKeyboard();
             EnemiesMove();
             DisplayAll();
-
-           
         }
 
-        private void EnemiesMove()
+        internal void EnemiesMove()
         {
             foreach (var enemy in Enemies)
             {
                 enemy.Move();
             }
-
         }
 
         private void DisplayAll()
