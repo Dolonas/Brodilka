@@ -21,8 +21,8 @@ namespace Brodilka
             }
             set
             {
-                if (value.XPos > -1 &&
-                    value.YPos > -1 &&
+                if (value.XPos > 0 &&
+                    value.YPos > 0 &&
                     value.XPos < CurrMap.XSize &&
                     value.YPos < CurrMap.YSize)
 

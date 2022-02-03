@@ -10,8 +10,8 @@ namespace Brodilka
     {
         private static int windowXSize;
         private static int windowYSize;
-        private static readonly int maxXWindowSize = 90;
-        private static readonly int maxYWindowSize = 30;
+        private static readonly int maxXWindowSize = 140;
+        private static readonly int maxYWindowSize = 80;
         public static int WindowXSize
         {
             get => windowXSize;
@@ -60,8 +60,8 @@ namespace Brodilka
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
-            WindowXSize = maxXWindowSize;
-            WindowYSize = maxYWindowSize;
+            WindowXSize = WindowXSize;
+            WindowYSize = WindowYSize;
             Console.SetWindowSize(WindowXSize, WindowYSize);
             Console.SetBufferSize(WindowXSize, WindowYSize);
             

@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Brodilka
 {
+    enum Command { Left, Up, Right, Down, Attack1, Stop, Escape}
     internal class GameProcessor
     {
+        private static System.Timers.Timer timer;
+        internal Command currentCommand = Command.Stop;
         internal IDisplayble ConsolePresents { get; set; }
-        internal Player currentPlayer { get; set; }
+        internal Player CurrentPlayer { get; set; }
         internal List<GameItem> Items { get; set; }
         internal List<Unit> Units { get; set; }
         internal List<Enemy> Enemies { get; set; }
@@ -21,7 +25,7 @@ namespace Brodilka
         internal GameProcessor()
         {
             Items = new List<GameItem>();
-            CurrentMap = new Map(60, 40);
+            CurrentMap = new Map(110, 40);
             Items.Add(new Player(new Point(15, 18), CurrentMap, "Luidgy") as GameItem);
             Items.Add(new Wolf(new Point(15, 18), CurrentMap) as GameItem );
             Items.Add(new Wolf(new Point(48, 3), CurrentMap) as GameItem);
@@ -37,22 +41,29 @@ namespace Brodilka
             Items.Add(new Stone(new Point(8, 12), CurrentMap) as GameItem);
             SortItems();
 
-            ConsolePresents = new ConsolePresentation(150, 120);
+            ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
 
         }
 
         internal void Run()
         {
-            TimerCallback tm = new TimerCallback(TimerTask);
-            Timer timer = new Timer (tm, null, 0, 1000);
+            var timer = new Timer(Callback, null, 0, 800);
+            while(true)
+            {
+                currentCommand = RequestKeyboard();
+                if (currentCommand == Command.Escape)
+                    Environment.Exit(0);
+            }
+            
         }
 
-        internal void TimerTask(object timerState)
+        private void Callback(object param)
         {
-            RequestKeyboard();
             EnemiesMove();
+            CurrentPlayer.Move(currentCommand);
             DisplayAll();
         }
+
 
         internal void EnemiesMove()
         {
@@ -69,20 +80,35 @@ namespace Brodilka
                 ConsolePresents.Display(item);
             }
         }
-        private void RequestKeyboard()
+        private Command RequestKeyboard()
         {
             ConsoleKeyInfo cki;
             cki = Console.ReadKey();
-            currentPlayer.Move(cki.Key);
-            if (cki.Key != ConsoleKey.Escape)
-            {
-                Environment.Exit(0);
+            switch (cki.Key)
+            {             
+                case ConsoleKey.RightArrow:
+                    return Command.Right;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    return Command.Left;
+                    break;
+                case ConsoleKey.UpArrow:
+                    return Command.Up;
+                    break;
+                case ConsoleKey.DownArrow:
+                    return Command.Down;
+                    break;
             }
+            if (cki.Key == ConsoleKey.Escape)
+            {
+                return Command.Escape;
+            }
+            return Command.Stop;
         }
 
         internal void SortItems()
         {
-            currentPlayer = (Player)Items.FirstOrDefault(x => x is Player);
+            CurrentPlayer = (Player)Items.FirstOrDefault(x => x is Player);
 
             Units = Items.OfType<Unit>().ToList();
             Enemies = Items.OfType<Enemy>().ToList();

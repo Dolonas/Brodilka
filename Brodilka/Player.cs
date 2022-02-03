@@ -37,20 +37,20 @@ namespace Brodilka
             Damage = maxDamage;
         }
 
-        public void Move(ConsoleKey key)
+        public void Move(Command command)
         {
-            switch (key)
+            switch (command)
             {
-                case ConsoleKey.RightArrow:
+                case Command.Right:
                     this.CurrPoint.XPos++;
                     break;
-                case ConsoleKey.LeftArrow:
+                case Command.Left:
                     this.CurrPoint.XPos--;
                     break;
-                case ConsoleKey.UpArrow:
+                case Command.Up:
                     this.CurrPoint.YPos--;
                     break;
-                case ConsoleKey.DownArrow:
+                case Command.Down :
                     this.CurrPoint.YPos++;
                     break;
             }

@@ -26,10 +26,10 @@ namespace Brodilka
         //private static IContainer Container { get; set; }
         static void Main()
         {
-            ConsolePresentation presentation = new ConsolePresentation();
-            GameProcessor game = new GameProcessor();
+            var game = new GameProcessor();
 
             game.Run();
+
 
         }
     }
