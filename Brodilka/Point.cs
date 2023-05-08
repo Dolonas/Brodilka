@@ -8,32 +8,20 @@ namespace Brodilka
 {
     internal class Point
     {
-        private int xPos = 0;
-        private int yPos = 0;
+        private int xPosition = 0;
+        private int yPosition = 0;
 
         
-        public int XPos
+        public int XPosition
         {
-            get
-            {
-                return xPos;
-            }
-            set
-            {
-                xPos = value < 0 && value > 200 ? 0 : value;
-            }
+            get => xPosition;
+            set => xPosition = value;
         }
 
-        public int YPos
+        public int YPosition
         {
-            get
-            {
-                return yPos;
-            }
-            set
-            {
-                yPos = value < 0 && value > 200 ? 0 : value;
-            }
+            get => yPosition;
+            set => yPosition = value;
         }
 
         public Point() : this (0,0)
@@ -41,10 +29,10 @@ namespace Brodilka
 
         }
 
-        public Point(int xPos, int yPos)
+        public Point(int xPosition, int yPosition)
         {
-            XPos = xPos;
-            YPos = yPos;
+            XPosition = xPosition;
+            YPosition = yPosition;
         }
     }
 }

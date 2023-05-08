@@ -20,8 +20,8 @@ namespace Brodilka
 
         public Bonus(Point currPos, Map currMap)
         {
-            this.CurrMap = currMap;
-            this.CurrPoint = currPos;
+            this.CurrentMap = currMap;
+            this.CurrentPos = currPos;
             
             this.IsItBlock = false;
 

@@ -32,16 +32,17 @@ namespace Brodilka
 
         public Unit(Point pos, Map currentMap)
         {
-            this.CurrMap = currentMap;
-            this.CurrPoint = pos;
+            this.CurrentMap = currentMap;
+            this.CurrentPos = pos;
+            this.PreviousPos = CurrentPos;
             this.IsItBlock = false;
         }
         
 
         public void Move(int xShift, int yShift)
         {
-            this.CurrPoint.XPos += xShift;
-            this.CurrPoint.YPos += yShift;
+            this.CurrentPos.XPosition += xShift;
+            this.CurrentPos.YPosition += yShift;
         }
 
         public void ToDamage(Unit unit, int Damage)

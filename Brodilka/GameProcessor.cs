@@ -28,11 +28,11 @@ namespace Brodilka
             CurrentMap = new Map(110, 40);
             Items.Add(new Player(new Point(15, 18), CurrentMap, "Luidgy") as GameItem);
             Items.Add(new Wolf(new Point(15, 18), CurrentMap) as GameItem );
-            Items.Add(new Wolf(new Point(48, 3), CurrentMap) as GameItem);
+            Items.Add(new Wolf(new Point(48, 13), CurrentMap) as GameItem);
             Items.Add(new Bear(new Point(18, 17), CurrentMap) as GameItem);
-            Items.Add(new Bear(new Point(48, 6), CurrentMap) as GameItem);
+            Items.Add(new Bear(new Point(48, 16), CurrentMap) as GameItem);
             Items.Add(new Cherry(new Point(8, 12), CurrentMap) as GameItem);
-            Items.Add(new Cherry(new Point(38, 6), CurrentMap) as GameItem);
+            Items.Add(new Cherry(new Point(38, 24), CurrentMap) as GameItem);
             Items.Add(new Apple(new Point(48, 14), CurrentMap) as GameItem);
             Items.Add(new Apple(new Point(23, 32), CurrentMap) as GameItem);
             Items.Add(new Tree(new Point(21, 16), CurrentMap) as GameItem);

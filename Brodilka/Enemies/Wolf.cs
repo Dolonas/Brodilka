@@ -17,7 +17,7 @@ namespace Brodilka
         {
             Damage = 20;
             Health = 40;
-            SignCode = 220;
+            SignCode = 87;
             this.IsItBlock = false;
             
 

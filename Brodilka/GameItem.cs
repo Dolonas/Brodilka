@@ -8,32 +8,31 @@ namespace Brodilka
 {
     abstract class GameItem
     {
-        private Point currPos;
-
-        public Map CurrMap { get; set; }
-
+        private Point currentPos;
+        public Map CurrentMap { get; set; }
         public int SignCode { get; set; }
-        public Point CurrPoint
+        public Point PreviousPos { get; set; }
+
+        public Point CurrentPos
         {
-            get
-            {
-                return currPos;
-            }
+            get => currentPos;
             set
             {
-                if (value.XPos > 0 &&
-                    value.YPos > 0 &&
-                    value.XPos < CurrMap.XSize &&
-                    value.YPos < CurrMap.YSize)
+                if (value.XPosition > -1 &&
+                    value.YPosition > -1 &&
+                    value.XPosition < CurrentMap.XSize &&
+                    value.YPosition < CurrentMap.YSize)
 
                 {
-                    currPos = value;
+                    PreviousPos = CurrentPos;
+                    currentPos = value;
                 }
             }
         }
 
         public GameItem()
         {
+            PreviousPos = new Point ( 0, 0 );
             //CurrMap = new Map();
             //CurrPoint = new Point();
             

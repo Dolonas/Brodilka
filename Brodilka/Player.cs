@@ -12,7 +12,7 @@ namespace Brodilka
         private readonly int maxDamage = 80;
         private string playerName;
         private readonly int startHealth = 100;
-        private readonly int signCode = 150;
+        private readonly int signCode = 64;
         internal override int Damage { get => damage; set => damage = value; }
         internal string PlayerName
         {
@@ -29,7 +29,8 @@ namespace Brodilka
         public Player() : this (new Point(0, 0), new Map(), "Player 1")
         {
         }
-        public Player(Point currPos, Map currMap, string playerName): base (currPos, currMap)
+
+        public Player(Point currentPos, Map currMap, string playerName): base (currentPos, currMap)
         {
             PlayerName = playerName;
             Health = this.startHealth;
@@ -42,16 +43,16 @@ namespace Brodilka
             switch (command)
             {
                 case Command.Right:
-                    this.CurrPoint.XPos++;
+                    this.CurrentPos.XPosition++;
                     break;
                 case Command.Left:
-                    this.CurrPoint.XPos--;
+                    this.CurrentPos.XPosition--;
                     break;
                 case Command.Up:
-                    this.CurrPoint.YPos--;
+                    this.CurrentPos.YPosition--;
                     break;
                 case Command.Down :
-                    this.CurrPoint.YPos++;
+                    this.CurrentPos.YPosition++;
                     break;
             }
 

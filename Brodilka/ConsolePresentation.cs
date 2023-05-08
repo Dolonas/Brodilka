@@ -60,8 +60,6 @@ namespace Brodilka
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
-            WindowXSize = WindowXSize;
-            WindowYSize = WindowYSize;
             Console.SetWindowSize(WindowXSize, WindowYSize);
             Console.SetBufferSize(WindowXSize, WindowYSize);
             
@@ -72,9 +70,10 @@ namespace Brodilka
 
          void IDisplayble.Display(GameItem gameItem)
         {
-            Console.SetCursorPosition(gameItem.CurrPoint.XPos, gameItem.CurrPoint.YPos);
-            string str = Char.ConvertFromUtf32(Convert.ToUInt16(gameItem.SignCode));
-            Console.Write(str);
+            Console.SetCursorPosition(gameItem.PreviousPos.XPosition, gameItem.PreviousPos.YPosition);
+            Console.Write(" ");
+            Console.SetCursorPosition(gameItem.CurrentPos.XPosition, gameItem.CurrentPos.YPosition);
+            Console.Write(Char.ConvertFromUtf32(Convert.ToUInt16(gameItem.SignCode)));
 
         }
 

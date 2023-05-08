@@ -22,16 +22,16 @@ namespace Brodilka
             switch (direction)
             {
                 case 0:
-                    this.CurrPoint.XPos -= 1;
+                    this.CurrentPos.XPosition -= 1;
                     break;
                 case 1:
-                    this.CurrPoint.YPos -= 1;
+                    this.CurrentPos.YPosition -= 1;
                     break;
                 case 2:
-                    this.CurrPoint.XPos += 1;
+                    this.CurrentPos.XPosition += 1;
                     break;
                 case 3:
-                    this.CurrPoint.YPos += 1;
+                    this.CurrentPos.YPosition += 1;
                     break;
                 default:
                     break;

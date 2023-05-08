@@ -29,8 +29,6 @@ namespace Brodilka
             var game = new GameProcessor();
 
             game.Run();
-
-
         }
     }
 }
