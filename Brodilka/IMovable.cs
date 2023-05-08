@@ -1,6 +1,6 @@
-﻿
-namespace Brodilka;
-    internal interface IMovable
-    {
-        void Move(int xShift, int yShift);
-    }
+﻿namespace Brodilka;
+
+internal interface IMovable
+{
+	void Move(int xShift, int yShift);
+}

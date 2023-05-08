@@ -1,34 +1,30 @@
-﻿
-namespace Brodilka;
-    abstract class GameItem
-    {
-        private Point currentPosition;
-        public Map CurrentMap { get; set; }
-        public int SignCode { get; set; }
-        public Point PreviousPos { get; set; }
+﻿namespace Brodilka;
 
-        public Point CurrentPosition
-        {
-            get => currentPosition;
-            set
-            {
-                if (value.XPosition > -1 &&
-                    value.YPosition > -1 &&
-                    value.XPosition < CurrentMap.XSize &&
-                    value.YPosition < CurrentMap.YSize)
+internal abstract class GameItem
+{
+	private Point currentPosition;
+	public Map CurrentMap { get; set; }
+	public int SignCode { get; set; }
+	public Point PreviousPos { get; set; }
 
-                {
-                    PreviousPos = CurrentPosition;
-                    currentPosition = value;
-                }
-            }
-        }
+	public Point CurrentPosition
+	{
+		get => currentPosition;
+		set
+		{
+			if (value.XPosition > -1 &&
+			    value.YPosition > -1 &&
+			    value.XPosition < CurrentMap.XSize &&
+			    value.YPosition < CurrentMap.YSize)
 
-        public GameItem()
-        {
-            PreviousPos = new Point ( 0, 0 );
-        }
+			{
+				PreviousPos = CurrentPosition;
+				currentPosition = value;
+			}
+		}
+	}
 
-        public abstract bool IsItBlock { get; set; }
+	public GameItem() => PreviousPos = new Point(0, 0);
 
-    }
+	public abstract bool IsItBlock { get; set; }
+}

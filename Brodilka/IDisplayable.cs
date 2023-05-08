@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brodilka
+namespace Brodilka;
+
+internal interface IDisplayable
 {
-    internal interface IDisplayable
-    {
-        void Display(GameItem gameItem);
-    }
+	void Display(GameItem gameItem);
 }

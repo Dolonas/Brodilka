@@ -8,18 +8,19 @@
 карте по какому-либо алгоритму;
 • На поле располагаются препятствия разных типов (камни, деревья и т.д.), которые игрок и
 монстры должны обходить.
-  
+
 Я же буду пробовать с имплементацией :-)
  */
 
 namespace Brodilka;
-    public class Program
-    {
-        //private static IContainer Container { get; set; }
-        static void Main()
-        {
-            var game = new GameProcessor();
 
-            game.Run();
-        }
-    }
+public class Program
+{
+	//private static IContainer Container { get; set; }
+	private static void Main()
+	{
+		var game = new GameProcessor();
+
+		game.Run();
+	}
+}

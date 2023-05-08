@@ -1,9 +1,8 @@
-﻿
-namespace Brodilka;
-    internal interface IDamagable
-    {
-        void GetDamage(int damage);
+﻿namespace Brodilka;
 
-        void ToDamage(Unit unit, int hitDamege);
-        
-    }
+internal interface IDamagable
+{
+	void GetDamage(int damage);
+
+	void ToDamage(Unit unit, int hitDamege);
+}

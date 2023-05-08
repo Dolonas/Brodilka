@@ -1,44 +1,45 @@
 ﻿namespace Brodilka;
-    abstract class Unit : GameItem, IMovable, IDamagable
-    {
-        private int health;
-       
-        public override bool IsItBlock { get; set; }
-        public int Health 
-        {
-            get => health;
-            set => health = value < 0 ? 0 : health = value;
-        }
 
-        internal abstract int Damage { get; set;  }
+internal abstract class Unit : GameItem, IMovable, IDamagable
+{
+	private int health;
 
-        public Unit() : this (new Point(0, 0), new Map() )
-        {
+	public override bool IsItBlock { get; set; }
 
-        }
+	public int Health
+	{
+		get => health;
+		set => health = value < 0 ? 0 : health = value;
+	}
 
-        public Unit(Point position, Map currentMap)
-        {
-            this.CurrentMap = currentMap;
-            this.CurrentPosition = position;
-            this.PreviousPos = CurrentPosition;
-            this.IsItBlock = false;
-        }
-        
+	internal abstract int Damage { get; set; }
 
-        public void Move(int xShift, int yShift)
-        {
-            this.CurrentPosition.XPosition += xShift;
-            this.CurrentPosition.YPosition += yShift;
-        }
+	public Unit() : this(new Point(0, 0), new Map())
+	{
+	}
 
-        public void ToDamage(Unit unit, int Damage)
-        {
-            unit.GetDamage(Damage);
-        }
-        public void GetDamage(int damage)
-        {
-            this.Health -= damage;
-        }
+	public Unit(Point position, Map currentMap)
+	{
+		CurrentMap = currentMap;
+		CurrentPosition = position;
+		PreviousPos = CurrentPosition;
+		IsItBlock = false;
+	}
 
-    }
+
+	public void Move(int xShift, int yShift)
+	{
+		CurrentPosition.XPosition += xShift;
+		CurrentPosition.YPosition += yShift;
+	}
+
+	public void ToDamage(Unit unit, int Damage)
+	{
+		unit.GetDamage(Damage);
+	}
+
+	public void GetDamage(int damage)
+	{
+		Health -= damage;
+	}
+}
