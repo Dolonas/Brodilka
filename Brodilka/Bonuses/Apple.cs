@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Brodilka
 {
     internal class Apple : Bonus
@@ -17,7 +12,7 @@ namespace Brodilka
 
         }
 
-        public Apple(Point currPos, Map currMap) : base(currPos, currMap)
+        public Apple(Point currPosition, Map currMap) : base(currPosition, currMap)
         {
             this.SignCode = appleSignCode;
             this.SpeedUpForPlayer = speedUp;

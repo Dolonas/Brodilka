@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brodilka
-{
-    internal class ConsolePresentation: IDisplayble
+namespace Brodilka;
+    internal class ConsolePresentation: IDisplayable
     {
         private static int windowXSize;
         private static int windowYSize;
@@ -15,33 +14,12 @@ namespace Brodilka
         public static int WindowXSize
         {
             get => windowXSize;
-            set
-            {
-                if (value <= maxXWindowSize)
-                {
-                    windowXSize = value;
-                }
-                else
-                {
-                    windowXSize = maxXWindowSize;
-                }
-            }
+            set => windowXSize = value <= maxXWindowSize ? value : maxXWindowSize;
         }
         public static int WindowYSize
         {
             get => windowYSize;
-            set
-            {
-                if (value <= maxYWindowSize)
-                {
-                    windowYSize = value;
-                }
-                else
-                {
-                    windowYSize = maxYWindowSize;
-                }
-            }
-
+            set => windowYSize = value <= maxYWindowSize ? value : maxYWindowSize;
         }
 
         public ConsolePresentation() : this (maxXWindowSize, maxYWindowSize)
@@ -68,14 +46,13 @@ namespace Brodilka
             
         }
 
-         void IDisplayble.Display(GameItem gameItem)
+         void IDisplayable.Display(GameItem gameItem)
         {
             Console.SetCursorPosition(gameItem.PreviousPos.XPosition, gameItem.PreviousPos.YPosition);
             Console.Write(" ");
-            Console.SetCursorPosition(gameItem.CurrentPos.XPosition, gameItem.CurrentPos.YPosition);
+            Console.SetCursorPosition(gameItem.CurrentPosition.XPosition, gameItem.CurrentPosition.YPosition);
             Console.Write(Char.ConvertFromUtf32(Convert.ToUInt16(gameItem.SignCode)));
 
         }
 
     }
-}

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Brodilka
 {
-    internal interface IDisplayble
+    internal interface IDisplayable
     {
         void Display(GameItem gameItem);
     }

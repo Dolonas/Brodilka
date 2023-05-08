@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Brodilka
-{
+﻿
+namespace Brodilka;
     internal class Cherry : Bonus
     {
         private readonly int cherrySignCode = 31;
@@ -17,7 +11,7 @@ namespace Brodilka
 
         }
 
-        public Cherry(Point currPos, Map currMap) : base(currPos, currMap)
+        public Cherry(Point currPosition, Map currMap) : base(currPosition, currMap)
         {
             this.SignCode = cherrySignCode;
             this.SpeedUpForPlayer = speedUp;
@@ -25,4 +19,3 @@ namespace Brodilka
         }
 
     }
-}

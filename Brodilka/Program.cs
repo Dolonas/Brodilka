@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
-
-/* ЗАДАНИЕ:
+﻿/* ЗАДАНИЕ:
  * Создайте иерархию классов и пропишите ключевые методы для компьютерной игры (без
 реализации функционала). Суть игры:
 • Игрок может передвигаться по прямоугольному полю размером Width на Height;
@@ -19,8 +12,7 @@ using Autofac;
 Я же буду пробовать с имплементацией :-)
  */
 
-namespace Brodilka
-{
+namespace Brodilka;
     public class Program
     {
         //private static IContainer Container { get; set; }
@@ -31,4 +23,3 @@ namespace Brodilka
             game.Run();
         }
     }
-}

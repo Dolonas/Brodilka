@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Brodilka
 {
     internal abstract class Bonus : GameItem
@@ -18,10 +13,10 @@ namespace Brodilka
 
         }
 
-        public Bonus(Point currPos, Map currMap)
+        public Bonus(Point currPosition, Map currMap)
         {
             this.CurrentMap = currMap;
-            this.CurrentPos = currPos;
+            this.CurrentPosition = currPosition;
             
             this.IsItBlock = false;
 

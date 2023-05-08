@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Brodilka
-{
+namespace Brodilka;
     enum Command { Left, Up, Right, Down, Attack1, Stop, Escape}
     internal class GameProcessor
     {
         private static System.Timers.Timer timer;
         internal Command currentCommand = Command.Stop;
-        internal IDisplayble ConsolePresents { get; set; }
+        internal IDisplayable ConsolePresents { get; set; }
         internal Player CurrentPlayer { get; set; }
         internal List<GameItem> Items { get; set; }
         internal List<Unit> Units { get; set; }
@@ -27,19 +23,18 @@ namespace Brodilka
             Items = new List<GameItem>();
             CurrentMap = new Map(110, 40);
             Items.Add(new Player(new Point(15, 18), CurrentMap, "Luidgy") as GameItem);
-            Items.Add(new Wolf(new Point(15, 18), CurrentMap) as GameItem );
-            Items.Add(new Wolf(new Point(48, 13), CurrentMap) as GameItem);
-            Items.Add(new Bear(new Point(18, 17), CurrentMap) as GameItem);
-            Items.Add(new Bear(new Point(48, 16), CurrentMap) as GameItem);
-            Items.Add(new Cherry(new Point(8, 12), CurrentMap) as GameItem);
-            Items.Add(new Cherry(new Point(38, 24), CurrentMap) as GameItem);
-            Items.Add(new Apple(new Point(48, 14), CurrentMap) as GameItem);
-            Items.Add(new Apple(new Point(23, 32), CurrentMap) as GameItem);
-            Items.Add(new Tree(new Point(21, 16), CurrentMap) as GameItem);
-            Items.Add(new Tree(new Point(8, 12), CurrentMap) as GameItem);
-            Items.Add(new Stone(new Point(21, 16), CurrentMap) as GameItem);
-            Items.Add(new Stone(new Point(8, 12), CurrentMap) as GameItem);
-            SortItems();
+            Items.Add(new Wolf(new Point(15, 18), CurrentMap));
+            Items.Add(new Wolf(new Point(48, 13), CurrentMap));
+            Items.Add(new Bear(new Point(18, 17), CurrentMap));
+            Items.Add(new Bear(new Point(48, 16), CurrentMap));
+            Items.Add(new Cherry(new Point(8, 12), CurrentMap));
+            Items.Add(new Cherry(new Point(38, 24), CurrentMap));
+            Items.Add(new Apple(new Point(48, 14), CurrentMap));
+            Items.Add(new Apple(new Point(23, 32), CurrentMap));
+            Items.Add(new Tree(new Point(21, 16), CurrentMap));
+            Items.Add(new Tree(new Point(8, 12), CurrentMap));
+            Items.Add(new Stone(new Point(21, 16), CurrentMap));
+            Items.Add(new Stone(new Point(8, 12), CurrentMap));
 
             ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
 
@@ -47,8 +42,10 @@ namespace Brodilka
 
         internal void Run()
         {
-            var timer = new Timer(Callback, null, 0, 800);
-            while(true)
+            //var timer = new Timer(Callback, null, 0, 800);
+            timer.Interval = 100;
+            timer.Start();
+            while(timer.Enabled)
             {
                 currentCommand = RequestKeyboard();
                 if (currentCommand == Command.Escape)
@@ -117,5 +114,3 @@ namespace Brodilka
         }
         
     }
-
-}

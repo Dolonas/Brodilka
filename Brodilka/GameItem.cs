@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Brodilka
-{
+﻿
+namespace Brodilka;
     abstract class GameItem
     {
-        private Point currentPos;
+        private Point currentPosition;
         public Map CurrentMap { get; set; }
         public int SignCode { get; set; }
         public Point PreviousPos { get; set; }
 
-        public Point CurrentPos
+        public Point CurrentPosition
         {
-            get => currentPos;
+            get => currentPosition;
             set
             {
                 if (value.XPosition > -1 &&
@@ -24,8 +18,8 @@ namespace Brodilka
                     value.YPosition < CurrentMap.YSize)
 
                 {
-                    PreviousPos = CurrentPos;
-                    currentPos = value;
+                    PreviousPos = CurrentPosition;
+                    currentPosition = value;
                 }
             }
         }
@@ -33,12 +27,8 @@ namespace Brodilka
         public GameItem()
         {
             PreviousPos = new Point ( 0, 0 );
-            //CurrMap = new Map();
-            //CurrPoint = new Point();
-            
         }
 
         public abstract bool IsItBlock { get; set; }
 
     }
-}

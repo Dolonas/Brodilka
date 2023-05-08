@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Brodilka
-{
+﻿namespace Brodilka;
     internal class Point
     {
-        private int xPosition = 0;
-        private int yPosition = 0;
+        private int xPosition;
+        private int yPosition;
 
         
         public int XPosition
@@ -35,4 +28,3 @@ namespace Brodilka
             YPosition = yPosition;
         }
     }
-}

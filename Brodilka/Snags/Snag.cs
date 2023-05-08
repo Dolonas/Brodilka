@@ -19,7 +19,7 @@ namespace Brodilka
         public Snag(Point currPoint, Map currMap)
         {
             this.CurrentMap = currMap;
-            this.CurrentPos = currPoint;
+            this.CurrentPosition = currPoint;
             
             this.IsItBlock = true;
         }

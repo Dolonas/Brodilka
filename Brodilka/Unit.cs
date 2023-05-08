@@ -1,7 +1,4 @@
-﻿using System;
-
-namespace Brodilka
-{
+﻿namespace Brodilka;
     abstract class Unit : GameItem, IMovable, IDamagable
     {
         private int health;
@@ -10,17 +7,7 @@ namespace Brodilka
         public int Health 
         {
             get => health;
-            set
-            {
-                if (value < 0)
-                {
-                    health = 0;
-                }
-                else
-                {
-                    health = value;
-                }
-            }
+            set => health = value < 0 ? 0 : health = value;
         }
 
         internal abstract int Damage { get; set;  }
@@ -30,19 +17,19 @@ namespace Brodilka
 
         }
 
-        public Unit(Point pos, Map currentMap)
+        public Unit(Point position, Map currentMap)
         {
             this.CurrentMap = currentMap;
-            this.CurrentPos = pos;
-            this.PreviousPos = CurrentPos;
+            this.CurrentPosition = position;
+            this.PreviousPos = CurrentPosition;
             this.IsItBlock = false;
         }
         
 
         public void Move(int xShift, int yShift)
         {
-            this.CurrentPos.XPosition += xShift;
-            this.CurrentPos.YPosition += yShift;
+            this.CurrentPosition.XPosition += xShift;
+            this.CurrentPosition.YPosition += yShift;
         }
 
         public void ToDamage(Unit unit, int Damage)
@@ -55,4 +42,3 @@ namespace Brodilka
         }
 
     }
-}
