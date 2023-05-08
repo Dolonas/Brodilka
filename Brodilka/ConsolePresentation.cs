@@ -53,6 +53,5 @@ internal class ConsolePresentation : IDisplayable
 		Console.SetCursorPosition(gameItem.PreviousPos.XPosition, gameItem.PreviousPos.YPosition);
 		Console.Write(" ");
 		Console.SetCursorPosition(gameItem.CurrentPosition.XPosition, gameItem.CurrentPosition.YPosition);
-		Console.Write(char.ConvertFromUtf32(Convert.ToUInt16(gameItem.SignCode)));
 	}
 }

@@ -6,7 +6,6 @@ internal class Player : Unit
 	private readonly int maxDamage = 80;
 	private string playerName;
 	private readonly int startHealth = 100;
-	private readonly int signCode = 64;
 	internal override int Damage { get => damage; set => damage = value; }
 
 	internal string PlayerName
@@ -23,7 +22,6 @@ internal class Player : Unit
 	{
 		PlayerName = playerName;
 		Health = startHealth;
-		SignCode = signCode;
 		Damage = maxDamage;
 	}
 

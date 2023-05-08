@@ -4,8 +4,9 @@ internal abstract class GameItem
 {
 	private Point currentPosition;
 	public Map CurrentMap { get; set; }
-	public int SignCode { get; set; }
 	public Point PreviousPos { get; set; }
+
+	public bool IsExist { get; set; }
 
 	public Point CurrentPosition
 	{
@@ -27,4 +28,8 @@ internal abstract class GameItem
 	public GameItem() => PreviousPos = new Point(0, 0);
 
 	public abstract bool IsItBlock { get; set; }
+	public void Update()
+	{
+
+	}
 }

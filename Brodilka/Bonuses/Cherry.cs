@@ -2,7 +2,6 @@
 
 internal class Cherry : Bonus
 {
-	private readonly int cherrySignCode = 31;
 	private readonly int speedUp = 5;
 	private readonly int healthUp = 0;
 
@@ -12,7 +11,6 @@ internal class Cherry : Bonus
 
 	public Cherry(Point currPosition, Map currMap) : base(currPosition, currMap)
 	{
-		SignCode = cherrySignCode;
 		SpeedUpForPlayer = speedUp;
 		HealthUpForPlayer = healthUp;
 	}

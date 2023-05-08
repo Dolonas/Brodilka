@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Brodilka;
+﻿namespace Brodilka;
 
 internal class Stone : Snag
 {
-	private readonly int stoneSignCode = 19;
-
 	public Stone()
 	{
 	}
 
-	public Stone(Point currPos, Map currMap) : base(currPos, currMap) => SignCode = stoneSignCode;
+	public Stone(Point currPos, Map currMap) : base(currPos, currMap)
+	{
+
+	}
 }

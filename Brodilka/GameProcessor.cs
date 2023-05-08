@@ -1,7 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Timers;
 
+/*
+ * Как работает GameProcessor?
+ * Шагом обновления игры и игрового поля является "тик" таймера.
+ * Каждый "тик" таймера надо пройтись по всем объектам и:
+ * 1. передать им движение
+ * 1.1. проверить есть ли на пути игровой элемент или граница карты
+ * 1.2. если на пути Коряга остановить Игрока или Enemy
+ * 1.3. если на пути бонус - Игрок встаёт на место бонуса, и получает очки преимущества в зависимости от типа бонуса. Бонус исчезает
+ * 1.4. если на пути Enemy, то у Enemy активируется режим атаки и он пытается атаковать Игрока, а Игрок получает возможность атаковать Enemy нажимая на клавишу атаки
+ * 1.5.
+*/
 namespace Brodilka;
 
 internal enum Command { Left, Up, Right, Down, Attack1, Stop, Escape }
@@ -22,6 +34,7 @@ internal class GameProcessor
 
 	internal GameProcessor()
 	{
+		timer = new Timer();
 		Items = new List<GameItem>();
 		CurrentMap = new Map(110, 40);
 		Items.Add(new Player(new Point(15, 18), CurrentMap, "Luidgy") as GameItem);
@@ -43,7 +56,7 @@ internal class GameProcessor
 
 	internal void Run()
 	{
-		//var timer = new Timer(Callback, null, 0, 800);
+		//timer = new Timer(Callback, null, 0, 800);
 		timer.Interval = 100;
 		timer.Start();
 		while (timer.Enabled)
@@ -51,6 +64,15 @@ internal class GameProcessor
 			currentCommand = RequestKeyboard();
 			if (currentCommand == Command.Escape)
 				Environment.Exit(0);
+			Update();
+		}
+	}
+
+	private void Update( )
+	{
+		foreach (var item in Items)
+		{
+			item.Update();
 		}
 	}
 

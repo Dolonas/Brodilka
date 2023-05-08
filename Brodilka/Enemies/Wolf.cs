@@ -10,7 +10,6 @@ internal class Wolf : Enemy
 	{
 		Damage = 20;
 		Health = 40;
-		SignCode = 87;
 		IsItBlock = false;
 	}
 }

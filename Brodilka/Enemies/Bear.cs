@@ -10,7 +10,6 @@ internal class Bear : Enemy
 	{
 		Damage = 40;
 		Health = 100;
-		SignCode = 66;
 		IsItBlock = false;
 	}
 }
