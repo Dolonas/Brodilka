@@ -5,20 +5,22 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
+using Brodilka.Snags;
+using Brodilka.Units;
 
 namespace Brodilka
 {
     internal class GameProcessor
     {
-        internal IDisplayble ConsolePresents { get; set; }
-        internal Player currentPlayer { get; set; }
-        internal List<GameItem> Items { get; set; }
-        internal List<Unit> Units { get; set; }
-        internal List<Enemy> Enemies { get; set; }
-        internal List<Snag> Snags { get; set; }
-        internal List<Bonus> Bonuses { get; set; }
+        private IDisplayble ConsolePresents { get; set; }
+        private Player CurrentPlayer { get; set; }
+        private List<GameItem> Items { get; set; }
+        private List<Unit> Units { get; set; }
+        private List<Enemy> Enemies { get; set; }
+        private List<Snag> Snags { get; set; }
+        private List<Bonus> Bonuses { get; set; }
 
-        internal Map CurrentMap { get; set; }
+        private Map CurrentMap { get; set; }
 
         internal GameProcessor()
         {
@@ -49,7 +51,7 @@ namespace Brodilka
             do
             {
                 cki = Console.ReadKey();
-                currentPlayer.Move(cki.Key);
+                CurrentPlayer.Move(cki.Key);
                 foreach (var enemy in Enemies)
                 {
                     enemy.Move();
@@ -67,7 +69,7 @@ namespace Brodilka
 
         internal void SortItems()
         {
-            currentPlayer = (Player)Items.FirstOrDefault(x => x is Player);
+            CurrentPlayer = (Player)Items.FirstOrDefault(x => x is Player);
 
             Units = Items.OfType<Unit>().ToList();
             Enemies = Items.OfType<Enemy>().ToList();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Brodilka.Units;
 
 namespace Brodilka
 {
@@ -10,7 +11,7 @@ namespace Brodilka
     {
         void GetDamage(int damage);
 
-        void ToDamage(Unit unit, int hitDamege);
+        void ToDamage(Unit unit, int damage);
         
     }
 }

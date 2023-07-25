@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Brodilka
+namespace Brodilka.Units
 {
     internal class Player : Unit
     {
-        private int damage;
         private readonly int maxDamage = 80;
         private string playerName;
         private readonly int startHealth = 100;
         private readonly int signCode = 150;
-        internal override int Damage { get => damage; set => damage = value; }
-        internal string PlayerName
+        internal override int Damage { get; set; }
+
+        private string PlayerName
         {
             get => playerName;
             set
             {
-                if (value.Length > 1 && value.Length < 20)
+                if (value.Length is > 1 and < 20)
                 {
                     playerName = value;
                 }

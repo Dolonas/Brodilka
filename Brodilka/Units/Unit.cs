@@ -1,36 +1,25 @@
-﻿using System;
-
-namespace Brodilka
+﻿namespace Brodilka.Units
 {
     abstract class Unit : GameItem, IMovable, IDamagable
     {
         private int health;
        
         public override bool IsItBlock { get; set; }
-        public int Health 
+
+        protected int Health 
         {
             get => health;
-            set
-            {
-                if (value < 0)
-                {
-                    health = 0;
-                }
-                else
-                {
-                    health = value;
-                }
-            }
+            set => health = value < 0 ? 0 : value;
         }
 
         internal abstract int Damage { get; set;  }
 
-        public Unit() : this (new Point(0, 0), new Map() )
+        protected Unit() : this (new Point(0, 0), new Map() )
         {
 
         }
 
-        public Unit(Point pos, Map currentMap)
+        protected Unit(Point pos, Map currentMap)
         {
             this.CurrMap = currentMap;
             this.CurrPoint = pos;
@@ -44,9 +33,9 @@ namespace Brodilka
             this.CurrPoint.YPos += yShift;
         }
 
-        public void ToDamage(Unit unit, int Damage)
+        public void ToDamage(Unit unit, int damage)
         {
-            unit.GetDamage(Damage);
+            unit.GetDamage(damage);
         }
         public void GetDamage(int damage)
         {

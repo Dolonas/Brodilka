@@ -8,43 +8,24 @@ namespace Brodilka
 {
     internal class ConsolePresentation: IDisplayble
     {
-        private static int windowXSize;
-        private static int windowYSize;
-        private static readonly int maxXWindowSize = 90;
-        private static readonly int maxYWindowSize = 30;
-        public static int WindowXSize
-        {
-            get => windowXSize;
-            set
-            {
-                if (value <= maxXWindowSize)
-                {
-                    windowXSize = value;
-                }
-                else
-                {
-                    windowXSize = maxXWindowSize;
-                }
-            }
-        }
-        public static int WindowYSize
-        {
-            get => windowYSize;
-            set
-            {
-                if (value <= maxYWindowSize)
-                {
-                    windowYSize = value;
-                }
-                else
-                {
-                    windowYSize = maxYWindowSize;
-                }
-            }
+        private static int _windowXSize;
+        private static int _windowYSize;
+        private const  int MaxXWindowSize = 90;
+        private const int MaxYWindowSize = 30;
 
+        private static int WindowXSize
+        {
+            get => _windowXSize;
+            set => _windowXSize = value <= MaxXWindowSize ? value : MaxXWindowSize;
         }
 
-        public ConsolePresentation() : this (maxXWindowSize, maxYWindowSize)
+        private static int WindowYSize
+        {
+            get => _windowYSize;
+            set => _windowYSize = value <= MaxYWindowSize ? value : MaxYWindowSize;
+        }
+
+        public ConsolePresentation() : this (MaxXWindowSize, MaxYWindowSize)
         {
         }
 
@@ -55,13 +36,13 @@ namespace Brodilka
             DisplayInitialize();
         }
 
-        internal void DisplayInitialize()
+        private void DisplayInitialize()
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
-            WindowXSize = maxXWindowSize;
-            WindowYSize = maxYWindowSize;
+            WindowXSize = MaxXWindowSize;
+            WindowYSize = MaxYWindowSize;
             Console.SetWindowSize(WindowXSize, WindowYSize);
             Console.SetBufferSize(WindowXSize, WindowYSize);
             
@@ -73,7 +54,7 @@ namespace Brodilka
          void IDisplayble.Display(GameItem gameItem)
         {
             Console.SetCursorPosition(gameItem.CurrPoint.XPos, gameItem.CurrPoint.YPos);
-            string str = Char.ConvertFromUtf32(Convert.ToUInt16(gameItem.SignCode));
+            var str = Char.ConvertFromUtf32(Convert.ToUInt16(gameItem.SignCode));
             Console.Write(str);
 
         }

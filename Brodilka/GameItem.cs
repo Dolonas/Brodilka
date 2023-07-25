@@ -10,16 +10,13 @@ namespace Brodilka
     {
         private Point currPos;
 
-        public Map CurrMap { get; set; }
+        protected Map CurrMap { get; set; }
 
         public int SignCode { get; set; }
         public Point CurrPoint
         {
-            get
-            {
-                return currPos;
-            }
-            set
+            get => currPos;
+            protected set
             {
                 if (value.XPos > -1 &&
                     value.YPos > -1 &&
