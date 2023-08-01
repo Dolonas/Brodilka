@@ -24,24 +24,24 @@ internal enum Command { Left, Up, Right, Down, Attack1, Stop, Escape }
 
 internal class GameProcessor
 {
-	private static System.Timers.Timer timer;
-	internal Command currentCommand = Command.Stop;
-	internal IDisplayable ConsolePresents { get; set; }
-	internal Player CurrentPlayer { get; set; }
-	internal List<GameItem> Items { get; set; }
-	internal List<Unit> Units { get; set; }
-	internal List<Enemy> Enemies { get; set; }
-	internal List<Snag> Snags { get; set; }
-	internal List<Bonus> Bonuses { get; set; }
+	private static Timer _timer;
+	private Command currentCommand = Command.Stop;
+	private IDisplayable ConsolePresents { get; set; }
+	private Player CurrentPlayer { get; set; }
+	private List<GameItem> Items { get; set; }
+	private List<Unit> Units { get; set; }
+	private List<Enemy> Enemies { get; set; }
+	private List<Snag> Snags { get; set; }
+	private List<Bonus> Bonuses { get; set; }
 
-	internal Map CurrentMap { get; set; }
+	private Map CurrentMap { get; set; }
 
 	internal GameProcessor()
 	{
-		timer = new Timer();
+		_timer = new Timer();
 		Items = new List<GameItem>();
 		CurrentMap = new Map(110, 40);
-		Items.Add(new Player(new Point(15, 18), CurrentMap, "Luidgy") as GameItem);
+		Items.Add(new Player(new Point(15, 18), CurrentMap, $"Luidgy"));
 		Items.Add(new Wolf(new Point(15, 18), CurrentMap));
 		Items.Add(new Wolf(new Point(48, 13), CurrentMap));
 		Items.Add(new Bear(new Point(18, 17), CurrentMap));
@@ -61,9 +61,9 @@ internal class GameProcessor
 	internal void Run()
 	{
 		//timer = new Timer(Callback, null, 0, 800);
-		timer.Interval = 100;
-		timer.Start();
-		while (timer.Enabled)
+		_timer.Interval = 100;
+		_timer.Start();
+		while (_timer.Enabled)
 		{
 			currentCommand = RequestKeyboard();
 			if (currentCommand == Command.Escape)
@@ -78,14 +78,15 @@ internal class GameProcessor
 		{
 			item.Update();
 		}
-	}
-
-	private void Callback(object param)
-	{
-		EnemiesMove();
-		CurrentPlayer.Move(currentCommand);
 		DisplayAll();
 	}
+
+	// private void Callback(object param)
+	// {
+	// 	EnemiesMove();
+	// 	CurrentPlayer.Move(currentCommand);
+	// 	DisplayAll();
+	// }
 
 
 	internal void EnemiesMove()
@@ -100,26 +101,15 @@ internal class GameProcessor
 
 	private Command RequestKeyboard()
 	{
-		ConsoleKeyInfo cki;
-		cki = Console.ReadKey();
-		switch (cki.Key)
+		var cki = Console.ReadKey();
+		return cki.Key switch
 		{
-			case ConsoleKey.RightArrow:
-				return Command.Right;
-				break;
-			case ConsoleKey.LeftArrow:
-				return Command.Left;
-				break;
-			case ConsoleKey.UpArrow:
-				return Command.Up;
-				break;
-			case ConsoleKey.DownArrow:
-				return Command.Down;
-				break;
-		}
-
-		if (cki.Key == ConsoleKey.Escape) return Command.Escape;
-		return Command.Stop;
+			ConsoleKey.RightArrow => Command.Right,
+			ConsoleKey.LeftArrow => Command.Left,
+			ConsoleKey.UpArrow => Command.Up,
+			ConsoleKey.DownArrow => Command.Down,
+			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
+		};
 	}
 
 	internal void SortItems()

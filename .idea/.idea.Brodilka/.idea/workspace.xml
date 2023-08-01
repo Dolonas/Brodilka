@@ -4,23 +4,9 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Enemies/Bear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Enemies/Bear.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Enemies/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Enemies/Wolf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Enemies/Wolf.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItem.cs" afterDir="false" />
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="Reorganization structure of project">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/IDamagable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Interfaces/IDamagable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/IDisplayable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Interfaces/IDisplayable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/IMovable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Interfaces/IMovable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Map.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Point.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Point.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Snags/Snag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Snags/Snag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Snags/Stone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Snags/Stone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Snags/Tree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Snags/Tree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Unit.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +19,9 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,7 +71,7 @@
       <updated>1690277709259</updated>
       <workItem from="1690277711711" duration="1749000" />
       <workItem from="1690881790662" duration="218000" />
-      <workItem from="1690882017923" duration="855000" />
+      <workItem from="1690882017923" duration="1517000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -91,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690279466760</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Reorganization structure of project">
+      <created>1690883035432</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1690883035432</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +109,26 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Elements moved to the directories" />
-    <option name="LAST_COMMIT_MESSAGE" value="Elements moved to the directories" />
+    <MESSAGE value="Reorganization structure of project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorganization structure of project" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Brodilka/GameProcessor.cs</url>
+          <line>102</line>
+          <properties documentPath="F:\Develop\Projects\Brodilka\Brodilka\GameProcessor.cs" initialLine="103" containingFunctionPresentation="method 'RequestKeyboard'">
+            <startOffsets>
+              <option value="2981" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3009" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
