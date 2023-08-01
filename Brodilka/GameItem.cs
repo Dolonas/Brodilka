@@ -2,8 +2,8 @@
 
 internal abstract class GameItem
 {
-	private Point currentPosition;
-	public Map CurrentMap { get; set; }
+	private readonly Point currentPosition;
+	protected Map CurrentMap { get; set; }
 	public Point PreviousPos { get; set; }
 
 	public bool IsExist { get; set; }
@@ -11,21 +11,18 @@ internal abstract class GameItem
 	public Point CurrentPosition
 	{
 		get => currentPosition;
-		set
+		protected init
 		{
-			if (value.XPosition > -1 &&
-			    value.YPosition > -1 &&
-			    value.XPosition < CurrentMap.XSize &&
-			    value.YPosition < CurrentMap.YSize)
-
-			{
-				PreviousPos = CurrentPosition;
-				currentPosition = value;
-			}
+			if (value.XPosition <= -1 ||
+			    value.YPosition <= -1 ||
+			    value.XPosition >= CurrentMap.XSize ||
+			    value.YPosition >= CurrentMap.YSize) return;
+			PreviousPos = CurrentPosition;
+			currentPosition = value;
 		}
 	}
 
-	public GameItem() => PreviousPos = new Point(0, 0);
+	protected GameItem() => PreviousPos = new Point(0, 0);
 
 	public abstract bool IsItBlock { get; set; }
 	public void Update()

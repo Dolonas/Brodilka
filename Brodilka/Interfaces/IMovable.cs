@@ -1,4 +1,4 @@
-﻿namespace Brodilka;
+﻿namespace Brodilka.Interfaces;
 
 internal interface IMovable
 {

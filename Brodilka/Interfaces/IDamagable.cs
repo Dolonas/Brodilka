@@ -1,4 +1,6 @@
-﻿namespace Brodilka;
+﻿using Brodilka.Units;
+
+namespace Brodilka.Interfaces;
 
 internal interface IDamagable
 {

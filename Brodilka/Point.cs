@@ -2,21 +2,9 @@
 
 internal class Point
 {
-	private int xPosition;
-	private int yPosition;
+	public int XPosition { get; set; }
 
-
-	public int XPosition
-	{
-		get => xPosition;
-		set => xPosition = value;
-	}
-
-	public int YPosition
-	{
-		get => yPosition;
-		set => yPosition = value;
-	}
+	public int YPosition { get; set; }
 
 	public Point() : this(0, 0)
 	{

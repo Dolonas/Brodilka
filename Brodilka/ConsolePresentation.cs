@@ -1,31 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Brodilka.Interfaces;
 
 namespace Brodilka;
 
 internal class ConsolePresentation : IDisplayable
 {
-	private static int windowXSize;
-	private static int windowYSize;
-	private static readonly int maxXWindowSize = 140;
-	private static readonly int maxYWindowSize = 80;
+	private static int _windowXSize;
+	private static int _windowYSize;
+	private const int MaxXWindowSize = 140;
+	private const int MaxYWindowSize = 80;
 
-	public static int WindowXSize
+	private static int WindowXSize
 	{
-		get => windowXSize;
-		set => windowXSize = value <= maxXWindowSize ? value : maxXWindowSize;
+		get => _windowXSize;
+		set => _windowXSize = value <= MaxXWindowSize ? value : MaxXWindowSize;
 	}
 
-	public static int WindowYSize
+	private static int WindowYSize
 	{
-		get => windowYSize;
-		set => windowYSize = value <= maxYWindowSize ? value : maxYWindowSize;
+		get => _windowYSize;
+		set => _windowYSize = value <= MaxYWindowSize ? value : MaxYWindowSize;
 	}
 
-	public ConsolePresentation() : this(maxXWindowSize, maxYWindowSize)
+	public ConsolePresentation() : this(MaxXWindowSize, MaxYWindowSize)
 	{
 	}
 

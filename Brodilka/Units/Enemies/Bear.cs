@@ -1,4 +1,4 @@
-﻿namespace Brodilka;
+﻿namespace Brodilka.Units.Enemies;
 
 internal class Bear : Enemy
 {

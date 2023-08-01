@@ -1,4 +1,6 @@
-﻿namespace Brodilka;
+﻿using Brodilka.Interfaces;
+
+namespace Brodilka.Units;
 
 internal abstract class Unit : GameItem, IMovable, IDamagable
 {
@@ -6,7 +8,7 @@ internal abstract class Unit : GameItem, IMovable, IDamagable
 
 	public override bool IsItBlock { get; set; }
 
-	public int Health
+	protected int Health
 	{
 		get => health;
 		set => health = value < 0 ? 0 : health = value;

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Brodilka;
+namespace Brodilka.Units.Enemies;
 
 internal class Enemy : Unit
 {

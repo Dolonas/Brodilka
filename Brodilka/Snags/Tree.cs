@@ -1,4 +1,4 @@
-﻿namespace Brodilka;
+﻿namespace Brodilka.Snags;
 
 internal class Tree : Snag
 {

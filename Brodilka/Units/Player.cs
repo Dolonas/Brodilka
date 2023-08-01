@@ -1,17 +1,16 @@
-﻿namespace Brodilka;
+﻿namespace Brodilka.Units;
 
 internal class Player : Unit
 {
-	private int damage;
-	private readonly int maxDamage = 80;
-	private string playerName;
-	private readonly int startHealth = 100;
-	internal override int Damage { get => damage; set => damage = value; }
+	private const int MaxDamage = 80;
+	private readonly string playerName;
+	private const int StartHealth = 100;
+	internal sealed override int Damage { get; set; }
 
-	internal string PlayerName
+	private string PlayerName
 	{
 		get => playerName;
-		set => playerName = value.Length is > 1 and < 20 ? value : playerName;
+		init => playerName = value.Length is > 1 and < 20 ? value : playerName;
 	}
 
 	public Player() : this(new Point(0, 0), new Map(), "Player 1")
@@ -21,8 +20,8 @@ internal class Player : Unit
 	public Player(Point currentPosition, Map currMap, string playerName) : base(currentPosition, currMap)
 	{
 		PlayerName = playerName;
-		Health = startHealth;
-		Damage = maxDamage;
+		Health = StartHealth;
+		Damage = MaxDamage;
 	}
 
 	public void Move(Command command)
