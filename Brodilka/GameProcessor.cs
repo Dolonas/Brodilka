@@ -97,12 +97,12 @@ internal class GameProcessor
 
 	private void DisplayAll()
 	{
-		foreach (Unit unit in Units)
+		foreach (var unit in Units)
 		{
 			if (unit is not null)
 				ConsolePresents.Display(unit);
 		}
-			
+
 	}
 
 	private Command RequestKeyboard()
