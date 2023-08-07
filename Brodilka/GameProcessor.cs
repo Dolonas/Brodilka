@@ -54,6 +54,7 @@ internal class GameProcessor
 		Items.Add(new Tree(new Point(8, 12), CurrentMap));
 		Items.Add(new Stone(new Point(21, 16), CurrentMap));
 		Items.Add(new Stone(new Point(8, 12), CurrentMap));
+		SortItems();
 
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
 	}
@@ -96,7 +97,12 @@ internal class GameProcessor
 
 	private void DisplayAll()
 	{
-		foreach (var item in Items) ConsolePresents.Display(item);
+		foreach (Unit unit in Units)
+		{
+			if (unit is not null)
+				ConsolePresents.Display(unit);
+		}
+			
 	}
 
 	private Command RequestKeyboard()
@@ -112,7 +118,7 @@ internal class GameProcessor
 		};
 	}
 
-	internal void SortItems()
+	private void SortItems()
 	{
 		CurrentPlayer = (Player)Items.FirstOrDefault(x => x is Player);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using Brodilka.Interfaces;
+using Brodilka.Units;
 
 namespace Brodilka;
 
@@ -33,7 +34,7 @@ internal class ConsolePresentation : IDisplayable
 		DisplayInitialize();
 	}
 
-	internal void DisplayInitialize()
+	private void DisplayInitialize()
 	{
 		Console.BackgroundColor = ConsoleColor.Black;
 		Console.ForegroundColor = ConsoleColor.White;
@@ -45,10 +46,10 @@ internal class ConsolePresentation : IDisplayable
 		Console.Title = "Brodilka";
 	}
 
-	void IDisplayable.Display(GameItem gameItem)
+	void IDisplayable.Display(Unit unit)
 	{
-		Console.SetCursorPosition(gameItem.PreviousPos.XPosition, gameItem.PreviousPos.YPosition);
+		Console.SetCursorPosition(unit.PreviousPos.XPosition, unit.PreviousPos.YPosition);
 		Console.Write(" ");
-		Console.SetCursorPosition(gameItem.CurrentPosition.XPosition, gameItem.CurrentPosition.YPosition);
+		Console.SetCursorPosition(unit.CurrentPosition.XPosition, unit.CurrentPosition.YPosition);
 	}
 }

@@ -7,6 +7,7 @@ internal abstract class Unit : GameItem, IMovable, IDamagable
 	private int health;
 
 	public override bool IsItBlock { get; set; }
+	public Point PreviousPos { get; set; }
 
 	protected int Health
 	{
