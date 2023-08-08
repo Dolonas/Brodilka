@@ -4,7 +4,18 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="" />
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="minimal changes">
+      <change afterPath="$PROJECT_DIR$/Brodilka/Utilits/WriteThisItemsToJson.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JsonIO/JsonIO.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JsonIO/JsonReadWrite.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Brodilka.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Brodilka.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Point.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Point.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Program.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,17 +27,19 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69593afc69483659e9373e173c8361fd966106a5d50f639c51b48388ddeb29/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/ConsolePresentation.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2T3hXFXZi6e0npdMUfmM6QIeh5f" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -74,6 +87,7 @@
       <workItem from="1690882017923" duration="1932000" />
       <workItem from="1691400010466" duration="1193000" />
       <workItem from="1691401224914" duration="1170000" />
+      <workItem from="1691486026490" duration="2929000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -103,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691402385578</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="minimal changes">
+      <created>1691486040546</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1691486040546</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +149,7 @@
     <MESSAGE value="Reorganization structure of project" />
     <MESSAGE value="GameProcessor.cs refactoring" />
     <MESSAGE value="Now redrawing only units. SortItems() has been connected to code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Now redrawing only units. SortItems() has been connected to code." />
+    <MESSAGE value="minimal changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minimal changes" />
   </component>
 </project>

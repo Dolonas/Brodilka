@@ -1,6 +1,6 @@
 ﻿namespace Brodilka;
 
-internal class Point
+public class Point
 {
 	public int XPosition { get; set; }
 

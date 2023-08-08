@@ -6,6 +6,9 @@ using Brodilka.Interfaces;
 using Brodilka.Snags;
 using Brodilka.Units;
 using Brodilka.Units.Enemies;
+using System.Text.Json;
+using Brodilka.Utilits;
+using JsonIO;
 
 /*
  * Как работает GameProcessor?
@@ -41,19 +44,8 @@ internal class GameProcessor
 		_timer = new Timer();
 		Items = new List<GameItem>();
 		CurrentMap = new Map(110, 40);
-		Items.Add(new Player(new Point(15, 18), CurrentMap, $"Luidgy"));
-		Items.Add(new Wolf(new Point(15, 18), CurrentMap));
-		Items.Add(new Wolf(new Point(48, 13), CurrentMap));
-		Items.Add(new Bear(new Point(18, 17), CurrentMap));
-		Items.Add(new Bear(new Point(48, 16), CurrentMap));
-		Items.Add(new Cherry(new Point(8, 12), CurrentMap));
-		Items.Add(new Cherry(new Point(38, 24), CurrentMap));
-		Items.Add(new Apple(new Point(48, 14), CurrentMap));
-		Items.Add(new Apple(new Point(23, 32), CurrentMap));
-		Items.Add(new Tree(new Point(21, 16), CurrentMap));
-		Items.Add(new Tree(new Point(8, 12), CurrentMap));
-		Items.Add(new Stone(new Point(21, 16), CurrentMap));
-		Items.Add(new Stone(new Point(8, 12), CurrentMap));
+		var temp = new WriteThisItemsToJson();
+		Items = (List<GameItem>)JsonReadWrite.ReadJson("json1");
 		SortItems();
 
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
@@ -61,7 +53,6 @@ internal class GameProcessor
 
 	internal void Run()
 	{
-		//timer = new Timer(Callback, null, 0, 800);
 		_timer.Interval = 100;
 		_timer.Start();
 		while (_timer.Enabled)

@@ -1,10 +1,10 @@
 ﻿namespace Brodilka;
 
-internal abstract class GameItem
+public abstract class GameItem
 {
 	private readonly Point currentPosition;
 	protected Map CurrentMap { get; set; }
-	
+
 
 	public bool IsExist { get; set; }
 
