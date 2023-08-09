@@ -4,17 +4,12 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="minimal changes">
-      <change afterPath="$PROJECT_DIR$/Brodilka/Utilits/WriteThisItemsToJson.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JsonIO/JsonIO.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JsonIO/JsonReadWrite.cs" afterDir="false" />
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/Brodilka.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Brodilka.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Point.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Point.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Utilits/WriteThisItemsToJson.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Utilits/ItemsData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +25,11 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0b5567882521e02aa3d40a7bce81b7235ccac4db588866e3498e614c3bc/CastHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18c7de6a7132663af691f7f0e1c8e3c5f672c6a69b7844a1cd0d8bcf94d87e9/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69593afc69483659e9373e173c8361fd966106a5d50f639c51b48388ddeb29/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/JsonIO/JsonReadWrite.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -87,7 +85,8 @@
       <workItem from="1690882017923" duration="1932000" />
       <workItem from="1691400010466" duration="1193000" />
       <workItem from="1691401224914" duration="1170000" />
-      <workItem from="1691486026490" duration="2929000" />
+      <workItem from="1691486026490" duration="3217000" />
+      <workItem from="1691572716803" duration="1654000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -124,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691486040546</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="gratefull changes">
+      <created>1691489241389</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691489241389</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +156,7 @@
     <MESSAGE value="GameProcessor.cs refactoring" />
     <MESSAGE value="Now redrawing only units. SortItems() has been connected to code." />
     <MESSAGE value="minimal changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minimal changes" />
+    <MESSAGE value="gratefull changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="gratefull changes" />
   </component>
 </project>

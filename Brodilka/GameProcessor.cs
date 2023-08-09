@@ -8,7 +8,6 @@ using Brodilka.Units;
 using Brodilka.Units.Enemies;
 using System.Text.Json;
 using Brodilka.Utilits;
-using JsonIO;
 
 /*
  * Как работает GameProcessor?
@@ -41,13 +40,14 @@ internal class GameProcessor
 
 	internal GameProcessor()
 	{
+
+		CurrentMap = new Map(110, 40);
+		var itemData = new ItemsData(CurrentMap);
+		itemData.WriteJson("json1.json");
 		_timer = new Timer();
 		Items = new List<GameItem>();
-		CurrentMap = new Map(110, 40);
-		var temp = new WriteThisItemsToJson();
-		Items = (List<GameItem>)JsonReadWrite.ReadJson("json1");
+		Items = (List<GameItem>)itemData.ReadJson("json1.json");
 		SortItems();
-
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
 	}
 
