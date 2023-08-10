@@ -1,5 +1,8 @@
-﻿namespace Brodilka.Units;
+﻿using System.Runtime.Serialization;
 
+namespace Brodilka.Units;
+
+[KnownType(typeof(Player))]
 internal class Player : Unit
 {
 	private const int MaxDamage = 80;

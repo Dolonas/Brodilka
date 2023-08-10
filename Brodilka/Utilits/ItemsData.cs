@@ -43,7 +43,8 @@ public class ItemsData
 	public void WriteJson(string filePath)
 	{
 		using var fs = new FileStream(filePath, FileMode.OpenOrCreate);
-		JsonSerializer.Serialize<object>(fs, Items);
+
+		JsonSerializer.Serialize(fs, Items);
 	}
 
 

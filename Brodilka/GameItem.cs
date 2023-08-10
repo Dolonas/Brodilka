@@ -1,24 +1,31 @@
-﻿namespace Brodilka;
+﻿using System.Runtime.Serialization;
 
+namespace Brodilka;
+
+[DataContract()]
 public abstract class GameItem
 {
-	private readonly Point currentPosition;
-	protected Map CurrentMap { get; set; }
-
-
+	private Point _currentPosition;
+	//protected Map CurrentMap { get; set; }
+	private readonly int _maxXPosition;
+	private readonly int _maxYPosition;
 	public bool IsExist { get; set; }
 
+	public GameItem(int maxXPosition, int maxYPosition)
+	{
+		_maxXPosition = maxXPosition;
+		_maxYPosition = maxYPosition;
+	}
 	public Point CurrentPosition
 	{
-		get => currentPosition;
+		get => _currentPosition;
 		protected init
 		{
 			if (value.XPosition <= -1 ||
 			    value.YPosition <= -1 ||
-			    value.XPosition >= CurrentMap.XSize ||
-			    value.YPosition >= CurrentMap.YSize) return;
-			//PreviousPos = CurrentPosition;
-			currentPosition = value;
+			    value.XPosition >= _maxXPosition ||
+			    value.YPosition >= _maxYPosition) return;
+			_currentPosition = value;
 		}
 	}
 
