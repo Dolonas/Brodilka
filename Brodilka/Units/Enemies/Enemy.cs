@@ -21,7 +21,7 @@ internal class Enemy : Unit
 	public void Move()
 	{
 		var rnd = new Random();
-		var direction = rnd.Next(3);
+		var direction = rnd.Next(4);
 		PreviousPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
 		switch (direction)
 		{

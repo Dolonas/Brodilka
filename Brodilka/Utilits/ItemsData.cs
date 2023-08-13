@@ -44,10 +44,10 @@ public class ItemsData
 	// 	return  JsonSerializer.Deserialize<List<GameItem>>(fs);
 	// }
 	//
-	// public void WriteJson(string filePath)
-	// {
-	// 	using var fs = new FileStream(filePath, FileMode.OpenOrCreate);
-	//
-	// 	JsonSerializer.Serialize(fs, Items);
-	//}
+	public void WriteJson(string filePath)
+	{
+		using var fs = new FileStream(filePath, FileMode.OpenOrCreate);
+		var options = new JsonSerializerOptions { WriteIndented = true };
+		JsonSerializer.Serialize<List<GameItem>>(fs, Items, options);
+	}
 }

@@ -52,5 +52,6 @@ internal class ConsolePresentation : IDisplayable
 		Console.Write(' ');
 		Console.SetCursorPosition(gameItem.CurrentPosition.XPosition, gameItem.CurrentPosition.YPosition);
 		Console.WriteLine(gameItem.Simbol);
+		Console.SetCursorPosition(_windowXSize - 1, _windowYSize - 2);
 	}
 }

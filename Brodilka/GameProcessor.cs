@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Timers;
 using Brodilka.Interfaces;
 using Brodilka.Snags;
@@ -25,6 +26,7 @@ namespace Brodilka;
 
 internal enum Command { Left, Up, Right, Down, Attack1, Stop, Escape }
 
+[DataContract]
 internal class GameProcessor
 {
 	private static Timer timer;
@@ -44,7 +46,7 @@ internal class GameProcessor
 
 		CurrentMap = new Map(110, 40);
 		var itemData = new ItemsData(CurrentMap);
-		//itemData.WriteJson("json1.json");
+		itemData.WriteJson("json1.json");
 		timer = new Timer();
 		Items = itemData.Items;
 		SortItems();

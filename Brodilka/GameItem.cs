@@ -14,7 +14,7 @@ public abstract class GameItem
 	{
 		// ReSharper disable once VirtualMemberCallInConstructor
 		_currentPosition = currentPosition;
-		PreviousPosition = currentPosition;
+		//PreviousPosition = currentPosition;
 		_maxXPosition = maxXPosition;
 		_maxYPosition = maxYPosition;
 	}
