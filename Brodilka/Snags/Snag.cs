@@ -1,8 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Brodilka.Snags;
 
-[DataContract()]
+[KnownType(typeof(Snag))]
 public abstract class Snag : GameItem
 {
 	public override bool IsItBlock { get; set; }
@@ -15,5 +16,6 @@ public abstract class Snag : GameItem
 		PreviousPosition = position;
 		IsExist = true;
 		IsItBlock = true;
+		ItemColor = ConsoleColor.Yellow;
 	}
 }

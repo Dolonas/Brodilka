@@ -62,6 +62,7 @@ internal class GameProcessor
 			_currentCommand = RequestKeyboard();
 			if (_currentCommand == Command.Escape)
 				Environment.Exit(0);
+			CurrentPlayer.Move(_currentCommand);
 			Update();
 		}
 	}
@@ -91,9 +92,9 @@ internal class GameProcessor
 
 	private void DisplayAll()
 	{
-		foreach (var unit in Units.Where(u => u is not null && u.IsExist))
+		foreach (var gameItem in Items.Where(gi => gi is not null && gi.IsExist))
 		{
-			ConsolePresents.Display(unit);
+			ConsolePresents.Display(gameItem);
 		}
 	}
 
@@ -108,6 +109,7 @@ internal class GameProcessor
 			ConsoleKey.DownArrow => Command.Down,
 			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
 		};
+
 	}
 
 	private void SortItems()

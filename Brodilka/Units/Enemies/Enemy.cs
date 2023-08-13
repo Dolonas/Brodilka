@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace Brodilka.Units.Enemies;
 
-[DataContract]
+[KnownType(typeof(Enemy))]
 internal class Enemy : Unit
 {
 	internal override int Damage { get; set; }
@@ -16,6 +16,7 @@ internal class Enemy : Unit
 	{
 		IsItBlock = true;
 		IsExist = true;
+		ItemColor = ConsoleColor.Green;
 	}
 
 	public void Move()

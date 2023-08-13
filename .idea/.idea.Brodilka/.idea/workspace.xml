@@ -4,14 +4,17 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="redesign of the project structure">
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="Resolved some things of CurrentPosition">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Bonuses/Bonus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Bonuses/Bonus.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Snags/Snag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Snags/Snag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Snags/Stone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Snags/Stone.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/Units/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Enemies/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Units/Enemies/Wolf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Enemies/Wolf.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Utilits/ItemsData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Utilits/ItemsData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Units/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Unit.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +33,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/56996bd5b7b025988834f7db72d610de6637f12f9a6dc6f25950f7f158ef3fc4/ConsolePal.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9dbe8869135194d1c9164298b9e1fc1aa7f5391d2f0e7c06fdcd03179d3f16/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf408839e35535896e3625c8578c2bfb7bf56ef7ab2c4549ae59c3a19db9ae/Console.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/ConsolePresentation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/Point.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -84,7 +88,7 @@
       <workItem from="1690882017923" duration="1932000" />
       <workItem from="1691400010466" duration="1193000" />
       <workItem from="1691401224914" duration="1001000" />
-      <workItem from="1691923363304" duration="17661000" />
+      <workItem from="1691923363304" duration="19254000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -121,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691939066554</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Resolved some things of CurrentPosition">
+      <created>1691950275541</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691950275541</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +158,7 @@
     <MESSAGE value="GameProcessor.cs refactoring" />
     <MESSAGE value="some changes" />
     <MESSAGE value="redesign of the project structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="redesign of the project structure" />
+    <MESSAGE value="Resolved some things of CurrentPosition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolved some things of CurrentPosition" />
   </component>
 </project>

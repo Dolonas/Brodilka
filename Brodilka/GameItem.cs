@@ -1,14 +1,16 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Brodilka;
 
-[DataContract()]
+[KnownType(typeof(GameItem))]
 public abstract class GameItem
 {
 	private Point _currentPosition;
 	private readonly int _maxXPosition;
 	private readonly int _maxYPosition;
 	public bool IsExist { get; set; }
+	public ConsoleColor ItemColor { get; set; }
 
 	public GameItem(Point currentPosition, int maxXPosition, int maxYPosition)
 	{

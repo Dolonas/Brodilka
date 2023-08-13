@@ -28,6 +28,7 @@ internal class Player : Unit
 		Simbol = 'P';
 		Health = StartHealth;
 		Damage = MaxDamage;
+		ItemColor = ConsoleColor.Blue;
 	}
 
 	public void Move(Command command)

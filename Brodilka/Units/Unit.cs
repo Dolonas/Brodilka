@@ -3,7 +3,7 @@ using Brodilka.Interfaces;
 
 namespace Brodilka.Units;
 
-[DataContract()]
+[KnownType(typeof(Unit))]
 internal abstract class Unit : GameItem, IMovable, IDamagable
 {
 	private int _health;

@@ -1,8 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Brodilka.Bonuses;
 
-[DataContract()]
+[KnownType(typeof(Bonus))]
 internal abstract class Bonus : GameItem
 {
 	public sealed override Point PreviousPosition { get; set; }
@@ -14,5 +15,6 @@ internal abstract class Bonus : GameItem
 	{
 		PreviousPosition = CurrentPosition;
 		IsItBlock = false;
+		ItemColor = ConsoleColor.Magenta;
 	}
 }
