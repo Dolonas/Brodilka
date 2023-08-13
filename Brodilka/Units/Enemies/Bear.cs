@@ -1,15 +1,21 @@
-﻿namespace Brodilka.Units.Enemies;
+﻿using System.Runtime.Serialization;
 
+namespace Brodilka.Units.Enemies;
+
+[KnownType(typeof(Bear))]
 internal class Bear : Enemy
 {
-	public Bear() : this(new Point(0, 0), new Map())
+	private readonly int _bearDamage = 40;
+	private readonly int _bearHealth = 70;
+
+	public override char Simbol { get; }
+
+	public Bear(Point currentPosition, int maxXPosition, int maxYPosition)
+		: base(currentPosition, maxXPosition, maxYPosition)
 	{
+		Simbol = 'B';
+		Damage = _bearDamage;
+		Health = _bearHealth;
 	}
 
-	public Bear(Point currPosition, Map currMap) : base(currPosition, currMap)
-	{
-		Damage = 40;
-		Health = 100;
-		IsItBlock = false;
-	}
 }

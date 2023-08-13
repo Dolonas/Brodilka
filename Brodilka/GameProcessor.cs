@@ -7,6 +7,7 @@ using Brodilka.Snags;
 using Brodilka.Units;
 using Brodilka.Units.Enemies;
 using System.Text.Json;
+using Brodilka.Bonuses;
 using Brodilka.Utilits;
 
 /*
@@ -26,8 +27,8 @@ internal enum Command { Left, Up, Right, Down, Attack1, Stop, Escape }
 
 internal class GameProcessor
 {
-	private static Timer _timer;
-	private Command currentCommand = Command.Stop;
+	private static Timer timer;
+	private Command _currentCommand = Command.Stop;
 	private IDisplayable ConsolePresents { get; set; }
 	private Player CurrentPlayer { get; set; }
 	private List<GameItem> Items { get; set; }
@@ -43,22 +44,21 @@ internal class GameProcessor
 
 		CurrentMap = new Map(110, 40);
 		var itemData = new ItemsData(CurrentMap);
-		itemData.WriteJson("json1.json");
-		_timer = new Timer();
-		Items = new List<GameItem>();
-		Items = (List<GameItem>)itemData.ReadJson("json1.json");
+		//itemData.WriteJson("json1.json");
+		timer = new Timer();
+		Items = itemData.Items;
 		SortItems();
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
 	}
 
 	internal void Run()
 	{
-		_timer.Interval = 100;
-		_timer.Start();
-		while (_timer.Enabled)
+		timer.Interval = 100;
+		timer.Start();
+		while (timer.Enabled)
 		{
-			currentCommand = RequestKeyboard();
-			if (currentCommand == Command.Escape)
+			_currentCommand = RequestKeyboard();
+			if (_currentCommand == Command.Escape)
 				Environment.Exit(0);
 			Update();
 		}
@@ -68,6 +68,7 @@ internal class GameProcessor
 	{
 		foreach (var item in Items)
 		{
+			EnemiesMove();
 			item.Update();
 		}
 		DisplayAll();
@@ -81,19 +82,17 @@ internal class GameProcessor
 	// }
 
 
-	internal void EnemiesMove()
+	private void EnemiesMove()
 	{
-		foreach (var enemy in Enemies) enemy.Move();
+		foreach (var enemy in Enemies.Where(e => e.IsExist)) enemy.Move();
 	}
 
 	private void DisplayAll()
 	{
-		foreach (var unit in Units)
+		foreach (var unit in Units.Where(u => u is not null && u.IsExist))
 		{
-			if (unit is not null)
-				ConsolePresents.Display(unit);
+			ConsolePresents.Display(unit);
 		}
-
 	}
 
 	private Command RequestKeyboard()

@@ -1,12 +1,12 @@
-﻿namespace Brodilka.Snags;
+﻿using System.Runtime.Serialization;
+using Brodilka.Bonuses;
 
-internal class Tree : Snag
+namespace Brodilka.Snags;
+
+[KnownType(typeof(Tree))]
+public class Tree : Snag
 {
-	public Tree()
-	{
-	}
+	public override char Simbol { get; }
 
-	public Tree(Point currPos, Map currMap) : base(currPos, currMap)
-	{
-	}
+	public Tree(Point position, int maxXPos, int maxYPos) : base(position, maxXPos, maxYPos) => Simbol = 't';
 }

@@ -1,13 +1,11 @@
-﻿namespace Brodilka.Snags;
+﻿using System.Runtime.Serialization;
+using Brodilka.Bonuses;
 
-internal class Stone : Snag
+namespace Brodilka.Snags;
+
+[KnownType(typeof(Cherry))]
+public class Stone : Snag
 {
-	public Stone()
-	{
-	}
-
-	public Stone(Point currPos, Map currMap) : base(currPos, currMap)
-	{
-
-	}
+	public override char Simbol { get; }
+	public Stone(Point position, int maxXPos, int maxYPos) : base(position, maxXPos, maxYPos) => Simbol = 'o';
 }

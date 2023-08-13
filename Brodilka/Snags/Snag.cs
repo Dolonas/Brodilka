@@ -1,19 +1,19 @@
-﻿namespace Brodilka.Snags;
+﻿using System.Runtime.Serialization;
 
-internal abstract class Snag : GameItem
+namespace Brodilka.Snags;
+
+[DataContract()]
+public abstract class Snag : GameItem
 {
-	private bool isItBlock;
-	public override bool IsItBlock { get => isItBlock; set => isItBlock = value; }
+	public override bool IsItBlock { get; set; }
 
-	public Snag() : this(new Point(0, 0), new Map())
+	public sealed override Point PreviousPosition { get; set; }
+
+	protected Snag(Point position, int maxXPos, int maxYPos) : base(position, maxXPos, maxYPos)
 	{
-	}
-
-	public Snag(Point currPoint, Map currMap)
-	{
-		CurrentMap = currMap;
-		CurrentPosition = currPoint;
-
+		CurrentPosition = position;
+		PreviousPosition = position;
+		IsExist = true;
 		IsItBlock = true;
 	}
 }

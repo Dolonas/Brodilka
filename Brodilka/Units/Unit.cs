@@ -3,13 +3,13 @@ using Brodilka.Interfaces;
 
 namespace Brodilka.Units;
 
-
+[DataContract()]
 internal abstract class Unit : GameItem, IMovable, IDamagable
 {
 	private int _health;
 
 	public override bool IsItBlock { get; set; }
-	public Point PreviousPos { get; set; }
+	public override Point PreviousPosition { get; set; }
 
 	protected int Health
 	{
@@ -19,14 +19,9 @@ internal abstract class Unit : GameItem, IMovable, IDamagable
 
 	internal abstract int Damage { get; set; }
 
-	protected Unit() : this(new Point(0, 0), maxYPosition, maxXPosition)
+	protected Unit(Point position, int maxXPosition, int maxYPosition) : base(position, maxXPosition,  maxYPosition)
 	{
-	}
-
-	protected Unit(Point position, int maxYPosition, int maxXPosition) : base(maxXPosition,  maxYPosition)
-	{
-		CurrentPosition = position;
-		PreviousPos = CurrentPosition;
+		PreviousPosition = CurrentPosition;
 		IsItBlock = false;
 		IsExist = true;
 	}
@@ -34,8 +29,7 @@ internal abstract class Unit : GameItem, IMovable, IDamagable
 
 	public void Move(int xShift, int yShift)
 	{
-		CurrentPosition.XPosition += xShift;
-		CurrentPosition.YPosition += yShift;
+		CurrentPosition = new Point(CurrentPosition.XPosition + xShift, CurrentPosition.YPosition + yShift);
 	}
 
 	public void ToDamage(Unit unit, int Damage)

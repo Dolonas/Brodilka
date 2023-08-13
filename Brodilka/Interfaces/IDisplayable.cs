@@ -4,5 +4,5 @@ namespace Brodilka.Interfaces;
 
 internal interface IDisplayable
 {
-	void Display(Unit unit);
+	void Display(GameItem gameItem);
 }

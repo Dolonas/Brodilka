@@ -1,17 +1,21 @@
-﻿namespace Brodilka;
+﻿using System.Runtime.Serialization;
+using Brodilka.Units;
 
+namespace Brodilka.Bonuses;
+
+[KnownType(typeof(Cherry))]
 internal class Cherry : Bonus
 {
-	private readonly int speedUp = 5;
-	private readonly int healthUp = 0;
+	private readonly int _speedUp = 5;
+	private readonly int _healthUp = 0;
 
-	public Cherry()
-	{
-	}
+	public override char Simbol { get; }
 
-	public Cherry(Point currPosition, Map currMap) : base(currPosition, currMap)
+	public Cherry(Point currPoint, int maxXPos, int maxYPos) : base(currPoint, maxXPos, maxYPos)
 	{
-		SpeedUpForPlayer = speedUp;
-		HealthUpForPlayer = healthUp;
+		Simbol = 'y';
+		SpeedUpForPlayer = _speedUp;
+		HealthUpForPlayer = _healthUp;
+		IsExist = true;
 	}
 }

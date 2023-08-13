@@ -2,17 +2,14 @@
 
 public class Point
 {
-	public int XPosition { get; set; }
+	public int XPosition { get; private set; }
 
-	public int YPosition { get; set; }
-
-	public Point() : this(0, 0)
-	{
-	}
+	public int YPosition { get; private set; }
 
 	public Point(int xPosition, int yPosition)
 	{
 		XPosition = xPosition;
 		YPosition = yPosition;
 	}
+
 }

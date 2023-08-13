@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Brodilka.Units;
 
@@ -6,42 +7,45 @@ namespace Brodilka.Units;
 internal class Player : Unit
 {
 	private const int MaxDamage = 80;
-	private readonly string playerName;
+	private readonly string _playerName;
 	private const int StartHealth = 100;
 	internal sealed override int Damage { get; set; }
+	public override char Simbol { get; }
+	public override Point PreviousPosition { get; set; }
 
 	private string PlayerName
 	{
-		get => playerName;
-		init => playerName = value.Length is > 1 and < 20 ? value : playerName;
+		get => _playerName;
+		init => _playerName = value.Length is > 1 and < 20 ? value : _playerName;
 	}
 
-	public Player() : this(new Point(0, 0), new Map(), "Player 1")
-	{
-	}
+	public Player(string playerName, Point currentPosition, int maxXPosition, int maxYPosition)
+		: base(currentPosition, maxXPosition, maxYPosition)
 
-	public Player(Point currentPosition, Map currMap, string playerName) : base(currentPosition, currMap)
 	{
+		PreviousPosition = currentPosition;
 		PlayerName = playerName;
+		Simbol = 'P';
 		Health = StartHealth;
 		Damage = MaxDamage;
 	}
 
 	public void Move(Command command)
 	{
+		PreviousPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
 		switch (command)
 		{
 			case Command.Right:
-				CurrentPosition.XPosition++;
+				CurrentPosition = new Point(CurrentPosition.XPosition + 1, CurrentPosition.YPosition);
 				break;
 			case Command.Left:
-				CurrentPosition.XPosition--;
+				CurrentPosition = new Point(CurrentPosition.XPosition - 1, CurrentPosition.YPosition);;
 				break;
 			case Command.Up:
-				CurrentPosition.YPosition--;
+				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition - 1);
 				break;
 			case Command.Down:
-				CurrentPosition.YPosition++;
+				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition + 1);
 				break;
 		}
 	}

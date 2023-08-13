@@ -6,32 +6,34 @@ namespace Brodilka;
 public abstract class GameItem
 {
 	private Point _currentPosition;
-	//protected Map CurrentMap { get; set; }
 	private readonly int _maxXPosition;
 	private readonly int _maxYPosition;
 	public bool IsExist { get; set; }
 
-	public GameItem(int maxXPosition, int maxYPosition)
+	public GameItem(Point currentPosition, int maxXPosition, int maxYPosition)
 	{
+		// ReSharper disable once VirtualMemberCallInConstructor
+		_currentPosition = currentPosition;
+		PreviousPosition = currentPosition;
 		_maxXPosition = maxXPosition;
 		_maxYPosition = maxYPosition;
 	}
 	public Point CurrentPosition
 	{
 		get => _currentPosition;
-		protected init
+		protected set
 		{
-			if (value.XPosition <= -1 ||
-			    value.YPosition <= -1 ||
-			    value.XPosition >= _maxXPosition ||
-			    value.YPosition >= _maxYPosition) return;
+			if (value.XPosition < 0 ||
+			    value.YPosition < 0 ||
+			    value.XPosition > _maxXPosition ||
+			    value.YPosition > _maxYPosition) return;
 			_currentPosition = value;
 		}
 	}
-
-	//protected GameItem() => PreviousPos = new Point(0, 0);
+	public abstract Point PreviousPosition { get; set; }
 
 	public abstract bool IsItBlock { get; set; }
+	public abstract char Simbol { get; }
 	public void Update()
 	{
 

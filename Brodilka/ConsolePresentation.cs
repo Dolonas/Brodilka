@@ -34,7 +34,7 @@ internal class ConsolePresentation : IDisplayable
 		DisplayInitialize();
 	}
 
-	private void DisplayInitialize()
+	private static void DisplayInitialize()
 	{
 		Console.BackgroundColor = ConsoleColor.Black;
 		Console.ForegroundColor = ConsoleColor.White;
@@ -46,10 +46,11 @@ internal class ConsolePresentation : IDisplayable
 		Console.Title = "Brodilka";
 	}
 
-	void IDisplayable.Display(Unit unit)
+	void IDisplayable.Display(GameItem gameItem)
 	{
-		Console.SetCursorPosition(unit.PreviousPos.XPosition, unit.PreviousPos.YPosition);
-		Console.Write(" ");
-		Console.SetCursorPosition(unit.CurrentPosition.XPosition, unit.CurrentPosition.YPosition);
+		Console.SetCursorPosition(gameItem.PreviousPosition.XPosition, gameItem.PreviousPosition.YPosition);
+		Console.Write(' ');
+		Console.SetCursorPosition(gameItem.CurrentPosition.XPosition, gameItem.CurrentPosition.YPosition);
+		Console.WriteLine(gameItem.Simbol);
 	}
 }
