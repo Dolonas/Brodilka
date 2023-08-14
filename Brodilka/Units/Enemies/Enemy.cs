@@ -19,29 +19,22 @@ internal class Enemy : Unit
 		ItemColor = ConsoleColor.Green;
 	}
 
-	public void Move()
+	public override Command GetCommand()
 	{
-		var rnd = new Random();
-		var direction = rnd.Next(4);
-		PreviousPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
-		switch (direction)
+		var rnd = new Random(0);
+		var seed = rnd.Next(3);
+		switch (seed)
 		{
 			case 0:
-				CurrentPosition = new Point(CurrentPosition.XPosition + 1, CurrentPosition.YPosition);
-				break;
+				return Command.Left;
 			case 1:
-				CurrentPosition = new Point(CurrentPosition.XPosition - 1, CurrentPosition.YPosition);
-				break;
+				return Command.Right;
 			case 2:
-				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition - 1);
-				break;
+				return Command.Up;
 			case 3:
-				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition + 1);
-				break;
-			default:
-				break;
+				return Command.Down;
 		}
+
+		return Command.Non;
 	}
-
-
 }

@@ -4,7 +4,7 @@ using Brodilka.Interfaces;
 namespace Brodilka.Units;
 
 [KnownType(typeof(Unit))]
-internal abstract class Unit : GameItem, IMovable, IDamagable
+internal abstract class Unit : GameItem, IDamagable
 {
 	private int _health;
 
@@ -26,10 +26,29 @@ internal abstract class Unit : GameItem, IMovable, IDamagable
 		IsExist = true;
 	}
 
-
-	public void Move(int xShift, int yShift)
+	public abstract Command GetCommand();
+	public void Move(Command command)
 	{
-		CurrentPosition = new Point(CurrentPosition.XPosition + xShift, CurrentPosition.YPosition + yShift);
+		PreviousPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
+		switch (command)
+		{
+			case Command.Left:
+				CurrentPosition = new Point(CurrentPosition.XPosition - 1, CurrentPosition.YPosition);
+				break;
+			case Command.Right:
+				CurrentPosition = new Point(CurrentPosition.XPosition + 1, CurrentPosition.YPosition);
+				break;
+			case Command.Up:
+				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition-1);
+				break;
+			case Command.Down:
+				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition+1);
+				break;
+			default:
+				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition+1);
+				break;
+		}
+
 	}
 
 	public void ToDamage(Unit unit, int Damage)

@@ -24,7 +24,7 @@ using Brodilka.Utilits;
 */
 namespace Brodilka;
 
-internal enum Command { Left, Up, Right, Down, Attack1, Stop, Escape }
+internal enum Command { Left, Up, Right, Down, Attack1, Stop, Escape, Non }
 
 [DataContract]
 internal class GameProcessor
@@ -59,36 +59,15 @@ internal class GameProcessor
 		timer.Start();
 		while (timer.Enabled)
 		{
-			_currentCommand = RequestKeyboard();
-			if (_currentCommand == Command.Escape)
-				Environment.Exit(0);
-			CurrentPlayer.Move(_currentCommand);
-			Update();
+			foreach (var unit in Units)
+			{
+				var unitCommand = unit.GetCommand();
+				unit.Move(unitCommand); ;
+			}
+			DisplayAll();
 		}
 	}
 
-	private void Update( )
-	{
-		foreach (var item in Items)
-		{
-			EnemiesMove();
-			item.Update();
-		}
-		DisplayAll();
-	}
-
-	// private void Callback(object param)
-	// {
-	// 	EnemiesMove();
-	// 	CurrentPlayer.Move(currentCommand);
-	// 	DisplayAll();
-	// }
-
-
-	private void EnemiesMove()
-	{
-		foreach (var enemy in Enemies.Where(e => e.IsExist)) enemy.Move();
-	}
 
 	private void DisplayAll()
 	{
@@ -96,20 +75,6 @@ internal class GameProcessor
 		{
 			ConsolePresents.Display(gameItem);
 		}
-	}
-
-	private Command RequestKeyboard()
-	{
-		var cki = Console.ReadKey();
-		return cki.Key switch
-		{
-			ConsoleKey.RightArrow => Command.Right,
-			ConsoleKey.LeftArrow => Command.Left,
-			ConsoleKey.UpArrow => Command.Up,
-			ConsoleKey.DownArrow => Command.Down,
-			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
-		};
-
 	}
 
 	private void SortItems()
