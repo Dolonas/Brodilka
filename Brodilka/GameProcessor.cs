@@ -57,15 +57,21 @@ internal class GameProcessor
 	{
 		timer.Interval = 100;
 		timer.Start();
-		while (timer.Enabled)
+		DisplayAll();
+		timer.AutoReset = true;
+		timer.Enabled = true;
+		timer.Elapsed += OnTimeEvent;
+
+	}
+
+	private void OnTimeEvent(object sourse, ElapsedEventArgs e)
+	{
+		foreach (var unit in Units)
 		{
-			foreach (var unit in Units)
-			{
-				var unitCommand = unit.GetCommand();
-				unit.Move(unitCommand); ;
-			}
-			DisplayAll();
+			var unitCommand = unit.GetCommand();
+			unit.Move(unitCommand); ;
 		}
+		DisplayAll();
 	}
 
 
