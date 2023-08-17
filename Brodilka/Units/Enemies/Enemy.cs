@@ -21,17 +21,17 @@ internal class Enemy : Unit
 
 	public override Command GetCommand()
 	{
-		var rnd = new Random(0);
-		var seed = rnd.Next(3);
+		var rnd = new Random();
+		var seed = rnd.Next(4);
 		switch (seed)
 		{
-			case 0:
-				return Command.Left;
 			case 1:
-				return Command.Right;
+				return Command.Left;
 			case 2:
-				return Command.Up;
+				return Command.Right;
 			case 3:
+				return Command.Up;
+			case 4:
 				return Command.Down;
 		}
 

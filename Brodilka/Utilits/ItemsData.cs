@@ -33,8 +33,8 @@ public class ItemsData
 				new Apple(new Point(23, 32), xSize, ySize),
 				new Tree(new Point(21, 16), xSize, ySize),
 				new Tree(new Point(8, 12), xSize, ySize),
-				new Stone(new Point(21, 16), xSize, ySize),
-				new Stone(new Point(8, 12), xSize, ySize)
+				new Stone(new Point(81, 36), xSize, ySize),
+				new Stone(new Point(15, 35), xSize, ySize)
 			};
 	}
 

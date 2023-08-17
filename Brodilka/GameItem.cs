@@ -27,8 +27,8 @@ public abstract class GameItem
 		{
 			if (value.XPosition < 0 ||
 			    value.YPosition < 0 ||
-			    value.XPosition > _maxXPosition ||
-			    value.YPosition > _maxYPosition) return;
+			    value.XPosition >= _maxXPosition ||
+			    value.YPosition >= _maxYPosition-3) return;
 			_currentPosition = value;
 		}
 	}
