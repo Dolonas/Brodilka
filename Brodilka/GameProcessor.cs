@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Timers;
@@ -51,25 +52,31 @@ internal class GameProcessor
 		Items = itemData.Items;
 		SortItems();
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
+		timer.Interval = 100;
+		timer.Start();
+		timer.AutoReset = true;
+		timer.Enabled = true;
+		timer.Elapsed += OnTimeEvent;
 	}
 
 	internal void Run()
 	{
-		timer.Interval = 100;
-		timer.Start();
-		DisplayAll();
-		timer.AutoReset = true;
-		timer.Enabled = true;
-		timer.Elapsed += OnTimeEvent;
-
+		var playerCommand = GetCommand();
+		while (playerCommand != Command.Escape)
+		{
+			playerCommand = GetCommand();
+			CurrentPlayer.Move(playerCommand);
+			DisplayAll();
+		}
+		Environment.Exit(0);
 	}
 
 	private void OnTimeEvent(object sourse, ElapsedEventArgs e)
 	{
-		foreach (var unit in Units)
+		foreach (var enemy in Enemies)
 		{
-			var unitCommand = unit.GetCommand();
-			unit.Move(unitCommand); ;
+			var enemyCommand = enemy.GetCommand();
+			enemy.Move(enemyCommand);
 		}
 		DisplayAll();
 	}
@@ -81,6 +88,20 @@ internal class GameProcessor
 		{
 			ConsolePresents.Display(gameItem);
 		}
+	}
+
+	public Command GetCommand()
+	{
+		var cki = Console.ReadKey();
+
+		return cki.Key switch
+		{
+			ConsoleKey.RightArrow => Command.Right,
+			ConsoleKey.LeftArrow => Command.Left,
+			ConsoleKey.UpArrow => Command.Up,
+			ConsoleKey.DownArrow => Command.Down,
+			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
+		};
 	}
 
 	private void SortItems()
