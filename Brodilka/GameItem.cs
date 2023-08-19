@@ -23,7 +23,7 @@ public abstract class GameItem
 	public Point CurrentPosition
 	{
 		get => _currentPosition;
-		protected set
+		set
 		{
 			if (value.XPosition < 0 ||
 			    value.YPosition < 0 ||

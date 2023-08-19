@@ -31,18 +31,26 @@ internal class Player : Unit
 		ItemColor = ConsoleColor.Blue;
 	}
 
-	public override Command GetCommand()
+	public Point Move(Command command)
 	{
-		var cki = Console.ReadKey();
-		if (cki.Key == (ConsoleKey)Command.Escape)
-			Environment.Exit(0);
-		return cki.Key switch
+		PreviousPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
+		switch (command)
 		{
-			ConsoleKey.RightArrow => Command.Right,
-			ConsoleKey.LeftArrow => Command.Left,
-			ConsoleKey.UpArrow => Command.Up,
-			ConsoleKey.DownArrow => Command.Down,
-			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
-		};
+			case Command.Left:
+				return new Point(CurrentPosition.XPosition - 1, CurrentPosition.YPosition);
+				break;
+			case Command.Right:
+				return new Point(CurrentPosition.XPosition + 1, CurrentPosition.YPosition);
+				break;
+			case Command.Up:
+				return new Point(CurrentPosition.XPosition, CurrentPosition.YPosition-1);
+				break;
+			case Command.Down:
+				return new Point(CurrentPosition.XPosition, CurrentPosition.YPosition+1);
+				break;
+			default:
+				return new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
+				break;
+		}
 	}
 }

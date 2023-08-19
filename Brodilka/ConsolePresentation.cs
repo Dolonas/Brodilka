@@ -41,9 +41,8 @@ internal class ConsolePresentation : IDisplayable
 		Console.Clear();
 		Console.SetWindowSize(WindowXSize, WindowYSize);
 		Console.SetBufferSize(WindowXSize, WindowYSize);
-
-
 		Console.Title = "Brodilka";
+		Console.CursorVisible = false;
 	}
 
 	void IDisplayable.Display(GameItem gameItem)
@@ -53,7 +52,12 @@ internal class ConsolePresentation : IDisplayable
 		Console.Write(' ');
 		Console.SetCursorPosition(gameItem.CurrentPosition.XPosition, gameItem.CurrentPosition.YPosition);
 		Console.WriteLine(gameItem.Simbol);
-		Console.SetCursorPosition(_windowXSize - 1, _windowYSize - 2);
+		//Console.SetCursorPosition(_windowXSize - 1, _windowYSize - 4);
 		Console.ForegroundColor = ConsoleColor.White;
+	}
+
+	void IDisplayable.Redraw()
+	{
+		Console.Clear();
 	}
 }

@@ -18,8 +18,30 @@ internal class Enemy : Unit
 		IsExist = true;
 		ItemColor = ConsoleColor.Green;
 	}
-
-	public override Command GetCommand()
+	public void Move()
+	{
+		var command = GetKeyboardReceive();
+		PreviousPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
+		switch (command)
+		{
+			case Command.Left:
+				CurrentPosition = new Point(CurrentPosition.XPosition - 1, CurrentPosition.YPosition);
+				break;
+			case Command.Right:
+				CurrentPosition = new Point(CurrentPosition.XPosition + 1, CurrentPosition.YPosition);
+				break;
+			case Command.Up:
+				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition-1);
+				break;
+			case Command.Down:
+				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition+1);
+				break;
+			default:
+				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition+1);
+				break;
+		}
+	}
+	public Command GetKeyboardReceive()
 	{
 		var rnd = new Random();
 		var seed = rnd.Next(4);

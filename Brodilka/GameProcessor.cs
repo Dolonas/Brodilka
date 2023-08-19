@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Timers;
@@ -8,9 +7,10 @@ using Brodilka.Interfaces;
 using Brodilka.Snags;
 using Brodilka.Units;
 using Brodilka.Units.Enemies;
-using System.Text.Json;
+using System.Threading.Tasks;
 using Brodilka.Bonuses;
 using Brodilka.Utilits;
+using Timer = System.Timers.Timer;
 
 /*
  * Как работает GameProcessor?
@@ -25,13 +25,13 @@ using Brodilka.Utilits;
 */
 namespace Brodilka;
 
-internal enum Command { Left, Up, Right, Down, Attack1, Stop, Escape, Non }
+internal enum Command { Left, Up, Right, Down, Attack1, Stop, Redraw, Escape, Non }
 
 [DataContract]
 internal class GameProcessor
 {
 	private static Timer timer;
-	private Command _currentCommand = Command.Stop;
+	//private Command _currentCommand = Command.Stop;
 	private IDisplayable ConsolePresents { get; set; }
 	private Player CurrentPlayer { get; set; }
 	private List<GameItem> Items { get; set; }
@@ -48,35 +48,43 @@ internal class GameProcessor
 		CurrentMap = new Map(110, 40);
 		var itemData = new ItemsData(CurrentMap);
 		itemData.WriteJson("json1.json");
-		timer = new Timer();
 		Items = itemData.Items;
 		SortItems();
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
-		timer.Interval = 100;
+		timer = new Timer();
+		TimerStart();
+	}
+
+	private void TimerStart()
+	{
+		timer.Interval = 200;
 		timer.Start();
 		timer.AutoReset = true;
 		timer.Enabled = true;
 		timer.Elapsed += OnTimeEvent;
 	}
-
 	internal void Run()
 	{
-		var playerCommand = GetCommand();
-		while (playerCommand != Command.Escape)
+		var receive = GetKeybordReceive().Result;
+		while (receive != Command.Escape)
 		{
-			playerCommand = GetCommand();
-			CurrentPlayer.Move(playerCommand);
+			receive = GetKeybordReceive().Result;
+			if (receive == Command.Redraw)
+			{
+				ConsolePresents.Redraw();
+				DisplayAll();
+			}
+			CurrentPlayer.CurrentPosition = CurrentPlayer.Move(SolveCollisions(receive));
 			DisplayAll();
 		}
 		Environment.Exit(0);
 	}
 
-	private void OnTimeEvent(object sourse, ElapsedEventArgs e)
+	private void OnTimeEvent(object source, ElapsedEventArgs e)
 	{
 		foreach (var enemy in Enemies)
 		{
-			var enemyCommand = enemy.GetCommand();
-			enemy.Move(enemyCommand);
+			enemy.Move();
 		}
 		DisplayAll();
 	}
@@ -90,18 +98,56 @@ internal class GameProcessor
 		}
 	}
 
-	public Command GetCommand()
+	private Task<Command> GetKeybordReceive()
 	{
 		var cki = Console.ReadKey();
 
-		return cki.Key switch
+		return Task.FromResult(cki.Key switch
 		{
 			ConsoleKey.RightArrow => Command.Right,
 			ConsoleKey.LeftArrow => Command.Left,
 			ConsoleKey.UpArrow => Command.Up,
 			ConsoleKey.DownArrow => Command.Down,
+			ConsoleKey.Delete => Command.Redraw,
 			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
-		};
+		});
+	}
+
+	private Command SolveCollisions(Command command)
+	{
+		var nextPosition = CurrentPlayer.Move(command);
+		foreach (var item in Items.Where(item => item.IsExist &&
+		                                         item.CurrentPosition.XPosition == nextPosition.XPosition &&
+		                                         item.CurrentPosition.YPosition == nextPosition.YPosition))
+		{
+			switch (item.Simbol)
+			{
+				case 't':
+					return Command.Stop;
+				case 'o':
+					return Command.Stop;
+				case 'a':
+					Console.Beep(659, 300);
+					RemoveItem(item);
+					return command;
+					break;
+				case 'y':
+					Console.Beep(659, 300);
+					RemoveItem(item);
+					return command;
+					break;
+				default:
+					return command;
+			}
+		}
+
+		return command;
+	}
+
+	private void RemoveItem(GameItem item)
+	{
+		item.IsExist = false;
+		DisplayAll();
 	}
 
 	private void SortItems()
