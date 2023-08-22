@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Threading;
 using System.Timers;
 using Brodilka.Interfaces;
 using Brodilka.Snags;
@@ -65,10 +66,10 @@ internal class GameProcessor
 	}
 	internal void Run()
 	{
-		var receive = GetKeybordReceive().Result;
+		var receive = GetKeyboardReceive();
 		while (receive != Command.Escape)
 		{
-			receive = GetKeybordReceive().Result;
+			receive = GetKeyboardReceive();
 			if (receive == Command.Redraw)
 			{
 				ConsolePresents.Redraw();
@@ -98,11 +99,12 @@ internal class GameProcessor
 		}
 	}
 
-	private Task<Command> GetKeybordReceive()
+	private Command GetKeyboardReceive()
 	{
+		Thread.Sleep(100);
 		var cki = Console.ReadKey();
 
-		return Task.FromResult(cki.Key switch
+		return (cki.Key switch
 		{
 			ConsoleKey.RightArrow => Command.Right,
 			ConsoleKey.LeftArrow => Command.Left,
@@ -127,12 +129,12 @@ internal class GameProcessor
 				case 'o':
 					return Command.Stop;
 				case 'a':
-					Console.Beep(659, 300);
+					new Thread(() => ConsolePresents.MakeSound(659, 300)).Start();
 					RemoveItem(item);
 					return command;
 					break;
 				case 'y':
-					Console.Beep(659, 300);
+					new Thread(() => ConsolePresents.MakeSound(659, 300)).Start();
 					RemoveItem(item);
 					return command;
 					break;

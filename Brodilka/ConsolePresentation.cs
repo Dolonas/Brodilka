@@ -23,10 +23,6 @@ internal class ConsolePresentation : IDisplayable
 		set => _windowYSize = value <= MaxYWindowSize ? value : MaxYWindowSize;
 	}
 
-	public ConsolePresentation() : this(MaxXWindowSize, MaxYWindowSize)
-	{
-	}
-
 	public ConsolePresentation(int xSize, int ySize)
 	{
 		WindowXSize = xSize;
@@ -59,5 +55,10 @@ internal class ConsolePresentation : IDisplayable
 	void IDisplayable.Redraw()
 	{
 		Console.Clear();
+	}
+
+	void IDisplayable.MakeSound(int frequency, int duration)
+	{
+		Console.Beep(frequency, duration);
 	}
 }
