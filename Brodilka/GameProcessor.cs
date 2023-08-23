@@ -8,7 +8,6 @@ using Brodilka.Interfaces;
 using Brodilka.Snags;
 using Brodilka.Units;
 using Brodilka.Units.Enemies;
-using System.Threading.Tasks;
 using Brodilka.Bonuses;
 using Brodilka.Utilits;
 using Timer = System.Timers.Timer;
@@ -31,7 +30,7 @@ internal enum Command { Left, Up, Right, Down, Attack1, Stop, Redraw, Escape, No
 [DataContract]
 internal class GameProcessor
 {
-	private static Timer timer;
+	//private static Timer timer;
 	//private Command _currentCommand = Command.Stop;
 	private IDisplayable ConsolePresents { get; set; }
 	private Player CurrentPlayer { get; set; }
@@ -52,23 +51,34 @@ internal class GameProcessor
 		Items = itemData.Items;
 		SortItems();
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
-		timer = new Timer();
-		TimerStart();
+		// timer = new Timer();
+		// TimerStart();
 	}
 
-	private void TimerStart()
-	{
-		timer.Interval = 200;
-		timer.Start();
-		timer.AutoReset = true;
-		timer.Enabled = true;
-		timer.Elapsed += OnTimeEvent;
-	}
+	// private void TimerStart()
+	// {
+	// 	timer.Interval = 200;
+	// 	timer.Start();
+	// 	timer.AutoReset = true;
+	// 	timer.Enabled = true;
+	// 	timer.Elapsed += OnTimeEvent;
+	// }
 	internal void Run()
 	{
-		var receive = GetKeyboardReceive();
+		DisplayAll();
+		ConsoleKeyInfo cki =  default;
+		var receive = Command.Non;
+		if (!Console.KeyAvailable)
+			receive = GetKeyboardReceive();
+
 		while (receive != Command.Escape)
 		{
+			DisplayAll();
+			foreach (var enemy in Enemies)
+			{
+				enemy.Move();
+			}
+			DisplayAll();
 			receive = GetKeyboardReceive();
 			if (receive == Command.Redraw)
 			{
@@ -77,18 +87,19 @@ internal class GameProcessor
 			}
 			CurrentPlayer.CurrentPosition = CurrentPlayer.Move(SolveCollisions(receive));
 			DisplayAll();
+			Thread.Sleep(100);
 		}
 		Environment.Exit(0);
 	}
 
-	private void OnTimeEvent(object source, ElapsedEventArgs e)
-	{
-		foreach (var enemy in Enemies)
-		{
-			enemy.Move();
-		}
-		DisplayAll();
-	}
+	// private void OnTimeEvent(object source, ElapsedEventArgs e)
+	// {
+	// 	foreach (var enemy in Enemies)
+	// 	{
+	// 		enemy.Move();
+	// 	}
+	// 	DisplayAll();
+	// }
 
 
 	private void DisplayAll()
@@ -101,8 +112,11 @@ internal class GameProcessor
 
 	private Command GetKeyboardReceive()
 	{
-		Thread.Sleep(100);
-		var cki = Console.ReadKey();
+		ConsoleKeyInfo cki =  default;
+		if (!Console.KeyAvailable)
+			cki = Console.ReadKey();
+		else
+			return Command.Non;
 
 		return (cki.Key switch
 		{
@@ -132,12 +146,10 @@ internal class GameProcessor
 					new Thread(() => ConsolePresents.MakeSound(659, 300)).Start();
 					RemoveItem(item);
 					return command;
-					break;
 				case 'y':
 					new Thread(() => ConsolePresents.MakeSound(659, 300)).Start();
 					RemoveItem(item);
 					return command;
-					break;
 				default:
 					return command;
 			}
