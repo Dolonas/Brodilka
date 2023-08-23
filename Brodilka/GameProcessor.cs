@@ -66,19 +66,16 @@ internal class GameProcessor
 	internal void Run()
 	{
 		DisplayAll();
-		ConsoleKeyInfo cki =  default;
 		var receive = Command.Non;
-		if (!Console.KeyAvailable)
+		if (Console.KeyAvailable)
 			receive = GetKeyboardReceive();
 
 		while (receive != Command.Escape)
 		{
-			DisplayAll();
 			foreach (var enemy in Enemies)
 			{
 				enemy.Move();
 			}
-			DisplayAll();
 			receive = GetKeyboardReceive();
 			if (receive == Command.Redraw)
 			{
@@ -113,7 +110,7 @@ internal class GameProcessor
 	private Command GetKeyboardReceive()
 	{
 		ConsoleKeyInfo cki =  default;
-		if (!Console.KeyAvailable)
+		if (Console.KeyAvailable)
 			cki = Console.ReadKey();
 		else
 			return Command.Non;

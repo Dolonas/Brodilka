@@ -37,7 +37,7 @@ internal class Enemy : Unit
 				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition+1);
 				break;
 			default:
-				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition+1);
+				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
 				break;
 		}
 	}
@@ -45,7 +45,7 @@ internal class Enemy : Unit
 	{
 		var rnd = new Random();
 		var seed = rnd.Next(4);
-		switch (seed)
+		switch (seed + 1)
 		{
 			case 1:
 				return Command.Left;
