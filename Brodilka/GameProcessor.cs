@@ -46,9 +46,9 @@ internal class GameProcessor
 	{
 
 		CurrentMap = new Map(110, 40);
-		var itemData = new ItemsData(CurrentMap);
-		itemData.WriteJson("json1.json");
-		Items = itemData.Items;
+		var mapData = new MapData(CurrentMap);
+		//mapData.WriteJson("json1.json");
+		Items = mapData.ReadMapAsync("map01.dat")?.Result;
 		SortItems();
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
 		// timer = new Timer();
