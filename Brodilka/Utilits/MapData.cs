@@ -62,39 +62,49 @@ public class MapData
 			lines[i] +=  new string(' ', CurrentMap.XSize - lines[i].Length);
 		}
 
+		var itemsDictionaryFull = new Dictionary<int, Dictionary<int, char>>();
 		for (var y = 0; y < lines.Length; y++)
 		{
-			if (lines[y].Select((v, j) => new { Index = j, Value = v }).FirstOrDefault(p => p.Value == 'P') is null)
+			if (lines[y].Length == 0)
 				continue;
+			var itemsDictionary = lines[y]
+				.Select((v, j) => new { Index = j, Value = v })
+				.Where(p => char.IsLetter(p.Value))
+				.ToDictionary(s => s.Index, s => s.Value);
+			if (itemsDictionary is not null)
+				itemsDictionaryFull.Add(y, itemsDictionary);
+		}
+
+		foreach (var line in itemsDictionaryFull)
+		{
+			foreach (var item in line.Value)
 			{
-				var playerXPos = lines[y].Select((v, j) => new { Index = j, Value = v })
-					.Where(p => p.Value == 'P')
-					.Select(p => p.Index)
-					.FirstOrDefault();
-				Items.Add(new Player("Player", new Point(playerXPos, y), xSize, ySize));
-			}
-			if (lines[y].Select((v, j) => new { Index = j, Value = v }).FirstOrDefault(p => p.Value == 'B') is null)
-				continue;
-			{
-				var bearXPos = lines[y].Select((v, j) => new { Index = j, Value = v })
-					.Where(p => p.Value == 'B')
-					.Select(p => p.Index).ToList();
-				foreach (var bearPos in bearXPos)
+				switch (item.Value)
 				{
-					Items.Add(new Bear(new Point(bearPos, y), xSize, ySize));
+					case 'P':
+						gameItems.Add(new Player($"One",new Point(line.Key, item.Key), xSize, ySize ));
+						break;
+					case 'B':
+						gameItems.Add(new Bear(new Point(line.Key, item.Key), xSize, ySize ));
+						break;
+					case 'w':
+						gameItems.Add(new Wolf(new Point(line.Key, item.Key), xSize, ySize ));
+						break;
+					case 'a':
+						gameItems.Add(new Apple(new Point(line.Key, item.Key), xSize, ySize ));
+						break;
+					case 'y':
+						gameItems.Add(new Cherry(new Point(line.Key, item.Key), xSize, ySize ));
+						break;
+					case 't':
+						gameItems.Add(new Tree(new Point(line.Key, item.Key), xSize, ySize ));
+						break;
+					case 'o':
+						gameItems.Add(new Stone(new Point(line.Key, item.Key), xSize, ySize ));
+						break;
 				}
 			}
-			if (lines[y].Select((v, j) => new { Index = j, Value = v }).FirstOrDefault(p => p.Value == 'w') is null)
-				continue;
-			{
-				var wolfXPos = lines[y].Select((v, j) => new { Index = j, Value = v })
-					.Where(p => p.Value == 'w')
-					.Select(p => p.Index).ToList();
-				foreach (var wolfPos in wolfXPos)
-				{
-					Items.Add(new Wolf(new Point(wolfPos, y), xSize, ySize));
-				}
-			}
+
 		}
 		return gameItems;
 	}
