@@ -71,7 +71,7 @@ public class MapData
 				.Select((v, j) => new { Index = j, Value = v })
 				.Where(p => char.IsLetter(p.Value))
 				.ToDictionary(s => s.Index, s => s.Value);
-			if (itemsDictionary is not null)
+			if (itemsDictionary.Count > 0)
 				itemsDictionaryFull.Add(y, itemsDictionary);
 		}
 
@@ -82,25 +82,25 @@ public class MapData
 				switch (item.Value)
 				{
 					case 'P':
-						gameItems.Add(new Player($"One",new Point(line.Key, item.Key), xSize, ySize ));
+						gameItems.Add(new Player($"One",new Point(item.Key, line.Key), xSize, ySize ));
 						break;
 					case 'B':
-						gameItems.Add(new Bear(new Point(line.Key, item.Key), xSize, ySize ));
+						gameItems.Add(new Bear(new Point(item.Key, line.Key), xSize, ySize ));
 						break;
 					case 'w':
-						gameItems.Add(new Wolf(new Point(line.Key, item.Key), xSize, ySize ));
+						gameItems.Add(new Wolf(new Point(item.Key, line.Key), xSize, ySize ));
 						break;
 					case 'a':
-						gameItems.Add(new Apple(new Point(line.Key, item.Key), xSize, ySize ));
+						gameItems.Add(new Apple(new Point(item.Key, line.Key), xSize, ySize ));
 						break;
 					case 'y':
-						gameItems.Add(new Cherry(new Point(line.Key, item.Key), xSize, ySize ));
+						gameItems.Add(new Cherry(new Point(item.Key, line.Key), xSize, ySize ));
 						break;
 					case 't':
-						gameItems.Add(new Tree(new Point(line.Key, item.Key), xSize, ySize ));
+						gameItems.Add(new Tree(new Point(item.Key, line.Key), xSize, ySize ));
 						break;
 					case 'o':
-						gameItems.Add(new Stone(new Point(line.Key, item.Key), xSize, ySize ));
+						gameItems.Add(new Stone(new Point(item.Key, line.Key), xSize, ySize ));
 						break;
 				}
 			}
