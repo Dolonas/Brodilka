@@ -20,7 +20,6 @@ internal class Player : Unit
 
 	public Player(string playerName, Point currentPosition, int maxXPos, int maxYPos)
 		: base(currentPosition, maxXPos, maxYPos)
-
 	{
 		PreviousPosition = currentPosition;
 		PlayerName = playerName;
@@ -33,23 +32,13 @@ internal class Player : Unit
 	public Point Move(Command command)
 	{
 		PreviousPosition = new Point(CurrentPos.XPos, CurrentPos.YPos);
-		switch (command)
+		return command switch
 		{
-			case Command.Left:
-				return new Point(CurrentPos.XPos - 1, CurrentPos.YPos);
-				break;
-			case Command.Right:
-				return new Point(CurrentPos.XPos + 1, CurrentPos.YPos);
-				break;
-			case Command.Up:
-				return new Point(CurrentPos.XPos, CurrentPos.YPos-1);
-				break;
-			case Command.Down:
-				return new Point(CurrentPos.XPos, CurrentPos.YPos+1);
-				break;
-			default:
-				return new Point(CurrentPos.XPos, CurrentPos.YPos);
-				break;
-		}
+			Command.Left => new Point(CurrentPos.XPos - 1, CurrentPos.YPos),
+			Command.Right => new Point(CurrentPos.XPos + 1, CurrentPos.YPos),
+			Command.Up => new Point(CurrentPos.XPos, CurrentPos.YPos - 1),
+			Command.Down => new Point(CurrentPos.XPos, CurrentPos.YPos + 1),
+			_ => new Point(CurrentPos.XPos, CurrentPos.YPos)
+		};
 	}
 }

@@ -38,15 +38,16 @@ internal class GameProcessor
 	private List<Snag> Snags { get; set; }
 	private List<Bonus> Bonuses { get; set; }
 
-	private Map CurrentMap { get; set; }
+	private Map CurrMap { get; set; }
 
 	internal GameProcessor()
 	{
-		CurrentMap = new Map(110, 40);
-		var mapData = new MapData(CurrentMap);
+		CurrMap = new Map(110, 40);
+		var mapData = new MapData(CurrMap);
 		Items = mapData.ReadMapAsync(FilePass)?.Result;
+		CurrMap.SyncItemsOnField(Items);
 		SortItems();
-		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
+		ConsolePresents = new ConsolePresentation(CurrMap.XSize, CurrMap.YSize);
 	}
 
 	internal void Run()
@@ -81,6 +82,7 @@ internal class GameProcessor
 		{
 			ConsolePresents.Display(gameItem);
 		}
+		CurrMap.SyncItemsOnField(Items);
 	}
 
 	private Command GetKeyboardReceive()
@@ -104,37 +106,21 @@ internal class GameProcessor
 
 	private Command SolveCollisions(Command command)
 	{
-		var nextPosition = CurrentPlayer.Move(command);
-		foreach (var item in Items.Where(item => item.IsExist &&
-		                                         item.CurrentPos.XPos == nextPosition.XPos &&
-		                                         item.CurrentPos.YPos == nextPosition.YPos))
+		var nextPos = CurrentPlayer.Move(command);
+		var nextItem = CurrMap.Field[nextPos.XPos, nextPos.YPos];
+		if (nextItem is Bonus && nextItem.IsExist)
 		{
-			switch (item.Simbol)
-			{
-				case 't':
-					return Command.Stop;
-				case 'o':
-					return Command.Stop;
-				case 'a':
-					new Thread(() => ConsolePresents.MakeSound(659, 300)).Start();
-					RemoveItem(item);
-					return command;
-				case 'y':
-					new Thread(() => ConsolePresents.MakeSound(659, 300)).Start();
-					RemoveItem(item);
-					return command;
-				default:
-					return command;
-			}
+			new Thread(() => ConsolePresents.MakeSound(659, 300)).Start();
+			nextItem.IsExist = false;
+			DisplayAll();
+			return command;
+		}
+		else if(nextItem is not null && nextItem.IsItBlock)
+		{
+			return Command.Stop;
 		}
 
 		return command;
-	}
-
-	private void RemoveItem(GameItem item)
-	{
-		item.IsExist = false;
-		DisplayAll();
 	}
 
 	private void SortItems()
