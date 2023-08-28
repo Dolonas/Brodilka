@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
-
 namespace Brodilka.Units.Enemies;
 
 internal class Enemy : Unit

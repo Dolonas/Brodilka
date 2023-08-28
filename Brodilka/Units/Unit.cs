@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Brodilka.Interfaces;
+﻿using Brodilka.Interfaces;
 
 namespace Brodilka.Units;
 

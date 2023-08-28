@@ -1,7 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Brodilka.Bonuses;
-
-namespace Brodilka.Snags;
+﻿namespace Brodilka.Snags;
 
 public class Stone : Snag
 {
