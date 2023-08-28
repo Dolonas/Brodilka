@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 
 namespace Brodilka.Units;
 
-[KnownType(typeof(Player))]
 internal class Player : Unit
 {
 	private const int MaxDamage = 80;
@@ -19,8 +18,8 @@ internal class Player : Unit
 		init => _playerName = value.Length is > 1 and < 20 ? value : _playerName;
 	}
 
-	public Player(string playerName, Point currentPosition, int maxXPosition, int maxYPosition)
-		: base(currentPosition, maxXPosition, maxYPosition)
+	public Player(string playerName, Point currentPosition, int maxXPos, int maxYPos)
+		: base(currentPosition, maxXPos, maxYPos)
 
 	{
 		PreviousPosition = currentPosition;
@@ -33,23 +32,23 @@ internal class Player : Unit
 
 	public Point Move(Command command)
 	{
-		PreviousPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
+		PreviousPosition = new Point(CurrentPos.XPos, CurrentPos.YPos);
 		switch (command)
 		{
 			case Command.Left:
-				return new Point(CurrentPosition.XPosition - 1, CurrentPosition.YPosition);
+				return new Point(CurrentPos.XPos - 1, CurrentPos.YPos);
 				break;
 			case Command.Right:
-				return new Point(CurrentPosition.XPosition + 1, CurrentPosition.YPosition);
+				return new Point(CurrentPos.XPos + 1, CurrentPos.YPos);
 				break;
 			case Command.Up:
-				return new Point(CurrentPosition.XPosition, CurrentPosition.YPosition-1);
+				return new Point(CurrentPos.XPos, CurrentPos.YPos-1);
 				break;
 			case Command.Down:
-				return new Point(CurrentPosition.XPosition, CurrentPosition.YPosition+1);
+				return new Point(CurrentPos.XPos, CurrentPos.YPos+1);
 				break;
 			default:
-				return new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
+				return new Point(CurrentPos.XPos, CurrentPos.YPos);
 				break;
 		}
 	}

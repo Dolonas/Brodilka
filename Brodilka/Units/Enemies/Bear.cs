@@ -2,7 +2,6 @@
 
 namespace Brodilka.Units.Enemies;
 
-[KnownType(typeof(Bear))]
 internal class Bear : Enemy
 {
 	private readonly int _bearDamage = 40;
@@ -10,8 +9,8 @@ internal class Bear : Enemy
 
 	public override char Simbol { get; }
 
-	public Bear(Point currentPosition, int maxXPosition, int maxYPosition)
-		: base(currentPosition, maxXPosition, maxYPosition)
+	public Bear(Point currentPosition, int maxXPos, int maxYPos)
+		: base(currentPosition, maxXPos, maxYPos)
 	{
 		Simbol = 'B';
 		Damage = _bearDamage;

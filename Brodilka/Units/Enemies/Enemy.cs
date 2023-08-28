@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 
 namespace Brodilka.Units.Enemies;
 
-[KnownType(typeof(Enemy))]
 internal class Enemy : Unit
 {
 	internal override int Damage { get; set; }
@@ -11,8 +10,8 @@ internal class Enemy : Unit
 
 	public override Point PreviousPosition { get; set; }
 
-	public Enemy(Point currentPosition, int maxXPosition, int maxYPosition)
-		: base(currentPosition, maxXPosition, maxYPosition)
+	public Enemy(Point currentPosition, int maxXPos, int maxYPos)
+		: base(currentPosition, maxXPos, maxYPos)
 	{
 		IsItBlock = true;
 		IsExist = true;
@@ -21,23 +20,23 @@ internal class Enemy : Unit
 	public void Move()
 	{
 		var command = GetKeyboardReceive();
-		PreviousPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
+		PreviousPosition = new Point(CurrentPos.XPos, CurrentPos.YPos);
 		switch (command)
 		{
 			case Command.Left:
-				CurrentPosition = new Point(CurrentPosition.XPosition - 1, CurrentPosition.YPosition);
+				CurrentPos = new Point(CurrentPos.XPos - 1, CurrentPos.YPos);
 				break;
 			case Command.Right:
-				CurrentPosition = new Point(CurrentPosition.XPosition + 1, CurrentPosition.YPosition);
+				CurrentPos = new Point(CurrentPos.XPos + 1, CurrentPos.YPos);
 				break;
 			case Command.Up:
-				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition-1);
+				CurrentPos = new Point(CurrentPos.XPos, CurrentPos.YPos-1);
 				break;
 			case Command.Down:
-				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition+1);
+				CurrentPos = new Point(CurrentPos.XPos, CurrentPos.YPos+1);
 				break;
 			default:
-				CurrentPosition = new Point(CurrentPosition.XPosition, CurrentPosition.YPosition);
+				CurrentPos = new Point(CurrentPos.XPos, CurrentPos.YPos);
 				break;
 		}
 	}

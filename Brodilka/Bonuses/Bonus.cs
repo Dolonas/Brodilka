@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 
 namespace Brodilka.Bonuses;
 
-[KnownType(typeof(Bonus))]
 internal abstract class Bonus : GameItem
 {
 	public sealed override Point PreviousPosition { get; set; }
@@ -11,9 +10,9 @@ internal abstract class Bonus : GameItem
 	protected int HealthUpForPlayer { get; set; }
 	public override bool IsItBlock { get; set; }
 
-	protected Bonus(Point currPoint, int maxXPos, int maxYPos) : base(currPoint, maxXPos, maxYPos)
+	protected Bonus(Point currentPoint, int maxXPos, int maxYPos) : base(currentPoint, maxXPos, maxYPos)
 	{
-		PreviousPosition = CurrentPosition;
+		PreviousPosition = CurrentPos;
 		IsItBlock = false;
 		ItemColor = ConsoleColor.Magenta;
 	}

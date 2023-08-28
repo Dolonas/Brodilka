@@ -1,35 +1,31 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace Brodilka;
 
-[KnownType(typeof(GameItem))]
 public abstract class GameItem
 {
-	private Point _currentPosition;
-	private readonly int _maxXPosition;
-	private readonly int _maxYPosition;
+	private Point _currentPos;
+	private readonly int _maxXPos;
+	private readonly int _maxYPos;
 	public bool IsExist { get; set; }
 	public ConsoleColor ItemColor { get; set; }
 
-	public GameItem(Point currentPosition, int maxXPosition, int maxYPosition)
+	public GameItem(Point currentPos, int maxXPos, int maxYPos)
 	{
-		// ReSharper disable once VirtualMemberCallInConstructor
-		_currentPosition = currentPosition;
-		//PreviousPosition = currentPosition;
-		_maxXPosition = maxXPosition;
-		_maxYPosition = maxYPosition;
+		_currentPos = currentPos;
+		_maxXPos = maxXPos;
+		_maxYPos = maxYPos;
 	}
-	public Point CurrentPosition
+	public Point CurrentPos
 	{
-		get => _currentPosition;
+		get => _currentPos;
 		set
 		{
-			if (value.XPosition < 0 ||
-			    value.YPosition < 0 ||
-			    value.XPosition >= _maxXPosition ||
-			    value.YPosition >= _maxYPosition-3) return;
-			_currentPosition = value;
+			if (value.XPos < 0 ||
+			    value.YPos < 0 ||
+			    value.XPos >= _maxXPos ||
+			    value.YPos >= _maxYPos-3) return;
+			_currentPos = value;
 		}
 	}
 	public abstract Point PreviousPosition { get; set; }

@@ -4,10 +4,24 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="move map.dat to directory data/maps">
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="Resolved some things of CurrentPosition">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Bonuses/Apple.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Bonuses/Apple.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Bonuses/Bonus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Bonuses/Bonus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Bonuses/Cherry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Bonuses/Cherry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Utilits/MapData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Utilits/MapData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Map.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Point.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Point.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Snags/Snag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Snags/Snag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Snags/Stone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Snags/Stone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Snags/Tree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Snags/Tree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Units/Enemies/Bear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Enemies/Bear.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Units/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Enemies/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Units/Enemies/Wolf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Enemies/Wolf.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Units/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Unit.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,25 +37,20 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0b5567882521e02aa3d40a7bce81b7235ccac4db588866e3498e614c3bc/CastHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18c7de6a7132663af691f7f0e1c8e3c5f672c6a69b7844a1cd0d8bcf94d87e9/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1af51483c9bf18871cce649b9f966dd7be686536f998c33bba3c5fc4adea4a0/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea95343b9387b73062a9b61b7538f826c54ce3529632b4472ba4494044d23/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/56996bd5b7b025988834f7db72d610de6637f12f9a6dc6f25950f7f158ef3fc4/ConsolePal.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69593afc69483659e9373e173c8361fd966106a5d50f639c51b48388ddeb29/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9dbe8869135194d1c9164298b9e1fc1aa7f5391d2f0e7c06fdcd03179d3f16/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f2103c576aef635626cde2a8c1caee4f5b23ca724d7d5f17e13aeb1e04cad/Random.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/Utilits/MapData.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/JsonIO/JsonReadWrite.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf408839e35535896e3625c8578c2bfb7bf56ef7ab2c4549ae59c3a19db9ae/Console.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1da7b6c7c71a954fe3eb2531c6476711b3e6d93a8d76795386d326bb9dbc/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2T3hXFXZi6e0npdMUfmM6QIeh5f" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -90,12 +99,6 @@
       <workItem from="1691400010466" duration="1193000" />
       <workItem from="1691401224914" duration="1001000" />
       <workItem from="1691923363304" duration="19254000" />
-      <workItem from="1692264256944" duration="2302000" />
-      <workItem from="1692351553068" duration="1535000" />
-      <workItem from="1692695359013" duration="3273000" />
-      <workItem from="1692781764200" duration="2916000" />
-      <workItem from="1692954728219" duration="3053000" />
-      <workItem from="1693214839108" duration="1648000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -139,77 +142,7 @@
       <option name="project" value="LOCAL" />
       <updated>1691950275541</updated>
     </task>
-    <task id="LOCAL-00007" summary="remaking of moving logic">
-      <created>1692007348431</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1692007348431</updated>
-    </task>
-    <task id="LOCAL-00008" summary="The Game is playing">
-      <created>1692265828821</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1692265828821</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Timer editing">
-      <created>1692266564375</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1692266564375</updated>
-    </task>
-    <task id="LOCAL-00010" summary="attempt to parallelize keyboard polling and enemies moving">
-      <created>1692352855371</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1692352855371</updated>
-    </task>
-    <task id="LOCAL-00011" summary="dotnet settings">
-      <created>1692695439463</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1692695439463</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Logical of keyboard poling has been changing">
-      <created>1692698644440</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1692698644440</updated>
-    </task>
-    <task id="LOCAL-00013" summary="changing logical of keyboard poling">
-      <created>1692782923694</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1692782923694</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Implemented interrupt for polling the keyboard">
-      <created>1692784274858</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1692784274858</updated>
-    </task>
-    <task id="LOCAL-00015" summary="reading file">
-      <created>1692957797495</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1692957797495</updated>
-    </task>
-    <task id="LOCAL-00016" summary="move map.dat to directory data/maps">
-      <created>1693215760949</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1693215760949</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,16 +169,6 @@
     <MESSAGE value="some changes" />
     <MESSAGE value="redesign of the project structure" />
     <MESSAGE value="Resolved some things of CurrentPosition" />
-    <MESSAGE value="remaking of moving logic" />
-    <MESSAGE value="The Game is playing" />
-    <MESSAGE value="Timer editing" />
-    <MESSAGE value="attempt to parallelize keyboard polling and enemies moving" />
-    <MESSAGE value="dotnet settings" />
-    <MESSAGE value="Logical of keyboard poling has been changing" />
-    <MESSAGE value="changing logical of keyboard poling" />
-    <MESSAGE value="Implemented interrupt for polling the keyboard" />
-    <MESSAGE value="reading file" />
-    <MESSAGE value="move map.dat to directory data/maps" />
-    <option name="LAST_COMMIT_MESSAGE" value="move map.dat to directory data/maps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolved some things of CurrentPosition" />
   </component>
 </project>

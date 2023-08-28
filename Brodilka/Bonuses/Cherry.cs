@@ -3,7 +3,6 @@ using Brodilka.Units;
 
 namespace Brodilka.Bonuses;
 
-[KnownType(typeof(Cherry))]
 internal class Cherry : Bonus
 {
 	private readonly int _speedUp = 5;
@@ -11,7 +10,7 @@ internal class Cherry : Bonus
 
 	public override char Simbol { get; }
 
-	public Cherry(Point currPoint, int maxXPos, int maxYPos) : base(currPoint, maxXPos, maxYPos)
+	public Cherry(Point currentPoint, int maxXPos, int maxYPos) : base(currentPoint, maxXPos, maxYPos)
 	{
 		Simbol = 'y';
 		SpeedUpForPlayer = _speedUp;

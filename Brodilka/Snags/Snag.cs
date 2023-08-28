@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 
 namespace Brodilka.Snags;
 
-[KnownType(typeof(Snag))]
 public abstract class Snag : GameItem
 {
 	public override bool IsItBlock { get; set; }
@@ -12,7 +11,7 @@ public abstract class Snag : GameItem
 
 	protected Snag(Point position, int maxXPos, int maxYPos) : base(position, maxXPos, maxYPos)
 	{
-		CurrentPosition = position;
+		CurrentPos = position;
 		PreviousPosition = position;
 		IsExist = true;
 		IsItBlock = true;

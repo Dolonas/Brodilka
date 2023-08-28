@@ -2,14 +2,14 @@
 
 public class Point
 {
-	public int XPosition { get; private set; }
+	public int XPos { get; private set; }
 
-	public int YPosition { get; private set; }
+	public int YPos { get; private set; }
 
-	public Point(int xPosition, int yPosition)
+	public Point(int xPos, int yPos)
 	{
-		XPosition = xPosition;
-		YPosition = yPosition;
+		XPos = xPos;
+		YPos = yPos;
 	}
 
 }

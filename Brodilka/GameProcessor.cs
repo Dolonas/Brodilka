@@ -27,10 +27,9 @@ namespace Brodilka;
 
 internal enum Command { Left, Up, Right, Down, Attack1, Stop, Redraw, Escape, Non }
 
-[DataContract]
 internal class GameProcessor
 {
-	private readonly string _filePass = "../../../Data/Maps/map02.dat";
+	private const string FilePass = "../../../Data/Maps/map02.dat";
 	private IDisplayable ConsolePresents { get; set; }
 	private Player CurrentPlayer { get; set; }
 	private List<GameItem> Items { get; set; }
@@ -45,7 +44,7 @@ internal class GameProcessor
 	{
 		CurrentMap = new Map(110, 40);
 		var mapData = new MapData(CurrentMap);
-		Items = mapData.ReadMapAsync(_filePass)?.Result;
+		Items = mapData.ReadMapAsync(FilePass)?.Result;
 		SortItems();
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
 	}
@@ -69,22 +68,12 @@ internal class GameProcessor
 				ConsolePresents.Redraw();
 				DisplayAll();
 			}
-			CurrentPlayer.CurrentPosition = CurrentPlayer.Move(SolveCollisions(receive));
+			CurrentPlayer.CurrentPos = CurrentPlayer.Move(SolveCollisions(receive));
 			DisplayAll();
 			Thread.Sleep(100);
 		}
 		Environment.Exit(0);
 	}
-
-	// private void OnTimeEvent(object source, ElapsedEventArgs e)
-	// {
-	// 	foreach (var enemy in Enemies)
-	// 	{
-	// 		enemy.Move();
-	// 	}
-	// 	DisplayAll();
-	// }
-
 
 	private void DisplayAll()
 	{
@@ -117,8 +106,8 @@ internal class GameProcessor
 	{
 		var nextPosition = CurrentPlayer.Move(command);
 		foreach (var item in Items.Where(item => item.IsExist &&
-		                                         item.CurrentPosition.XPosition == nextPosition.XPosition &&
-		                                         item.CurrentPosition.YPosition == nextPosition.YPosition))
+		                                         item.CurrentPos.XPos == nextPosition.XPos &&
+		                                         item.CurrentPos.YPos == nextPosition.YPos))
 		{
 			switch (item.Simbol)
 			{

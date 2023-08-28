@@ -3,7 +3,6 @@ using Brodilka.Bonuses;
 
 namespace Brodilka.Snags;
 
-[KnownType(typeof(Stone))]
 public class Stone : Snag
 {
 	public override char Simbol { get; }
