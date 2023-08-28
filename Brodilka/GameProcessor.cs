@@ -30,8 +30,7 @@ internal enum Command { Left, Up, Right, Down, Attack1, Stop, Redraw, Escape, No
 [DataContract]
 internal class GameProcessor
 {
-	//private static Timer timer;
-	//private Command _currentCommand = Command.Stop;
+	private readonly string _filePass = "../../../Data/Maps/map01.dat";
 	private IDisplayable ConsolePresents { get; set; }
 	private Player CurrentPlayer { get; set; }
 	private List<GameItem> Items { get; set; }
@@ -44,25 +43,13 @@ internal class GameProcessor
 
 	internal GameProcessor()
 	{
-
 		CurrentMap = new Map(110, 40);
 		var mapData = new MapData(CurrentMap);
-		//mapData.WriteJson("json1.json");
-		Items = mapData.ReadMapAsync("map01.dat")?.Result;
+		Items = mapData.ReadMapAsync(_filePass)?.Result;
 		SortItems();
 		ConsolePresents = new ConsolePresentation(CurrentMap.XSize, CurrentMap.YSize);
-		// timer = new Timer();
-		// TimerStart();
 	}
 
-	// private void TimerStart()
-	// {
-	// 	timer.Interval = 200;
-	// 	timer.Start();
-	// 	timer.AutoReset = true;
-	// 	timer.Enabled = true;
-	// 	timer.Elapsed += OnTimeEvent;
-	// }
 	internal void Run()
 	{
 		DisplayAll();
