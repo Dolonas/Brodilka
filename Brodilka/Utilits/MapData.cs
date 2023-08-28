@@ -96,16 +96,4 @@ public class MapData
 		}
 		return gameItems;
 	}
-	// public object? ReadJson(string filePath)
-	// {
-	// 	using var fs = new FileStream(filePath, FileMode.OpenOrCreate);
-	// 	return  JsonSerializer.Deserialize<List<GameItem>>(fs);
-	// }
-	//
-	// public void WriteJson(string filePath)
-	// {
-	// 	using var fs = new FileStream(filePath, FileMode.OpenOrCreate);
-	// 	var options = new JsonSerializerOptions { WriteIndented = true };
-	// 	JsonSerializer.Serialize<List<GameItem>>(fs, Items, options);
-	// }
 }
