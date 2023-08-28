@@ -58,6 +58,7 @@ public class MapData
 				itemsDictionaryFull.Add(y, itemsDictionary);
 		}
 
+		var isItFirstPlayer = true;
 		foreach (var line in itemsDictionaryFull)
 		{
 			foreach (var item in line.Value)
@@ -65,7 +66,11 @@ public class MapData
 				switch (item.Value)
 				{
 					case 'P':
-						gameItems.Add(new Player($"One",new Point(item.Key, line.Key), xSize, ySize ));
+						if (isItFirstPlayer)
+						{
+							gameItems.Add(new Player($"One",new Point(item.Key, line.Key), xSize, ySize ));
+							isItFirstPlayer = false;
+						}
 						break;
 					case 'B':
 						gameItems.Add(new Bear(new Point(item.Key, line.Key), xSize, ySize ));

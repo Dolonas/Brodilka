@@ -30,7 +30,7 @@ internal enum Command { Left, Up, Right, Down, Attack1, Stop, Redraw, Escape, No
 [DataContract]
 internal class GameProcessor
 {
-	private readonly string _filePass = "../../../Data/Maps/map01.dat";
+	private readonly string _filePass = "../../../Data/Maps/map02.dat";
 	private IDisplayable ConsolePresents { get; set; }
 	private Player CurrentPlayer { get; set; }
 	private List<GameItem> Items { get; set; }

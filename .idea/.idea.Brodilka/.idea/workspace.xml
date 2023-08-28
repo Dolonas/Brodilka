@@ -4,8 +4,7 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Brodilka/Data/Maps/map01.dat" afterDir="false" />
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="move map.dat to directory data/maps">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/Utilits/MapData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Utilits/MapData.cs" afterDir="false" />
@@ -32,6 +31,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9dbe8869135194d1c9164298b9e1fc1aa7f5391d2f0e7c06fdcd03179d3f16/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f2103c576aef635626cde2a8c1caee4f5b23ca724d7d5f17e13aeb1e04cad/Random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/Utilits/MapData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/JsonIO/JsonReadWrite.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -94,7 +95,7 @@
       <workItem from="1692695359013" duration="3273000" />
       <workItem from="1692781764200" duration="2916000" />
       <workItem from="1692954728219" duration="3053000" />
-      <workItem from="1693214839108" duration="716000" />
+      <workItem from="1693214839108" duration="1648000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -201,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692957797495</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="move map.dat to directory data/maps">
+      <created>1693215760949</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1693215760949</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +245,7 @@
     <MESSAGE value="changing logical of keyboard poling" />
     <MESSAGE value="Implemented interrupt for polling the keyboard" />
     <MESSAGE value="reading file" />
-    <option name="LAST_COMMIT_MESSAGE" value="reading file" />
+    <MESSAGE value="move map.dat to directory data/maps" />
+    <option name="LAST_COMMIT_MESSAGE" value="move map.dat to directory data/maps" />
   </component>
 </project>
