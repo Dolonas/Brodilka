@@ -47,7 +47,6 @@ internal class ConsolePresentation : IDisplayable
 		Console.Write(' ');
 		Console.SetCursorPosition(gameItem.CurrentPos.XPos, gameItem.CurrentPos.YPos);
 		Console.WriteLine(gameItem.Simbol);
-		//Console.SetCursorPosition(_windowXSize - 1, _windowYSize - 4);
 		Console.ForegroundColor = ConsoleColor.White;
 	}
 

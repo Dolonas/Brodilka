@@ -10,7 +10,7 @@ internal class Player : Unit
 	private const int StartHealth = 100;
 	internal sealed override int Damage { get; set; }
 	public override char Simbol { get; }
-	public override Point PreviousPosition { get; set; }
+	public sealed override Point PreviousPosition { get; set; }
 
 	private string PlayerName
 	{
