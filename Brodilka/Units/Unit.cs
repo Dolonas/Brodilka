@@ -23,9 +23,9 @@ internal abstract class Unit : GameItem, IDamagable
 		IsExist = true;
 	}
 
-	public void ToDamage(Unit unit, int Damage)
+	public void ToDamage(Unit unit, int damage)
 	{
-		unit.GetDamage(Damage);
+		unit.GetDamage(damage);
 	}
 
 	public void GetDamage(int damage)
