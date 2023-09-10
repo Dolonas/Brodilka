@@ -4,11 +4,9 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="attributes for JSON's List recording has been deleting.">
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Map.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Units/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Units/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Uml_diagram/Brodilka UML diagram.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/Uml_diagram/Brodilka UML diagram.mdj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +46,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;dotNetConsole&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -86,6 +84,12 @@
       <workItem from="1691400010466" duration="1193000" />
       <workItem from="1691401224914" duration="1001000" />
       <workItem from="1691923363304" duration="19254000" />
+      <workItem from="1694241017754" duration="3071000" />
+      <workItem from="1694364215034" duration="1354000" />
+      <workItem from="1694368693851" duration="6000" />
+      <workItem from="1694368717271" duration="145000" />
+      <workItem from="1694368908198" duration="560000" />
+      <workItem from="1694370016619" duration="1053000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -136,7 +140,28 @@
       <option name="project" value="LOCAL" />
       <updated>1693245800779</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added Field array in Map class">
+      <created>1693249655292</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1693249655292</updated>
+    </task>
+    <task id="LOCAL-00009" summary="removed unused namespaces">
+      <created>1693249784561</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1693249784561</updated>
+    </task>
+    <task id="LOCAL-00010" summary="refactoring and corrected uml diagram">
+      <created>1694369054417</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1694369054417</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +189,13 @@
     <MESSAGE value="redesign of the project structure" />
     <MESSAGE value="Resolved some things of CurrentPosition" />
     <MESSAGE value="attributes for JSON's List recording has been deleting." />
-    <option name="LAST_COMMIT_MESSAGE" value="attributes for JSON's List recording has been deleting." />
+    <MESSAGE value="Added Field array in Map class" />
+    <MESSAGE value="removed unused namespaces" />
+    <MESSAGE value="refactoring and corrected uml diagram" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring and corrected uml diagram" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
