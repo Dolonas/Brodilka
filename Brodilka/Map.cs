@@ -4,28 +4,28 @@ namespace Brodilka;
 
 public class Map
 {
-	private readonly int _xSize;
-	private readonly int _ySize;
+	private readonly int _mapWidth;
+	private readonly int _mapHeight;
 
 	public GameItem[,] Field { get; set; }
 
-	public int XSize
+	public int MapWidth
 	{
-		get => _xSize;
-		private init => _xSize = value is > 30 and < 160 ? value : 60;
+		get => _mapWidth;
+		private init => _mapWidth = value is > 30 and < 160 ? value : 60;
 	}
 
-	public int YSize
+	public int MapHeight
 	{
-		get => _ySize;
-		private init => _ySize = value is > 30 and < 160 ? value : 60;
+		get => _mapHeight;
+		private init => _mapHeight = value is > 30 and < 160 ? value : 60;
 	}
 
-	public Map(int xSize, int ySize)
+	public Map(int mapWidth, int mapHeight)
 	{
-		XSize = xSize;
-		YSize = ySize;
-		Field = new GameItem[XSize, YSize];
+		MapWidth = mapWidth;
+		MapHeight = mapHeight;
+		Field = new GameItem[MapWidth, MapHeight];
 	}
 
 	public void SyncItemsOnField(List<GameItem> gameItemsList)

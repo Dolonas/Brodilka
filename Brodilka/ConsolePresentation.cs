@@ -5,21 +5,21 @@ namespace Brodilka;
 
 internal class ConsolePresentation : IDisplayable
 {
-	private static int _windowXSize;
-	private static int _windowYSize;
-	private const int MaxXWindowSize = 140;
-	private const int MaxYWindowSize = 80;
+	private static int _windowWidth;
+	private static int _windowHeight;
+	private const int MaxWindowWidth = 140;
+	private const int MaxWindowHeight = 80;
 
 	private static int WindowXSize
 	{
-		get => _windowXSize;
-		set => _windowXSize = value <= MaxXWindowSize ? value : MaxXWindowSize;
+		get => _windowWidth;
+		set => _windowWidth = value <= MaxWindowWidth ? value : MaxWindowWidth;
 	}
 
 	private static int WindowYSize
 	{
-		get => _windowYSize;
-		set => _windowYSize = value <= MaxYWindowSize ? value : MaxYWindowSize;
+		get => _windowHeight;
+		set => _windowHeight = value <= MaxWindowHeight ? value : MaxWindowHeight;
 	}
 
 	public ConsolePresentation(int xSize, int ySize)

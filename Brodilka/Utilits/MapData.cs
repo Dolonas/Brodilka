@@ -20,8 +20,8 @@ public class MapData
 	public MapData(Map currentMap)
 	{
 		CurrentMap = currentMap;
-		var xSize = CurrentMap.XSize;
-		var ySize = CurrentMap.YSize;
+		var xSize = CurrentMap.MapWidth;
+		var ySize = CurrentMap.MapHeight;
 	}
 
 	public async Task<List<GameItem>>? ReadMapAsync(string filePath)
@@ -37,12 +37,12 @@ public class MapData
 	private List<GameItem> DecodeMap(string textMap)
 	{
 		var gameItems = new List<GameItem>();
-		var xSize = CurrentMap.XSize;
-		var ySize = CurrentMap.YSize;
+		var xSize = CurrentMap.MapWidth;
+		var ySize = CurrentMap.MapHeight;
 		var lines = textMap.Split('\n');
 		for(var i = 0; i < lines.Length; i++)
 		{
-			lines[i] +=  new string(' ', CurrentMap.XSize - lines[i].Length);
+			lines[i] +=  new string(' ', CurrentMap.MapWidth - lines[i].Length);
 		}
 
 		var itemsDictionaryFull = new Dictionary<int, Dictionary<int, char>>();

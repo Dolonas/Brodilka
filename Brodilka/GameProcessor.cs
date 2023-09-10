@@ -44,7 +44,7 @@ internal class GameProcessor
 		Items = mapData.ReadMapAsync(FilePass)?.Result;
 		CurrMap.SyncItemsOnField(Items);
 		SortItems();
-		ConsolePresents = new ConsolePresentation(CurrMap.XSize, CurrMap.YSize);
+		ConsolePresents = new ConsolePresentation(CurrMap.MapWidth, CurrMap.MapHeight);
 	}
 
 	internal void Run()
