@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Brodilka.Bonuses;
-using Brodilka.Snags;
+using Brodilka.Obstacles;
 using Brodilka.Units;
 using Brodilka.Units.Enemies;
 
@@ -37,8 +37,8 @@ public class MapData
 	private List<GameItem> DecodeMap(string textMap)
 	{
 		var gameItems = new List<GameItem>();
-		var xSize = CurrentMap.MapWidth;
-		var ySize = CurrentMap.MapHeight;
+		var width = CurrentMap.MapWidth;
+		var height = CurrentMap.MapHeight;
 		var lines = textMap.Split('\n');
 		for(var i = 0; i < lines.Length; i++)
 		{
@@ -68,27 +68,27 @@ public class MapData
 					case 'P':
 						if (isItFirstPlayer)
 						{
-							gameItems.Add(new Player($"One",new Point(item.Key, line.Key), xSize, ySize ));
+							gameItems.Add(new Player($"One",new Point(item.Key, line.Key), width, height ));
 							isItFirstPlayer = false;
 						}
 						break;
 					case 'B':
-						gameItems.Add(new Bear(new Point(item.Key, line.Key), xSize, ySize ));
+						gameItems.Add(new Bear(new Point(item.Key, line.Key), width, height ));
 						break;
 					case 'w':
-						gameItems.Add(new Wolf(new Point(item.Key, line.Key), xSize, ySize ));
+						gameItems.Add(new Wolf(new Point(item.Key, line.Key), width, height ));
 						break;
 					case 'a':
-						gameItems.Add(new Apple(new Point(item.Key, line.Key), xSize, ySize ));
+						gameItems.Add(new Apple(new Point(item.Key, line.Key), width, height ));
 						break;
 					case 'y':
-						gameItems.Add(new Cherry(new Point(item.Key, line.Key), xSize, ySize ));
+						gameItems.Add(new Cherry(new Point(item.Key, line.Key), width, height ));
 						break;
 					case 't':
-						gameItems.Add(new Tree(new Point(item.Key, line.Key), xSize, ySize ));
+						gameItems.Add(new Tree(new Point(item.Key, line.Key), width, height ));
 						break;
 					case 'o':
-						gameItems.Add(new Stone(new Point(item.Key, line.Key), xSize, ySize ));
+						gameItems.Add(new Stone(new Point(item.Key, line.Key), width, height ));
 						break;
 				}
 			}

@@ -32,4 +32,17 @@ internal abstract class Unit : GameItem, IDamagable
 	{
 		Health -= damage;
 	}
+
+	public Point Move(Command command)
+	{
+		PreviousPosition = new Point(CurrentPos.XPos, CurrentPos.YPos);
+		return command switch
+		{
+			Command.Left => new Point(CurrentPos.XPos - 1, CurrentPos.YPos),
+			Command.Right => new Point(CurrentPos.XPos + 1, CurrentPos.YPos),
+			Command.Up => new Point(CurrentPos.XPos, CurrentPos.YPos - 1),
+			Command.Down => new Point(CurrentPos.XPos, CurrentPos.YPos + 1),
+			_ => new Point(CurrentPos.XPos, CurrentPos.YPos)
+		};
+	}
 }

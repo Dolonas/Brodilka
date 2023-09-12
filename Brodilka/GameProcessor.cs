@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Brodilka.Interfaces;
-using Brodilka.Snags;
+using Brodilka.Obstacles;
 using Brodilka.Units;
 using Brodilka.Units.Enemies;
 using Brodilka.Bonuses;
@@ -28,11 +28,11 @@ internal class GameProcessor
 {
 	private const string FilePass = "../../../Data/Maps/map02.dat";
 	private IDisplayable ConsolePresents { get; set; }
-	private Player CurrentPlayer { get; set; }
+	private Player CurrPlayer { get; set; }
 	private List<GameItem> Items { get; set; }
 	private List<Unit> Units { get; set; }
 	private List<Enemy> Enemies { get; set; }
-	private List<Snag> Snags { get; set; }
+	private List<Obstacles.Obstacle> Snags { get; set; }
 	private List<Bonus> Bonuses { get; set; }
 
 	private Map CurrMap { get; set; }
@@ -58,7 +58,7 @@ internal class GameProcessor
 		{
 			foreach (var enemy in Enemies)
 			{
-				enemy.Move();
+				enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection()));
 			}
 			receive = GetKeyboardReceive();
 			if (receive == Command.Redraw)
@@ -66,7 +66,7 @@ internal class GameProcessor
 				ConsolePresents.Redraw();
 				DisplayAll();
 			}
-			CurrentPlayer.CurrentPos = CurrentPlayer.Move(SolveCollisions(receive));
+			CurrPlayer.CurrentPos = CurrPlayer.Move(SolveCollisions(CurrPlayer, receive));
 			DisplayAll();
 			Thread.Sleep(100);
 		}
@@ -101,9 +101,9 @@ internal class GameProcessor
 		});
 	}
 
-	private Command SolveCollisions(Command command)
+	private Command SolveCollisions(Unit unit, Command command)
 	{
-		var nextPos = CurrentPlayer.Move(command);
+		var nextPos = unit.Move(command);
 		var nextItem = CurrMap.Field[nextPos.XPos, nextPos.YPos];
 		if (nextItem is Bonus && nextItem.IsExist)
 		{
@@ -122,11 +122,11 @@ internal class GameProcessor
 
 	private void SortItems()
 	{
-		CurrentPlayer = (Player)Items.FirstOrDefault(x => x is Player);
+		CurrPlayer = (Player)Items.FirstOrDefault(x => x is Player);
 
 		Units = Items.OfType<Unit>().ToList();
 		Enemies = Items.OfType<Enemy>().ToList();
-		Snags = Items.OfType<Snag>().ToList();
+		Snags = Items.OfType<Obstacle>().ToList();
 		Bonuses = Items.OfType<Bonus>().ToList();
 	}
 }

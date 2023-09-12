@@ -1021,7 +1021,7 @@
 											"top": 292,
 											"width": 303.80517578125,
 											"height": 13,
-											"text": "+Field[0..*]: GameItem",
+											"text": "+Field[MapWidth][MapHeight]: GameItem",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4846,7 +4846,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 601,
-									"top": 357,
+									"top": 358,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -4866,8 +4866,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 586,
-									"top": 360,
+									"left": 587,
+									"top": 362,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -4888,7 +4888,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 630,
-									"top": 350,
+									"top": 349,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -4971,8 +4971,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 587,
-									"top": 296,
+									"left": 585,
+									"top": 310,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -4991,8 +4991,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 588,
-									"top": 309,
+									"left": 585,
+									"top": 324,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -5011,8 +5011,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 585,
-									"top": 268,
+									"left": 586,
+									"top": 282,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -5061,7 +5061,7 @@
 								"$ref": "AAAAAAGKdDN8s0Tcyf4="
 							},
 							"lineStyle": 1,
-							"points": "926:463;920:368;616:360;600:288;563:285",
+							"points": "926:463;920:368;616:360;600:304;563:297",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGKdDbjL+DBvzw="
@@ -6373,7 +6373,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGKad0kgruymDI="
 							},
-							"name": "MapWidth int"
+							"name": "MapWidth int",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6390,7 +6391,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGKad0kgruymDI="
 							},
-							"name": "Field[0..*]",
+							"name": "Field[MapWidth][MapHeight]",
 							"type": {
 								"$ref": "AAAAAAGKaeehwsDOQ2Y="
 							}
@@ -6860,6 +6861,7 @@
 										"$ref": "AAAAAAGKbwq1Hm2kvsY="
 									},
 									"name": "unit Unit",
+									"type": "",
 									"direction": "inout"
 								},
 								{
@@ -7369,7 +7371,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGKgE0TQ4vGWog="
 							},
-							"name": "Stone"
+							"name": "Stone",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -7377,7 +7380,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGKgE0TQ4vGWog="
 							},
-							"name": "Tree"
+							"name": "Tree",
+							"type": ""
 						}
 					]
 				}
