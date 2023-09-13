@@ -1,7 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Brodilka.Bonuses;
-
-namespace Brodilka.Units.Enemies;
+﻿namespace Brodilka.GameItems.Units.Enemies;
 
 internal class Wolf : Enemy
 {

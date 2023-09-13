@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
-namespace Brodilka.Bonuses;
+namespace Brodilka.GameItems.Bonuses;
 
 internal abstract class Bonus : GameItem
 {

@@ -1,7 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Brodilka.Bonuses;
-
-namespace Brodilka.Obstacles;
+﻿namespace Brodilka.GameItems.Obstacles;
 
 public class Tree : Obstacle
 {

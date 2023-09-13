@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Brodilka.Interfaces;
-using Brodilka.Obstacles;
-using Brodilka.Units;
-using Brodilka.Units.Enemies;
-using Brodilka.Bonuses;
+using Brodilka.GameItems.Bonuses;
+using Brodilka.GameItems.Obstacles;
+using Brodilka.GameItems.Units;
+using Brodilka.GameItems.Units.Enemies;
 using Brodilka.Utilits;
 
 /*
@@ -32,7 +32,7 @@ internal class GameProcessor
 	private List<GameItem> Items { get; set; }
 	private List<Unit> Units { get; set; }
 	private List<Enemy> Enemies { get; set; }
-	private List<Obstacles.Obstacle> Snags { get; set; }
+	private List<Obstacle> Snags { get; set; }
 	private List<Bonus> Bonuses { get; set; }
 
 	private Map CurrMap { get; set; }

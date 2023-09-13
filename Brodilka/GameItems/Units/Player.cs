@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
-namespace Brodilka.Units;
+namespace Brodilka.GameItems.Units;
 
 internal class Player : Unit
 {

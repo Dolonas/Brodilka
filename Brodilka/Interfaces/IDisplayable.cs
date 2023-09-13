@@ -1,6 +1,4 @@
-﻿using Brodilka.Units;
-
-namespace Brodilka.Interfaces;
+﻿namespace Brodilka.Interfaces;
 
 internal interface IDisplayable
 {

@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Brodilka.Units.Enemies;
+﻿namespace Brodilka.GameItems.Units.Enemies;
 
 internal class Bear : Enemy
 {

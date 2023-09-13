@@ -1,7 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Brodilka.Units;
-
-namespace Brodilka.Bonuses;
+﻿namespace Brodilka.GameItems.Bonuses;
 
 internal class Apple : Bonus
 {

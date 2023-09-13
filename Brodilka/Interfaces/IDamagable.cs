@@ -1,4 +1,4 @@
-﻿using Brodilka.Units;
+﻿using Brodilka.GameItems.Units;
 
 namespace Brodilka.Interfaces;
 

@@ -1,6 +1,6 @@
 ﻿using Brodilka.Interfaces;
 
-namespace Brodilka.Units;
+namespace Brodilka.GameItems.Units;
 
 internal abstract class Unit : GameItem, IDamagable
 {

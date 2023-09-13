@@ -10,22 +10,22 @@ internal class ConsolePresentation : IDisplayable
 	private const int MaxWindowWidth = 140;
 	private const int MaxWindowHeight = 80;
 
-	private static int WindowXSize
+	private static int WindowWidth
 	{
 		get => _windowWidth;
 		set => _windowWidth = value <= MaxWindowWidth ? value : MaxWindowWidth;
 	}
 
-	private static int WindowYSize
+	private static int WindowHeight
 	{
 		get => _windowHeight;
 		set => _windowHeight = value <= MaxWindowHeight ? value : MaxWindowHeight;
 	}
 
-	public ConsolePresentation(int xSize, int ySize)
+	public ConsolePresentation(int width, int height)
 	{
-		WindowXSize = xSize;
-		WindowYSize = ySize;
+		WindowWidth = width;
+		WindowHeight = height;
 		DisplayInitialize();
 	}
 
@@ -34,8 +34,8 @@ internal class ConsolePresentation : IDisplayable
 		Console.BackgroundColor = ConsoleColor.Black;
 		Console.ForegroundColor = ConsoleColor.White;
 		Console.Clear();
-		Console.SetWindowSize(WindowXSize, WindowYSize);
-		Console.SetBufferSize(WindowXSize, WindowYSize);
+		Console.SetWindowSize(WindowWidth, WindowHeight);
+		Console.SetBufferSize(WindowWidth, WindowHeight);
 		Console.Title = "Brodilka";
 		Console.CursorVisible = false;
 	}

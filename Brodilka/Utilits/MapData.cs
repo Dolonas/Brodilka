@@ -6,10 +6,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Brodilka.Bonuses;
-using Brodilka.Obstacles;
-using Brodilka.Units;
-using Brodilka.Units.Enemies;
+using Brodilka.GameItems.Bonuses;
+using Brodilka.GameItems.Obstacles;
+using Brodilka.GameItems.Units;
+using Brodilka.GameItems.Units.Enemies;
 
 namespace Brodilka.Utilits;
 

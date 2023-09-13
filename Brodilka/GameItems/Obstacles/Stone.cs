@@ -1,4 +1,4 @@
-﻿namespace Brodilka.Obstacles;
+﻿namespace Brodilka.GameItems.Obstacles;
 
 public class Stone : Obstacle
 {
