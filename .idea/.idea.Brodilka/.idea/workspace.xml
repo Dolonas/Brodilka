@@ -4,16 +4,10 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="enemies stops if front of obstacles&#10;new algorithm">
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="rewrote namespaces">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Bear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Bear.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Wolf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Wolf.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Interfaces/IDamagable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Interfaces/IDamagable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +35,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f2103c576aef635626cde2a8c1caee4f5b23ca724d7d5f17e13aeb1e04cad/Random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/ConsolePresentation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameItems/Bonuses/Apple.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/Interfaces/IDisplayable.cs" root0="SKIP_HIGHLIGHTING" />
@@ -107,7 +102,7 @@
       <workItem from="1694370016619" duration="1219000" />
       <workItem from="1694539711535" duration="1034000" />
       <workItem from="1694541863872" duration="3737000" />
-      <workItem from="1694621836461" duration="6253000" />
+      <workItem from="1694621836461" duration="7947000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -207,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694627009270</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="rewrote namespaces">
+      <created>1694628784626</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1694628784626</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +244,8 @@
     <MESSAGE value="refactoring, new map03.dat" />
     <MESSAGE value="gaming with map03" />
     <MESSAGE value="enemies stops if front of obstacles&#10;new algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="enemies stops if front of obstacles&#10;new algorithm" />
+    <MESSAGE value="rewrote namespaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="rewrote namespaces" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

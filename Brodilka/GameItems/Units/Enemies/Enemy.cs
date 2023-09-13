@@ -17,7 +17,7 @@ internal class Enemy : Unit
 		ItemColor = ConsoleColor.Green;
 	}
 
-	public Command GetEnemyDirection()
+	public virtual Command GetEnemyDirection()
 	{
 		var rnd = new Random();
 		var seed = rnd.Next(4);
