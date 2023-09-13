@@ -30,6 +30,7 @@ public class Map
 
 	public void SyncItemsOnField(List<GameItem> gameItemsList)
 	{
+		Field = new GameItem[MapWidth, MapHeight];
 		foreach (var gameItem in gameItemsList)
 		{
 			Field[gameItem.CurrentPos.XPos, gameItem.CurrentPos.YPos] = gameItem;

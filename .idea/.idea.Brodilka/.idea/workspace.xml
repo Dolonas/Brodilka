@@ -4,9 +4,12 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="">
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="gaming with map03">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uml_diagram/Brodilka UML diagram.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/Uml_diagram/Brodilka UML diagram.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Interfaces/IDisplayable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Interfaces/IDisplayable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Map.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +29,18 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea95343b9387b73062a9b61b7538f826c54ce3529632b4472ba4494044d23/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/56996bd5b7b025988834f7db72d610de6637f12f9a6dc6f25950f7f158ef3fc4/ConsolePal.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69593afc69483659e9373e173c8361fd966106a5d50f639c51b48388ddeb29/Timer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/974fa14c57bab8fe29f1bddd39b1a6548b9cc8cf9e0ef5e670c2407a56d9/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9dbe8869135194d1c9164298b9e1fc1aa7f5391d2f0e7c06fdcd03179d3f16/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf408839e35535896e3625c8578c2bfb7bf56ef7ab2c4549ae59c3a19db9ae/Console.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1da7b6c7c71a954fe3eb2531c6476711b3e6d93a8d76795386d326bb9dbc/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6ad457575d35dcbff26c9a5e3fb1d92f1d3c55f25ef6ebf475367b5d8/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f2103c576aef635626cde2a8c1caee4f5b23ca724d7d5f17e13aeb1e04cad/Random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/ConsolePresentation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/Interfaces/IDisplayable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/Map.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -89,7 +100,10 @@
       <workItem from="1694368693851" duration="6000" />
       <workItem from="1694368717271" duration="145000" />
       <workItem from="1694368908198" duration="560000" />
-      <workItem from="1694370016619" duration="1053000" />
+      <workItem from="1694370016619" duration="1219000" />
+      <workItem from="1694539711535" duration="1034000" />
+      <workItem from="1694541863872" duration="3737000" />
+      <workItem from="1694621836461" duration="5104000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -161,7 +175,28 @@
       <option name="project" value="LOCAL" />
       <updated>1694369054417</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="refactoring code and correcting uml-diagram">
+      <created>1694371269348</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1694371269348</updated>
+    </task>
+    <task id="LOCAL-00012" summary="refactoring, new map03.dat">
+      <created>1694545984752</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1694545984752</updated>
+    </task>
+    <task id="LOCAL-00013" summary="gaming with map03">
+      <created>1694623241524</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1694623241524</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,7 +227,10 @@
     <MESSAGE value="Added Field array in Map class" />
     <MESSAGE value="removed unused namespaces" />
     <MESSAGE value="refactoring and corrected uml diagram" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring and corrected uml diagram" />
+    <MESSAGE value="refactoring code and correcting uml-diagram" />
+    <MESSAGE value="refactoring, new map03.dat" />
+    <MESSAGE value="gaming with map03" />
+    <option name="LAST_COMMIT_MESSAGE" value="gaming with map03" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

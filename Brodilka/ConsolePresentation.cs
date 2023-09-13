@@ -50,6 +50,19 @@ internal class ConsolePresentation : IDisplayable
 		Console.ForegroundColor = ConsoleColor.White;
 	}
 
+	void IDisplayable.DisplayMap(Map map)
+	{
+		for (var i = 0; i < map.MapHeight; i++)
+		{
+			for (var j = 0; j < map.MapWidth; j++)
+			{
+				Console.SetCursorPosition(j, i);
+				if (map.Field [j, i] is not null)
+					Console.Write(map.Field [j, i].Simbol);
+			}
+		}
+	}
+
 	void IDisplayable.Redraw()
 	{
 		Console.Clear();

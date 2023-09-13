@@ -32,7 +32,7 @@ internal class GameProcessor
 	private List<GameItem> Items { get; set; }
 	private List<Unit> Units { get; set; }
 	private List<Enemy> Enemies { get; set; }
-	private List<Obstacle> Snags { get; set; }
+	private List<Obstacles.Obstacle> Snags { get; set; }
 	private List<Bonus> Bonuses { get; set; }
 
 	private Map CurrMap { get; set; }
@@ -58,13 +58,12 @@ internal class GameProcessor
 		{
 			foreach (var enemy in Enemies)
 			{
-				enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection()));
+				enemy.CurrentPos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection()));
 			}
 			receive = GetKeyboardReceive();
 			if (receive == Command.Redraw)
 			{
-				ConsolePresents.Redraw();
-				DisplayAll();
+				ConsolePresents.DisplayMap(CurrMap);
 			}
 			CurrPlayer.CurrentPos = CurrPlayer.Move(SolveCollisions(CurrPlayer, receive));
 			DisplayAll();
@@ -105,7 +104,7 @@ internal class GameProcessor
 	{
 		var nextPos = unit.Move(command);
 		var nextItem = CurrMap.Field[nextPos.XPos, nextPos.YPos];
-		if (nextItem is Bonus && nextItem.IsExist)
+		if (unit is Player && nextItem is Bonus && nextItem.IsExist)
 		{
 			new Thread(() => ConsolePresents.MakeSound(659, 300)).Start();
 			nextItem.IsExist = false;
