@@ -26,13 +26,13 @@ internal enum Command { Left, Up, Right, Down, Attack1, Stop, Redraw, Escape, No
 
 internal class GameProcessor
 {
-	private const string FilePass = "../../../Data/Maps/map02.dat";
+	private const string FilePass = "../../../Data/Maps/map03.dat";
 	private IDisplayable ConsolePresents { get; set; }
 	private Player CurrPlayer { get; set; }
 	private List<GameItem> Items { get; set; }
 	private List<Unit> Units { get; set; }
 	private List<Enemy> Enemies { get; set; }
-	private List<Obstacles.Obstacle> Snags { get; set; }
+	private List<Obstacle> Snags { get; set; }
 	private List<Bonus> Bonuses { get; set; }
 
 	private Map CurrMap { get; set; }
