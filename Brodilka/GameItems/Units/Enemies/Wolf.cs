@@ -11,8 +11,8 @@ internal class Wolf : Enemy
 
 	public override char Simbol { get; }
 
-	public Wolf(Point currentPosition, int maxXPos, int maxYPos)
-		: base(currentPosition, maxXPos, maxYPos)
+	public Wolf(Point currentPosition)
+		: base(currentPosition)
 	{
 		Simbol = 'w';
 		Damage = _wolfDamage;

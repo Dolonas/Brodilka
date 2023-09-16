@@ -6,7 +6,7 @@ internal abstract class Unit : GameItem, IDamagable
 {
 	private int _health;
 	public override bool IsItBlock { get; set; }
-	public override Point PreviousPosition { get; set; }
+	public Point PreviousPosition { get; set; }
 
 	protected int Health
 	{
@@ -16,7 +16,7 @@ internal abstract class Unit : GameItem, IDamagable
 
 	internal abstract int Damage { get; set; }
 
-	protected Unit(Point position, int maxXPos, int maxYPos) : base(position, maxXPos,  maxYPos)
+	protected Unit(Point position) : base(position)
 	{
 		PreviousPosition = CurrentPos;
 		IsItBlock = false;

@@ -7,7 +7,7 @@ internal class Cherry : Bonus
 
 	public override char Simbol { get; }
 
-	public Cherry(Point currentPoint, int maxXPos, int maxYPos) : base(currentPoint, maxXPos, maxYPos)
+	public Cherry(Point currentPoint) : base(currentPoint)
 	{
 		Simbol = 'y';
 		SpeedUpForPlayer = _speedUp;

@@ -7,8 +7,8 @@ internal class Bear : Enemy
 
 	public override char Simbol { get; }
 
-	public Bear(Point currentPosition, int maxXPos, int maxYPos)
-		: base(currentPosition, maxXPos, maxYPos)
+	public Bear(Point currentPosition)
+		: base(currentPosition)
 	{
 		Simbol = 'B';
 		Damage = _bearDamage;

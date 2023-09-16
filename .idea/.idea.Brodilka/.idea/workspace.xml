@@ -4,10 +4,25 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="rewrote namespaces">
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Bonuses/Apple.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Bonuses/Apple.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Bonuses/Bonus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Bonuses/Bonus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Bonuses/Cherry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Bonuses/Cherry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/GameItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/GameItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Obstacles/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Obstacles/Obstacle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Obstacles/Stone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Obstacles/Stone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Obstacles/Tree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Obstacles/Tree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Bear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Bear.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Wolf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Enemies/Wolf.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Map.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Utilits/MapData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Utilits/MapData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,14 +47,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf408839e35535896e3625c8578c2bfb7bf56ef7ab2c4549ae59c3a19db9ae/Console.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1da7b6c7c71a954fe3eb2531c6476711b3e6d93a8d76795386d326bb9dbc/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6ad457575d35dcbff26c9a5e3fb1d92f1d3c55f25ef6ebf475367b5d8/List.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f2103c576aef635626cde2a8c1caee4f5b23ca724d7d5f17e13aeb1e04cad/Random.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/ConsolePresentation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameItems/Bonuses/Apple.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/Interfaces/IDisplayable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/Map.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Brodilka/GameProcessor.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,16 +60,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.49714285",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editing.templates",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Brodilka" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Brodilka/bin/Debug/net6.0/Brodilka.exe" />
@@ -80,7 +91,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="1" Folder0="D:\Develop\ru-dictionary" CustomDictionaries="1" CustomDictionary0="D:\Develop\ru-dictionary\dict_ru_ru-0.6.aff" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="" />
@@ -102,7 +113,8 @@
       <workItem from="1694370016619" duration="1219000" />
       <workItem from="1694539711535" duration="1034000" />
       <workItem from="1694541863872" duration="3737000" />
-      <workItem from="1694621836461" duration="7947000" />
+      <workItem from="1694621836461" duration="8276000" />
+      <workItem from="1694880916449" duration="11945000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -209,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694628784626</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="new trajectory moving of enemies has been start coding">
+      <created>1694630157486</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1694630157486</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +264,8 @@
     <MESSAGE value="gaming with map03" />
     <MESSAGE value="enemies stops if front of obstacles&#10;new algorithm" />
     <MESSAGE value="rewrote namespaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="rewrote namespaces" />
+    <MESSAGE value="new trajectory moving of enemies has been start coding" />
+    <option name="LAST_COMMIT_MESSAGE" value="new trajectory moving of enemies has been start coding" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

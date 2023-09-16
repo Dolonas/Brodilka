@@ -7,10 +7,8 @@ internal class Enemy : Unit
 	internal override int Damage { get; set; }
 	public override char Simbol { get; }
 
-	public override Point PreviousPosition { get; set; }
-
-	public Enemy(Point currentPosition, int maxXPos, int maxYPos)
-		: base(currentPosition, maxXPos, maxYPos)
+	public Enemy(Point currentPosition)
+		: base(currentPosition)
 	{
 		IsItBlock = true;
 		IsExist = true;

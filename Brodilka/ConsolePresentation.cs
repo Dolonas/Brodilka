@@ -1,4 +1,5 @@
 ﻿using System;
+using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
 
 namespace Brodilka;
@@ -43,7 +44,8 @@ internal class ConsolePresentation : IDisplayable
 	void IDisplayable.Display(GameItem gameItem)
 	{
 		Console.ForegroundColor = gameItem.ItemColor;
-		Console.SetCursorPosition(gameItem.PreviousPosition.XPos, gameItem.PreviousPosition.YPos);
+		var previousPos = gameItem is Unit unit ? unit.PreviousPosition : gameItem.CurrentPos;
+		Console.SetCursorPosition(previousPos.XPos, previousPos.YPos);
 		Console.Write(' ');
 		Console.SetCursorPosition(gameItem.CurrentPos.XPos, gameItem.CurrentPos.YPos);
 		Console.WriteLine(gameItem.Simbol);

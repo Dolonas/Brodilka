@@ -3,5 +3,5 @@
 public class Tree : Obstacle
 {
 	public override char Simbol { get; }
-	public Tree(Point position, int maxXPos, int maxYPos) : base(position, maxXPos, maxYPos) => Simbol = 't';
+	public Tree(Point position) : base(position) => Simbol = 't';
 }
