@@ -6,7 +6,7 @@ internal class Apple : Bonus
 	private readonly int healthUp = 70;
 	public override char Simbol { get; }
 
-	public Apple(Point currentPoint) : base(currentPoint)
+	public Apple(Point currPoint) : base(currPoint)
 	{
 		Simbol = 'a';
 		SpeedUpForPlayer = speedUp;

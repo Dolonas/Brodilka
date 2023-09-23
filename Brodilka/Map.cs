@@ -54,7 +54,7 @@ public class Map
 		Field = new GameItem[MapWidth, MapHeight];
 		foreach (var gameItem in Items)
 		{
-			Field[gameItem.CurrentPos.XPos, gameItem.CurrentPos.YPos] = gameItem;
+			Field[gameItem.CurrPos.XPos, gameItem.CurrPos.YPos] = gameItem;
 		}
 	}
 

@@ -8,7 +8,7 @@ using Brodilka.Utilits;
 
 namespace Brodilka;
 
-internal enum Command { Left, Up, Right, Down, Attack1, Stop, Redraw, Escape, Non }
+internal enum Command { Left, Up, Right, Down, LeftUp, LeftDown, RightUp, RightDown, Attack1, Stop, Redraw, Escape, Non }
 
 internal class GameProcessor
 {
@@ -36,14 +36,14 @@ internal class GameProcessor
 		{
 			foreach (var enemy in CurrMap.Enemies)
 			{
-				enemy.CurrentPos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection()));
+				enemy.CurrPos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection()));
 			}
 			receive = GetKeyboardReceive();
 			if (receive == Command.Redraw)
 			{
 				ConsolePresents.DisplayMap(CurrMap);
 			}
-			CurrMap.CurrPlayer.CurrentPos = CurrMap.CurrPlayer.Move(SolveCollisions(CurrMap.CurrPlayer, receive));
+			CurrMap.CurrPlayer.CurrPos = CurrMap.CurrPlayer.Move(SolveCollisions(CurrMap.CurrPlayer, receive));
 			DisplayAll();
 			Thread.Sleep(100);
 		}

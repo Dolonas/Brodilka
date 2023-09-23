@@ -44,10 +44,10 @@ internal class ConsolePresentation : IDisplayable
 	void IDisplayable.Display(GameItem gameItem)
 	{
 		Console.ForegroundColor = gameItem.ItemColor;
-		var previousPos = gameItem is Unit unit ? unit.PreviousPosition : gameItem.CurrentPos;
+		var previousPos = gameItem is Unit unit ? unit.PreviousPosition : gameItem.CurrPos;
 		Console.SetCursorPosition(previousPos.XPos, previousPos.YPos);
 		Console.Write(' ');
-		Console.SetCursorPosition(gameItem.CurrentPos.XPos, gameItem.CurrentPos.YPos);
+		Console.SetCursorPosition(gameItem.CurrPos.XPos, gameItem.CurrPos.YPos);
 		Console.WriteLine(gameItem.Simbol);
 		Console.ForegroundColor = ConsoleColor.White;
 	}

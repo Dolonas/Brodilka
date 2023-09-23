@@ -18,7 +18,7 @@ internal abstract class Unit : GameItem, IDamagable
 
 	protected Unit(Point position) : base(position)
 	{
-		PreviousPosition = CurrentPos;
+		PreviousPosition = CurrPos;
 		IsItBlock = false;
 		IsExist = true;
 	}
@@ -35,14 +35,14 @@ internal abstract class Unit : GameItem, IDamagable
 
 	public Point Move(Command command)
 	{
-		PreviousPosition = new Point(CurrentPos.XPos, CurrentPos.YPos);
+		PreviousPosition = new Point(CurrPos.XPos, CurrPos.YPos);
 		return command switch
 		{
-			Command.Left => new Point(CurrentPos.XPos - 1, CurrentPos.YPos),
-			Command.Right => new Point(CurrentPos.XPos + 1, CurrentPos.YPos),
-			Command.Up => new Point(CurrentPos.XPos, CurrentPos.YPos - 1),
-			Command.Down => new Point(CurrentPos.XPos, CurrentPos.YPos + 1),
-			_ => new Point(CurrentPos.XPos, CurrentPos.YPos)
+			Command.Left => new Point(CurrPos.XPos - 1, CurrPos.YPos),
+			Command.Right => new Point(CurrPos.XPos + 1, CurrPos.YPos),
+			Command.Up => new Point(CurrPos.XPos, CurrPos.YPos - 1),
+			Command.Down => new Point(CurrPos.XPos, CurrPos.YPos + 1),
+			_ => new Point(CurrPos.XPos, CurrPos.YPos)
 		};
 	}
 }

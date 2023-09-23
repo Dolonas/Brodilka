@@ -2,7 +2,7 @@
 
 public class Point
 {
-	public int XPos { get; private set; }
+	public int XPos { get; set; }
 
 	public int YPos { get; private set; }
 

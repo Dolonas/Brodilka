@@ -10,9 +10,9 @@ public abstract class GameItem
 	public bool IsExist { get; set; }
 	public ConsoleColor ItemColor { get; set; }
 
-	public GameItem(Point currentPos) => CurrentPos = currentPos;
+	public GameItem(Point currPos) => CurrPos = currPos;
 
-	public Point CurrentPos { get; set; }
+	public Point CurrPos { get; set; }
 
 	public abstract bool IsItBlock { get; set; }
 	public abstract char Simbol { get; }

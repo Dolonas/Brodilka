@@ -8,7 +8,7 @@ public abstract class Obstacle : GameItem
 
 	protected Obstacle(Point position) : base(position)
 	{
-		CurrentPos = position;
+		CurrPos = position;
 		IsExist = true;
 		IsItBlock = true;
 		ItemColor = ConsoleColor.Yellow;
