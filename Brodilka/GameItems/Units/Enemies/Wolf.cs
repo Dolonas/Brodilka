@@ -9,8 +9,6 @@ internal class Wolf : Enemy
 	private double _tick;
 	private int _x1, _y1, _x2, _y2;
 
-	public override char Simbol { get; }
-
 	public Wolf(Point currentPosition)
 		: base(currentPosition)
 	{
@@ -23,13 +21,15 @@ internal class Wolf : Enemy
 		_y1 = _y2 = CurrPos.YPos;
 	}
 
+	public override char Simbol { get; }
+
 	public override Command GetEnemyDirection()
 	{
 		if (IsHumanNear())
 			return ChasingHuman();
 		var command = Command.Non;
-		_x2 = (int) Math.Round(_x1 + (3 * Math.Cos(2 * _tick) * Math.Cos(_tick)));
-		_y2 = (int) Math.Round(_y1 + (3 * Math.Cos(2 * _tick) * Math.Sin(_tick)));
+		_x2 = (int)Math.Round(_x1 + (3 * Math.Cos(2 * _tick) * Math.Cos(_tick)));
+		_y2 = (int)Math.Round(_y1 + (3 * Math.Cos(2 * _tick) * Math.Sin(_tick)));
 		if (_x2 == _x1 && _y2 == _y1)
 			command = Command.Stop;
 		else if (_x2 < _x1 && _y2 == _y1)
@@ -58,16 +58,12 @@ internal class Wolf : Enemy
 	{
 		double distance = 0;
 		if (CurrPos != null)
-		{
 			distance =
 				Math.Pow(
 					Math.Pow(CurrPos.XPos - _player.CurrPos.XPos, 2) +
 					Math.Pow(CurrPos.YPos - _player.CurrPos.YPos, 2), 0.5);
-		}
 		else
-		{
 			throw new NullReferenceException();
-		}
 
 		return distance < 5;
 	}

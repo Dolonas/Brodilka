@@ -2,9 +2,8 @@
 
 internal class Apple : Bonus
 {
-	private readonly int speedUp = 0;
 	private readonly int healthUp = 70;
-	public override char Simbol { get; }
+	private readonly int speedUp = 0;
 
 	public Apple(Point currPoint) : base(currPoint)
 	{
@@ -14,5 +13,5 @@ internal class Apple : Bonus
 		IsExist = true;
 	}
 
-
+	public override char Simbol { get; }
 }

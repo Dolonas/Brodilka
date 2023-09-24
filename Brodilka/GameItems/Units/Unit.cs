@@ -5,6 +5,14 @@ namespace Brodilka.GameItems.Units;
 internal abstract class Unit : GameItem, IDamagable
 {
 	private int _health;
+
+	protected Unit(Point position) : base(position)
+	{
+		PreviousPosition = CurrPos;
+		IsItBlock = false;
+		IsExist = true;
+	}
+
 	public override bool IsItBlock { get; set; }
 	public Point PreviousPosition { get; set; }
 
@@ -15,13 +23,6 @@ internal abstract class Unit : GameItem, IDamagable
 	}
 
 	internal abstract int Damage { get; set; }
-
-	protected Unit(Point position) : base(position)
-	{
-		PreviousPosition = CurrPos;
-		IsItBlock = false;
-		IsExist = true;
-	}
 
 	public void ToDamage(Unit unit, int damage)
 	{

@@ -2,10 +2,8 @@
 
 internal class Cherry : Bonus
 {
-	private readonly int _speedUp = 5;
 	private readonly int _healthUp = 0;
-
-	public override char Simbol { get; }
+	private readonly int _speedUp = 5;
 
 	public Cherry(Point currPoint) : base(currPoint)
 	{
@@ -14,4 +12,6 @@ internal class Cherry : Bonus
 		HealthUpForPlayer = _healthUp;
 		IsExist = true;
 	}
+
+	public override char Simbol { get; }
 }

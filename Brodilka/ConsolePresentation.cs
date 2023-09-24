@@ -6,10 +6,17 @@ namespace Brodilka;
 
 internal class ConsolePresentation : IDisplayable
 {
-	private static int _windowWidth;
-	private static int _windowHeight;
 	private const int MaxWindowWidth = 140;
 	private const int MaxWindowHeight = 80;
+	private static int _windowWidth;
+	private static int _windowHeight;
+
+	public ConsolePresentation(int width, int height)
+	{
+		WindowWidth = width;
+		WindowHeight = height;
+		DisplayInitialize();
+	}
 
 	private static int WindowWidth
 	{
@@ -21,24 +28,6 @@ internal class ConsolePresentation : IDisplayable
 	{
 		get => _windowHeight;
 		set => _windowHeight = value <= MaxWindowHeight ? value : MaxWindowHeight;
-	}
-
-	public ConsolePresentation(int width, int height)
-	{
-		WindowWidth = width;
-		WindowHeight = height;
-		DisplayInitialize();
-	}
-
-	private static void DisplayInitialize()
-	{
-		Console.BackgroundColor = ConsoleColor.Black;
-		Console.ForegroundColor = ConsoleColor.White;
-		Console.Clear();
-		Console.SetWindowSize(WindowWidth, WindowHeight);
-		Console.SetBufferSize(WindowWidth, WindowHeight);
-		Console.Title = "Brodilka";
-		Console.CursorVisible = false;
 	}
 
 	void IDisplayable.Display(GameItem gameItem)
@@ -55,13 +44,11 @@ internal class ConsolePresentation : IDisplayable
 	void IDisplayable.DisplayMap(Map map)
 	{
 		for (var i = 0; i < map.MapHeight; i++)
+		for (var j = 0; j < map.MapWidth; j++)
 		{
-			for (var j = 0; j < map.MapWidth; j++)
-			{
-				Console.SetCursorPosition(j, i);
-				if (map.Field [j, i] is not null)
-					Console.Write(map.Field [j, i].Simbol);
-			}
+			Console.SetCursorPosition(j, i);
+			if (map.Field[j, i] is not null)
+				Console.Write(map.Field[j, i].Simbol);
 		}
 	}
 
@@ -73,5 +60,16 @@ internal class ConsolePresentation : IDisplayable
 	void IDisplayable.MakeSound(int frequency, int duration)
 	{
 		Console.Beep(frequency, duration);
+	}
+
+	private static void DisplayInitialize()
+	{
+		Console.BackgroundColor = ConsoleColor.Black;
+		Console.ForegroundColor = ConsoleColor.White;
+		Console.Clear();
+		Console.SetWindowSize(WindowWidth, WindowHeight);
+		Console.SetBufferSize(WindowWidth, WindowHeight);
+		Console.Title = "Brodilka";
+		Console.CursorVisible = false;
 	}
 }

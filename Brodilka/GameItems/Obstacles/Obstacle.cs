@@ -4,8 +4,6 @@ namespace Brodilka.GameItems.Obstacles;
 
 public abstract class Obstacle : GameItem
 {
-	public override bool IsItBlock { get; set; }
-
 	protected Obstacle(Point position) : base(position)
 	{
 		CurrPos = position;
@@ -13,4 +11,6 @@ public abstract class Obstacle : GameItem
 		IsItBlock = true;
 		ItemColor = ConsoleColor.Yellow;
 	}
+
+	public override bool IsItBlock { get; set; }
 }

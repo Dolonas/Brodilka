@@ -1,7 +1,7 @@
 ﻿#nullable enable
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Brodilka.GameItems.Bonuses;
 using Brodilka.GameItems.Obstacles;
@@ -12,20 +12,20 @@ namespace Brodilka.Utilits;
 
 public class MapData
 {
-
-	private Map CurrentMap { get; }
 	public MapData(Map currentMap) => CurrentMap = currentMap;
 
+	private Map CurrentMap { get; }
 
 
 	public static async Task<GameItem[,]>? ReadMapAsync(string filePath)
 	{
 		string textMap;
-		using (var reader = new StreamReader(filePath, System.Text.Encoding.Default))
+		using (var reader = new StreamReader(filePath, Encoding.Default))
 		{
 			textMap = await reader.ReadToEndAsync().ConfigureAwait(false);
 		}
-		return  DecodeMap(textMap);
+
+		return DecodeMap(textMap);
 	}
 
 	private static GameItem[,] DecodeMap(string textMap)
@@ -44,7 +44,6 @@ public class MapData
 			if (lines[y].Length == 0)
 				continue;
 			for (var x = 0; x < lines[y].Length; x++)
-			{
 				switch (lines[y][x])
 				{
 					case 'P':
@@ -53,6 +52,7 @@ public class MapData
 							field[x, y] = new Player("Luidgy", new Point(x, y));
 							isItFirstPlayer = false;
 						}
+
 						break;
 					case 'B':
 						field[x, y] = new Bear(new Point(x, y));
@@ -73,8 +73,8 @@ public class MapData
 						field[x, y] = new Stone(new Point(x, y));
 						break;
 				}
-			}
 		}
+
 		return field;
 	}
 }

@@ -9,8 +9,25 @@ namespace Brodilka;
 
 public class Map
 {
-	private readonly int _mapWidth;
 	private readonly int _mapHeight;
+	private readonly int _mapWidth;
+
+	public Map(GameItem[,] field)
+	{
+		Items = new List<GameItem>();
+		if (field.GetLength(0) > 160 || field.GetLength(1) > 80)
+		{
+			Field = new GameItem[3, 3];
+		}
+		else
+		{
+			Field = field;
+			SortItems(Field);
+		}
+
+		MapWidth = Field.GetLength(0) + 2;
+		MapHeight = Field.GetLength(1) + 2;
+	}
 
 	internal Player CurrPlayer { get; set; }
 	internal List<GameItem> Items { get; set; }
@@ -34,40 +51,18 @@ public class Map
 		private init => _mapHeight = value is > 30 and < 160 ? value : 60;
 	}
 
-	public Map(GameItem[,] field)
-	{
-		Items = new List<GameItem>();
-		if (field.GetLength(0) > 160 || field.GetLength(1) > 80)
-			Field = new GameItem[3, 3];
-		else
-		{
-			Field = field;
-			SortItems(Field);
-		}
-		MapWidth = Field.GetLength(0)+2;
-		MapHeight = Field.GetLength(1)+2;
-
-	}
-
 	public void SyncItemsOnField()
 	{
 		Field = new GameItem[MapWidth, MapHeight];
-		foreach (var gameItem in Items)
-		{
-			Field[gameItem.CurrPos.XPos, gameItem.CurrPos.YPos] = gameItem;
-		}
+		foreach (var gameItem in Items) Field[gameItem.CurrPos.XPos, gameItem.CurrPos.YPos] = gameItem;
 	}
 
 	private void SortItems(GameItem[,] field)
 	{
 		for (var y = 0; y < field.GetLength(1); y++)
-		{
-			for (var x = 0; x < field.GetLength(0); x++)
-			{
-				if (field[x, y] is not null && field[x, y].IsExist)
-					Items.Add(field[x, y]);
-			}
-		}
+		for (var x = 0; x < field.GetLength(0); x++)
+			if (field[x, y] is not null && field[x, y].IsExist)
+				Items.Add(field[x, y]);
 		CurrPlayer = (Player)Items.FirstOrDefault(x => x is Player);
 
 		Units = Items.OfType<Unit>().ToList();
@@ -75,6 +70,4 @@ public class Map
 		Snags = Items.OfType<Obstacle>().ToList();
 		Bonuses = Items.OfType<Bonus>().ToList();
 	}
-
-
 }
