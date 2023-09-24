@@ -38,8 +38,9 @@ internal class GameProcessor
 
 		while (receive != Command.Escape)
 		{
-			foreach (var enemy in CurrMap.Enemies)
-				enemy.CurrPos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection()));
+			var makeSound = ConsolePresents.MakeSound;
+			CurrMap.CalculateMoves(makeSound);
+
 			receive = GetKeyboardReceive();
 			if (receive == Command.Redraw) ConsolePresents.DisplayMap(CurrMap);
 			CurrMap.CurrPlayer.CurrPos = CurrMap.CurrPlayer.Move(SolveCollisions(CurrMap.CurrPlayer, receive));
@@ -74,27 +75,5 @@ internal class GameProcessor
 			ConsoleKey.Delete => Command.Redraw,
 			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
 		};
-	}
-
-	private Command SolveCollisions(Unit unit, Command command)
-	{
-		var nextPos = unit.Move(command);
-		if (nextPos.XPos < 0 ||
-		    nextPos.YPos < 0 ||
-		    nextPos.XPos > CurrMap.MapWidth - 1 ||
-		    nextPos.YPos > CurrMap.MapHeight - 1)
-			return Command.Stop;
-		var nextItem = CurrMap.Field[nextPos.XPos, nextPos.YPos];
-		if (unit is Player && nextItem is Bonus && nextItem.IsExist)
-		{
-			new Thread(() => ConsolePresents.MakeSound(659, 300)).Start();
-			nextItem.IsExist = false;
-			DisplayAll();
-			return command;
-		}
-
-		if (nextItem is not null && nextItem.IsItBlock) return Command.Stop;
-
-		return command;
 	}
 }

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Brodilka.GameItems.Bonuses;
 using Brodilka.GameItems.Obstacles;
 using Brodilka.GameItems.Units;
@@ -51,6 +53,33 @@ public class Map
 		private init => _mapHeight = value is > 30 and < 160 ? value : 60;
 	}
 
+	public void CalculateMoves(Action<int, int> makeSound)
+	{
+		foreach (var enemy in Enemies)
+			enemy.CurrPos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection(), makeSound));
+	}
+
+	private Command SolveCollisions(Unit unit, Command command, Action<int, int> makeSound)
+	{
+		var nextPos = unit.Move(command);
+		if (nextPos.XPos < 0 ||
+		    nextPos.YPos < 0 ||
+		    nextPos.XPos > MapWidth - 1 ||
+		    nextPos.YPos > MapHeight - 1)
+			return Command.Stop;
+		var nextItem = Field[nextPos.XPos, nextPos.YPos];
+		if (unit is Player && nextItem is Bonus && nextItem.IsExist)
+		{
+			new Thread(() => makeSound(635, 50)).Start();
+			nextItem.IsExist = false;
+			DisplayAll();
+			return command;
+		}
+
+		if (nextItem is not null && nextItem.IsItBlock) return Command.Stop;
+
+		return command;
+	}
 	public void SyncItemsOnField()
 	{
 		Field = new GameItem[MapWidth, MapHeight];

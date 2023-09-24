@@ -40,9 +40,13 @@ internal abstract class Unit : GameItem, IDamagable
 		return command switch
 		{
 			Command.Left => new Point(CurrPos.XPos - 1, CurrPos.YPos),
-			Command.Right => new Point(CurrPos.XPos + 1, CurrPos.YPos),
+			Command.LeftUp => new Point(CurrPos.XPos - 1, CurrPos.YPos - 1),
 			Command.Up => new Point(CurrPos.XPos, CurrPos.YPos - 1),
+			Command.RightUp => new Point(CurrPos.XPos + 1, CurrPos.YPos - 1),
+			Command.Right => new Point(CurrPos.XPos + 1, CurrPos.YPos),
+			Command.RightDown => new Point(CurrPos.XPos + 1, CurrPos.YPos + 1),
 			Command.Down => new Point(CurrPos.XPos, CurrPos.YPos + 1),
+			Command.LeftDown => new Point(CurrPos.XPos - 1, CurrPos.YPos + 1),
 			_ => new Point(CurrPos.XPos, CurrPos.YPos)
 		};
 	}

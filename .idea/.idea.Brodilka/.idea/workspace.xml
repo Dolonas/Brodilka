@@ -4,7 +4,12 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="" />
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="Cleanup code">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Map.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,15 +35,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6ad457575d35dcbff26c9a5e3fb1d92f1d3c55f25ef6ebf475367b5d8/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f2103c576aef635626cde2a8c1caee4f5b23ca724d7d5f17e13aeb1e04cad/Random.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/ConsolePresentation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameItems/Bonuses/Bonus.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameItems/Bonuses/Cherry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameItems/Units/Enemies/Wolf.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameItems/Units/Unit.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameItems/Bonuses/Apple.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Brodilka/GameProcessor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/Point.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -109,6 +107,7 @@
       <workItem from="1695387587443" duration="591000" />
       <workItem from="1695488908520" duration="7033000" />
       <workItem from="1695497502430" duration="2422000" />
+      <workItem from="1695580088578" duration="2147000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -236,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695501318765</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Cleanup code">
+      <created>1695580735128</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1695580735128</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +281,8 @@
     <MESSAGE value="new trajectory moving of enemies has been start coding" />
     <MESSAGE value="gameplay algorithm has been remake" />
     <MESSAGE value="Added the geometrical algorithm of Wolf way&#10;The Wolf potential can move to the Player side if them not far from Wolf." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the geometrical algorithm of Wolf way&#10;The Wolf potential can move to the Player side if them not far from Wolf." />
+    <MESSAGE value="Cleanup code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
