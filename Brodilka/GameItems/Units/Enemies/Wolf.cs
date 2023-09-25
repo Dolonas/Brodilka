@@ -65,7 +65,7 @@ internal class Wolf : Enemy
 		else
 			throw new NullReferenceException();
 
-		return distance < 5;
+		return distance < 20;
 	}
 
 	private Command ChasingHuman()

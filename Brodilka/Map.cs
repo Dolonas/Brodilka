@@ -68,17 +68,31 @@ public class Map
 		    nextPos.YPos > MapHeight - 1)
 			return Command.Stop;
 		var nextItem = Field[nextPos.XPos, nextPos.YPos];
-		if (unit is Player && nextItem is Bonus && nextItem.IsExist)
-		{
-			new Thread(() => makeSound(635, 50)).Start();
-			nextItem.IsExist = false;
-			DisplayAll();
-			return command;
-		}
 
 		if (nextItem is not null && nextItem.IsItBlock) return Command.Stop;
 
 		return command;
+	}
+
+	public void SolvePlayerCollisions(Command command, Action<int, int> makeSound)
+	{
+		var nextPos = CurrPlayer.Move(command);
+		if (nextPos.XPos < 0 ||
+		    nextPos.YPos < 0 ||
+		    nextPos.XPos > MapWidth - 1 ||
+		    nextPos.YPos > MapHeight - 1)
+				CurrPlayer.Move(Command.Stop);
+		var nextItem = Field[nextPos.XPos, nextPos.YPos];
+		if (nextItem is Bonus && nextItem.IsExist)
+		{
+			new Thread(() => makeSound(635, 50)).Start();
+			nextItem.IsExist = false;
+			CurrPlayer.Move(command);
+		}
+
+		if (nextItem is not null && nextItem.IsItBlock) CurrPlayer.Move(Command.Stop);
+
+		CurrPlayer.Move(command);
 	}
 	public void SyncItemsOnField()
 	{
