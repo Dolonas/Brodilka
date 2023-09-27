@@ -2,14 +2,13 @@
 
 namespace Brodilka.GameItems.Units.Enemies;
 
+
+
 internal class Enemy : Unit
 {
-	internal Unit _player;
-
 	public Enemy(Point currentPosition)
 		: base(currentPosition)
 	{
-		_player = new Player("0", new Point(0, 0));
 		IsItBlock = true;
 		IsExist = true;
 		ItemColor = ConsoleColor.Green;
@@ -17,8 +16,9 @@ internal class Enemy : Unit
 
 	internal override int Damage { get; set; }
 	public override char Simbol { get; }
+	public ConsoleColor ItemDefaultColor = ConsoleColor.Green;
 
-	public virtual Command GetEnemyDirection()
+	public virtual Command GetEnemyDirection(Point humanPoint)
 	{
 		var rnd = new Random();
 		var seed = rnd.Next(4);

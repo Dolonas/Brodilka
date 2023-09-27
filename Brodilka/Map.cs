@@ -56,10 +56,10 @@ public class Map
 	public void CalculateMoves(Action<int, int> makeSound)
 	{
 		foreach (var enemy in Enemies)
-			enemy.CurrPos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection(), makeSound));
+			enemy.CurrPos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection(CurrPlayer.CurrPos)));
 	}
 
-	private Command SolveCollisions(Unit unit, Command command, Action<int, int> makeSound)
+	private Command SolveCollisions(Unit unit, Command command)
 	{
 		var nextPos = unit.Move(command);
 		if (nextPos.XPos < 0 ||

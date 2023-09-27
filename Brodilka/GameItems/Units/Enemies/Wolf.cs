@@ -23,10 +23,10 @@ internal class Wolf : Enemy
 
 	public override char Simbol { get; }
 
-	public override Command GetEnemyDirection()
+	public override Command GetEnemyDirection(Point humanPoint)
 	{
-		if (IsHumanNear())
-			return ChasingHuman();
+		if (IsHumanNear(humanPoint))
+			return ChasingHuman(humanPoint);
 		var command = Command.Non;
 		_x2 = (int)Math.Round(_x1 + (3 * Math.Cos(2 * _tick) * Math.Cos(_tick)));
 		_y2 = (int)Math.Round(_y1 + (3 * Math.Cos(2 * _tick) * Math.Sin(_tick)));
@@ -54,24 +54,25 @@ internal class Wolf : Enemy
 		return command;
 	}
 
-	private bool IsHumanNear()
+	private bool IsHumanNear(Point humanPoint)
 	{
 		double distance = 0;
 		if (CurrPos != null)
 			distance =
 				Math.Pow(
-					Math.Pow(CurrPos.XPos - _player.CurrPos.XPos, 2) +
-					Math.Pow(CurrPos.YPos - _player.CurrPos.YPos, 2), 0.5);
+					Math.Pow(CurrPos.XPos - humanPoint.XPos, 2) +
+					Math.Pow(CurrPos.YPos - humanPoint.YPos, 2), 0.5);
 		else
 			throw new NullReferenceException();
 
 		return distance < 20;
 	}
 
-	private Command ChasingHuman()
+	private Command ChasingHuman(Point humanPoint)
 	{
+		UnitStatus = UnitStatus.Pursuit;
 		var command = Command.Non;
-		var angle = Math.Atan2(CurrPos.XPos - _player.CurrPos.XPos, CurrPos.YPos - _player.CurrPos.YPos);
+		var angle = Math.Atan2(CurrPos.XPos - humanPoint.XPos, CurrPos.YPos - humanPoint.YPos);
 		if (angle is > 0 and < 0.395 or < 0 and > -0.395)
 			command = Command.Up;
 		else if (angle is < -0.395 and > -1.18)

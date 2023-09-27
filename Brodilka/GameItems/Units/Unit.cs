@@ -1,20 +1,50 @@
-﻿using Brodilka.Interfaces;
+﻿using System;
+using Brodilka.Interfaces;
 
 namespace Brodilka.GameItems.Units;
+
+internal enum UnitStatus
+{
+	Patrol, Pursuit, Attack
+}
 
 internal abstract class Unit : GameItem, IDamagable
 {
 	private int _health;
+	private UnitStatus unitStatus;
 
 	protected Unit(Point position) : base(position)
 	{
 		PreviousPosition = CurrPos;
 		IsItBlock = false;
 		IsExist = true;
+		unitStatus = UnitStatus.Patrol;
 	}
 
 	public override bool IsItBlock { get; set; }
 	public Point PreviousPosition { get; set; }
+
+	public UnitStatus UnitStatus
+	{
+		get => unitStatus;
+		set
+		{
+			switch (unitStatus)
+			{
+				case UnitStatus.Patrol:
+					ItemColor = ItemDefaultColor;
+					break;
+				case UnitStatus.Pursuit:
+					ItemColor = ConsoleColor.DarkMagenta;
+					break;
+				case UnitStatus.Attack:
+					ItemColor = ConsoleColor.Red;
+					break;
+			}
+
+			unitStatus = value;
+		}
+	}
 
 	protected int Health
 	{

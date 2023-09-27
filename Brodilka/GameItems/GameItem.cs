@@ -7,7 +7,9 @@ public abstract class GameItem
 	public GameItem(Point currPos) => CurrPos = currPos;
 
 	public bool IsExist { get; set; }
-	public ConsoleColor ItemColor { get; set; }
+
+	public virtual ConsoleColor ItemDefaultColor { get; set; }
+	public virtual ConsoleColor ItemColor { get; set; }
 
 	public Point CurrPos { get; set; }
 
