@@ -11,38 +11,32 @@ internal enum UnitStatus
 internal abstract class Unit : GameItem, IDamagable
 {
 	private int _health;
-	private UnitStatus unitStatus;
+	private UnitStatus _unitStatus;
 
 	protected Unit(Point position) : base(position)
 	{
 		PreviousPosition = CurrPos;
 		IsItBlock = false;
 		IsExist = true;
-		unitStatus = UnitStatus.Patrol;
+		UnitStatus = UnitStatus.Patrol;
 	}
 
 	public override bool IsItBlock { get; set; }
 	public Point PreviousPosition { get; set; }
 
-	public UnitStatus UnitStatus
+	protected UnitStatus UnitStatus
 	{
-		get => unitStatus;
+		//get => _unitStatus;
 		set
 		{
-			switch (unitStatus)
+			_unitStatus = value;
+			ItemColor = value switch
 			{
-				case UnitStatus.Patrol:
-					ItemColor = ItemDefaultColor;
-					break;
-				case UnitStatus.Pursuit:
-					ItemColor = ConsoleColor.DarkMagenta;
-					break;
-				case UnitStatus.Attack:
-					ItemColor = ConsoleColor.Red;
-					break;
-			}
-
-			unitStatus = value;
+				UnitStatus.Patrol => ItemDefaultColor,
+				UnitStatus.Pursuit => ConsoleColor.DarkMagenta,
+				UnitStatus.Attack => ConsoleColor.Red,
+				_ => ItemColor
+			};
 		}
 	}
 

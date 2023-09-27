@@ -2,7 +2,7 @@
 
 namespace Brodilka.GameItems.Units;
 
-internal class Player : Unit
+internal sealed class Player : Unit
 {
 	private const int MaxDamage = 80;
 	private const int StartHealth = 100;
@@ -16,7 +16,7 @@ internal class Player : Unit
 		Simbol = 'P';
 		Health = StartHealth;
 		Damage = MaxDamage;
-		ItemColor = ConsoleColor.Blue;
+		ItemDefaultColor = ConsoleColor.Blue;
 	}
 
 	internal sealed override int Damage { get; set; }

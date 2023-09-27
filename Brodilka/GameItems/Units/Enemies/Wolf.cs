@@ -4,8 +4,8 @@ namespace Brodilka.GameItems.Units.Enemies;
 
 internal class Wolf : Enemy
 {
-	private readonly int _wolfDamage = 20;
-	private readonly int _wolfMaxHealth = 40;
+	private const int WolfDamage = 20;
+	private const int WolfMaxHealth = 40;
 	private double _tick;
 	private int _x1, _y1, _x2, _y2;
 
@@ -13,8 +13,8 @@ internal class Wolf : Enemy
 		: base(currentPosition)
 	{
 		Simbol = 'w';
-		Damage = _wolfDamage;
-		Health = _wolfMaxHealth;
+		Damage = WolfDamage;
+		Health = WolfMaxHealth;
 		var rnd = new Random();
 		_tick = rnd.NextDouble();
 		_x1 = _x2 = CurrPos.XPos;
@@ -25,7 +25,7 @@ internal class Wolf : Enemy
 
 	public override Command GetEnemyDirection(Point humanPoint)
 	{
-		if (IsHumanNear(humanPoint))
+		if (IsHumanNear(humanPoint) == UnitStatus.Pursuit)
 			return ChasingHuman(humanPoint);
 		var command = Command.Non;
 		_x2 = (int)Math.Round(_x1 + (3 * Math.Cos(2 * _tick) * Math.Cos(_tick)));
@@ -54,7 +54,7 @@ internal class Wolf : Enemy
 		return command;
 	}
 
-	private bool IsHumanNear(Point humanPoint)
+	private UnitStatus IsHumanNear(Point humanPoint)
 	{
 		double distance = 0;
 		if (CurrPos != null)
@@ -65,7 +65,18 @@ internal class Wolf : Enemy
 		else
 			throw new NullReferenceException();
 
-		return distance < 20;
+		switch (distance)
+		{
+			case < 2:
+				UnitStatus = UnitStatus.Attack;
+				return UnitStatus.Attack;
+			case < 10:
+				UnitStatus = UnitStatus.Pursuit;
+				return UnitStatus.Pursuit;
+			default:
+				UnitStatus = UnitStatus.Patrol;
+				return UnitStatus.Patrol;
+		}
 	}
 
 	private Command ChasingHuman(Point humanPoint)

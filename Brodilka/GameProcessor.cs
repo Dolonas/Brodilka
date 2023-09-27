@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
-using Brodilka.GameItems.Bonuses;
-using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
 using Brodilka.Utilits;
 
@@ -60,7 +58,7 @@ internal class GameProcessor
 
 	private Command GetKeyboardReceive()
 	{
-		ConsoleKeyInfo cki = default;
+		ConsoleKeyInfo cki;
 		if (Console.KeyAvailable)
 			cki = Console.ReadKey();
 		else

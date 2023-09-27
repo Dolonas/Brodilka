@@ -11,12 +11,13 @@ internal class Enemy : Unit
 	{
 		IsItBlock = true;
 		IsExist = true;
-		ItemColor = ConsoleColor.Green;
+		ItemDefaultColor = ConsoleColor.Green;
 	}
 
 	internal override int Damage { get; set; }
 	public override char Simbol { get; }
-	public ConsoleColor ItemDefaultColor = ConsoleColor.Green;
+
+	//public ConsoleColor ItemColor = ConsoleColor.Green;
 
 	public virtual Command GetEnemyDirection(Point humanPoint)
 	{
