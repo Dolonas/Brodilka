@@ -4,18 +4,18 @@ namespace Brodilka;
 
 public abstract class GameItem
 {
-	private ConsoleColor _itemDefaultColor = ConsoleColor.White;
+	private ItemColor _itemDefaultColor = ItemColor.White;
 	public GameItem(Point currPos) => CurrPos = currPos;
 
 	public bool IsExist { get; set; }
 
-	protected ConsoleColor ItemDefaultColor
+	protected ItemColor ItemDefaultColor
 	{
 		get => _itemDefaultColor;
 		set => _itemDefaultColor = ItemColor = value;
 	}
 
-	public ConsoleColor ItemColor { get; protected set; }
+	public ItemColor ItemColor { get; protected set; }
 
 	public Point CurrPos { get; set; }
 

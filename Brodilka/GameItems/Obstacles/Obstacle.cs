@@ -9,7 +9,7 @@ public abstract class Obstacle : GameItem
 		CurrPos = position;
 		IsExist = true;
 		IsItBlock = true;
-		ItemColor = ConsoleColor.Yellow;
+		ItemColor = ItemColor.Yellow;
 	}
 
 	public override bool IsItBlock { get; set; }

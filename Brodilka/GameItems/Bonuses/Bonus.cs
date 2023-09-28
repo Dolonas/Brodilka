@@ -7,7 +7,7 @@ internal abstract class Bonus : GameItem
 	protected Bonus(Point currPoint) : base(currPoint)
 	{
 		IsItBlock = false;
-		ItemDefaultColor = ConsoleColor.Magenta;
+		ItemDefaultColor = ItemColor.Magenta;
 	}
 
 	protected int SpeedUpForPlayer { get; set; }

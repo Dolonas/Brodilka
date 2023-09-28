@@ -11,7 +11,7 @@ internal class Enemy : Unit
 	{
 		IsItBlock = true;
 		IsExist = true;
-		ItemDefaultColor = ConsoleColor.Green;
+		ItemDefaultColor = ItemColor.Green;
 	}
 
 	internal override int Damage { get; set; }
@@ -23,18 +23,13 @@ internal class Enemy : Unit
 	{
 		var rnd = new Random();
 		var seed = rnd.Next(4);
-		switch (seed + 1)
+		return (seed + 1) switch
 		{
-			case 1:
-				return Command.Left;
-			case 2:
-				return Command.Right;
-			case 3:
-				return Command.Up;
-			case 4:
-				return Command.Down;
-		}
-
-		return Command.Non;
+			1 => Command.Left,
+			2 => Command.Right,
+			3 => Command.Up,
+			4 => Command.Down,
+			_ => Command.Non
+		};
 	}
 }

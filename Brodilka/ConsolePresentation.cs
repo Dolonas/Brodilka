@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
 
@@ -33,13 +34,13 @@ internal class ConsolePresentation : IDisplayable
 
 	void IDisplayable.Display(GameItem gameItem)
 	{
-		Console.ForegroundColor = gameItem.ItemColor;
+		Console.ForegroundColor = ConverToConsoleColor(gameItem.ItemColor);
 		var previousPos = gameItem is Unit unit ? unit.PreviousPosition : gameItem.CurrPos;
 		Console.SetCursorPosition(previousPos.XPos, previousPos.YPos);
 		Console.Write(' ');
 		Console.SetCursorPosition(gameItem.CurrPos.XPos, gameItem.CurrPos.YPos);
 		Console.Write(gameItem.Simbol);
-		Console.ForegroundColor = ConsoleColor.White;
+		Console.ForegroundColor = ConsoleColor.DarkGray;
 	}
 
 	void IDisplayable.DisplayGameInfo(List<GameInfo> infoList)
@@ -47,14 +48,16 @@ internal class ConsolePresentation : IDisplayable
 		foreach (var info in infoList)
 		{
 			Console.SetCursorPosition(info.GameInfoPosition.XPos, info.GameInfoPosition.YPos);
+			Console.ForegroundColor = ConverToConsoleColor(info.InfoColor);
 			Console.Write(info.GameInfoString);
+			Console.ForegroundColor = ConsoleColor.DarkGray;
 		}
 	}
 
 	void IDisplayable.DisplayMap(Map map)
 	{
-		for (var i = 0; i < map.MapHeight; i++)
-		for (var j = 0; j < map.MapWidth; j++)
+		for (var i = 0; i < map.Height; i++)
+		for (var j = 0; j < map.Width; j++)
 		{
 			Console.SetCursorPosition(j, i);
 			if (map.Field[j, i] is not null)
@@ -81,5 +84,29 @@ internal class ConsolePresentation : IDisplayable
 		Console.SetBufferSize(WindowWidth, WindowHeight);
 		Console.Title = "Brodilka";
 		Console.CursorVisible = false;
+	}
+
+	private ConsoleColor ConverToConsoleColor(ItemColor itemColor)
+	{
+		return (itemColor) switch
+		{
+			ItemColor.White => ConsoleColor.White,
+			ItemColor.Black => ConsoleColor.Black,
+			ItemColor.Blue => ConsoleColor.Blue,
+			ItemColor.Cyan => ConsoleColor.Cyan,
+			ItemColor.Gray => ConsoleColor.Gray,
+			ItemColor.Green => ConsoleColor.Green,
+			ItemColor.Magenta => ConsoleColor.Magenta,
+			ItemColor.Red => ConsoleColor.Red,
+			ItemColor.Yellow => ConsoleColor.Yellow,
+			ItemColor.DarkBlue => ConsoleColor.DarkBlue,
+			ItemColor.DarkCyan => ConsoleColor.DarkCyan,
+			ItemColor.DarkGray => ConsoleColor.DarkGray,
+			ItemColor.DarkGreen => ConsoleColor.DarkGreen,
+			ItemColor.DarkMagenta => ConsoleColor.DarkMagenta,
+			ItemColor.DarkRed => ConsoleColor.DarkRed,
+			ItemColor.DarkYellow => ConsoleColor.DarkYellow,
+			_ => throw new ArgumentOutOfRangeException(nameof(itemColor), itemColor, null)
+		};
 	}
 }

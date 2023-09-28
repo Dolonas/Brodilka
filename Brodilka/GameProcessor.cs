@@ -11,6 +11,11 @@ public enum Command
 	Left, Up, Right, Down, LeftUp, LeftDown, RightUp, RightDown, Attack1, Stop, Redraw, Escape, Non
 }
 
+public enum ItemColor
+{
+	White, Black, Blue, Cyan, Gray, Green, Magenta, Red, Yellow, DarkBlue, DarkCyan, DarkGray, DarkGreen, DarkMagenta, DarkRed, DarkYellow
+}
+
 internal class GameProcessor
 {
 	private const string FilePass = "../../../Data/Maps/map03.dat";
@@ -20,7 +25,7 @@ internal class GameProcessor
 		CurrMap = new Map(MapData.ReadMapAsync(FilePass)?.Result);
 		//CurrMap.SyncItemsOnField(Items);
 		//SortItems();
-		ConsolePresents = new ConsolePresentation(CurrMap.MapWidth, CurrMap.MapHeight);
+		ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
 	}
 
 	private IDisplayable ConsolePresents { get; }

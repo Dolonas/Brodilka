@@ -11,8 +11,8 @@ namespace Brodilka;
 
 public class Map
 {
-	private readonly int _mapHeight;
-	private readonly int _mapWidth;
+	private readonly int _height;
+	private readonly int _width;
 
 	public Map(GameItem[,] field)
 	{
@@ -26,9 +26,10 @@ public class Map
 			Field = field;
 		}
 		SortItems(Field);
-		MapWidth = Field.GetLength(0) + 2;
-		MapHeight = Field.GetLength(1) + 2;
-		GameInfo.Add(new GameInfo(new Point(0, 42), CurrPlayer.PlayerName));
+		Width = Field.GetLength(0) + 2;
+		Height = Field.GetLength(1) + 4;
+		GameInfo = new List<GameInfo>();
+		GameInfo.Add(new GameInfo(new Point(0, Field.GetLength(1)+2), $"Player name: {CurrPlayer.Name}", ItemColor.Cyan));
 	}
 
 	internal Player CurrPlayer { get; set; }
@@ -38,20 +39,16 @@ public class Map
 	internal List<Obstacle> Snags { get; set; }
 	internal List<Bonus> Bonuses { get; set; }
 	internal List<GameInfo> GameInfo { get; set; }
-
-
 	public GameItem[,] Field { get; set; }
-
-	public int MapWidth
+	public int Width
 	{
-		get => _mapWidth;
-		private init => _mapWidth = value is > 30 and < 160 ? value : 60;
+		get => _width;
+		private init => _width = value is > 30 and < 160 ? value : 60;
 	}
-
-	public int MapHeight
+	public int Height
 	{
-		get => _mapHeight;
-		private init => _mapHeight = value is > 30 and < 160 ? value : 60;
+		get => _height;
+		private init => _height = value is > 30 and < 160 ? value : 60;
 	}
 
 	public void CalculateMoves(Action<int, int> makeSound)
@@ -65,8 +62,8 @@ public class Map
 		var nextPos = unit.Move(command);
 		if (nextPos.XPos < 0 ||
 		    nextPos.YPos < 0 ||
-		    nextPos.XPos > MapWidth - 1 ||
-		    nextPos.YPos > MapHeight - 1)
+		    nextPos.XPos > Width - 1 ||
+		    nextPos.YPos > Height - 1)
 			return Command.Stop;
 		var nextItem = Field[nextPos.XPos, nextPos.YPos];
 
@@ -82,8 +79,8 @@ public class Map
 		var nextPos = CurrPlayer.Move(command);
 		if (nextPos.XPos < 0 ||
 		    nextPos.YPos < 0 ||
-		    nextPos.XPos > MapWidth - 1 ||
-		    nextPos.YPos > MapHeight - 1)
+		    nextPos.XPos > Width - 1 ||
+		    nextPos.YPos > Height - 1)
 				return;
 		var nextItem = Field[nextPos.XPos, nextPos.YPos];
 		if (nextItem is Bonus && nextItem.IsExist)
@@ -99,7 +96,7 @@ public class Map
 	}
 	public void SyncItemsOnField()
 	{
-		Field = new GameItem[MapWidth, MapHeight];
+		Field = new GameItem[Width, Height];
 		foreach (var gameItem in Items) Field[gameItem.CurrPos.XPos, gameItem.CurrPos.YPos] = gameItem;
 	}
 

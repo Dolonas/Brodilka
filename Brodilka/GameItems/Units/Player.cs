@@ -6,27 +6,27 @@ internal sealed class Player : Unit
 {
 	private const int MaxDamage = 80;
 	private const int StartHealth = 100;
-	private readonly string _playerName;
+	private readonly string _name;
 
 
-	public Player(string playerName, Point currentPosition)
+	public Player(string name, Point currentPosition)
 		: base(currentPosition)
 	{
 		PreviousPosition = currentPosition;
-		PlayerName = playerName;
+		Name = name;
 		Simbol = 'P';
 		Health = StartHealth;
 		Damage = MaxDamage;
-		ItemDefaultColor = ConsoleColor.Blue;
+		ItemDefaultColor = ItemColor.Blue;
 	}
 
 	internal sealed override int Damage { get; set; }
 	public override char Simbol { get; }
 
 
-	internal string PlayerName
+	internal string Name
 	{
-		get => _playerName;
-		init => _playerName = value.Length is > 1 and < 20 ? value : _playerName;
+		get => _name;
+		init => _name = value.Length is > 1 and < 20 ? value : _name;
 	}
 }

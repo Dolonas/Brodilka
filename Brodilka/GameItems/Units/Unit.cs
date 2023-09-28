@@ -33,8 +33,8 @@ internal abstract class Unit : GameItem, IDamagable
 			ItemColor = value switch
 			{
 				UnitStatus.Patrol => ItemDefaultColor,
-				UnitStatus.Pursuit => ConsoleColor.DarkMagenta,
-				UnitStatus.Attack => ConsoleColor.Red,
+				UnitStatus.Pursuit => ItemColor.DarkMagenta,
+				UnitStatus.Attack => ItemColor.Red,
 				_ => ItemColor
 			};
 		}
