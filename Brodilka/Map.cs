@@ -76,23 +76,25 @@ public class Map
 
 	public void SolvePlayerCollisions(Command command, Action<int, int> makeSound)
 	{
+		if (command == Command.Non)
+			return;
 		var nextPos = CurrPlayer.Move(command);
 		if (nextPos.XPos < 0 ||
 		    nextPos.YPos < 0 ||
 		    nextPos.XPos > MapWidth - 1 ||
 		    nextPos.YPos > MapHeight - 1)
-				CurrPlayer.Move(Command.Stop);
+				return;
 		var nextItem = Field[nextPos.XPos, nextPos.YPos];
 		if (nextItem is Bonus && nextItem.IsExist)
 		{
 			new Thread(() => makeSound(635, 50)).Start();
 			nextItem.IsExist = false;
-			CurrPlayer.Move(command);
+			CurrPlayer.CurrPos = CurrPlayer.Move(command);
+			return;
 		}
-
-		if (nextItem is not null && nextItem.IsItBlock) CurrPlayer.Move(Command.Stop);
-
-		CurrPlayer.Move(command);
+		if (nextItem is not null && nextItem.IsItBlock)
+			return;
+		CurrPlayer.CurrPos = CurrPlayer.Move(command);
 	}
 	public void SyncItemsOnField()
 	{
