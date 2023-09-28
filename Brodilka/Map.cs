@@ -24,11 +24,11 @@ public class Map
 		else
 		{
 			Field = field;
-			SortItems(Field);
 		}
-
+		SortItems(Field);
 		MapWidth = Field.GetLength(0) + 2;
 		MapHeight = Field.GetLength(1) + 2;
+		GameInfo.Add(new GameInfo(new Point(0, 42), CurrPlayer.PlayerName));
 	}
 
 	internal Player CurrPlayer { get; set; }
@@ -37,6 +37,7 @@ public class Map
 	internal List<Enemy> Enemies { get; set; }
 	internal List<Obstacle> Snags { get; set; }
 	internal List<Bonus> Bonuses { get; set; }
+	internal List<GameInfo> GameInfo { get; set; }
 
 
 	public GameItem[,] Field { get; set; }

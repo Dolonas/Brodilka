@@ -8,6 +8,7 @@ internal sealed class Player : Unit
 	private const int StartHealth = 100;
 	private readonly string _playerName;
 
+
 	public Player(string playerName, Point currentPosition)
 		: base(currentPosition)
 	{
@@ -23,7 +24,7 @@ internal sealed class Player : Unit
 	public override char Simbol { get; }
 
 
-	private string PlayerName
+	internal string PlayerName
 	{
 		get => _playerName;
 		init => _playerName = value.Length is > 1 and < 20 ? value : _playerName;

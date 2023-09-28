@@ -53,6 +53,7 @@ internal class GameProcessor
 	{
 		foreach (var gameItem in CurrMap.Items.Where(gi => gi is not null && gi.IsExist))
 			ConsolePresents.Display(gameItem);
+		ConsolePresents.DisplayGameInfo(CurrMap.GameInfo);
 		CurrMap.SyncItemsOnField();
 	}
 

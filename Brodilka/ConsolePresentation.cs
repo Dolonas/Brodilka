@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
 
@@ -37,8 +38,17 @@ internal class ConsolePresentation : IDisplayable
 		Console.SetCursorPosition(previousPos.XPos, previousPos.YPos);
 		Console.Write(' ');
 		Console.SetCursorPosition(gameItem.CurrPos.XPos, gameItem.CurrPos.YPos);
-		Console.WriteLine(gameItem.Simbol);
+		Console.Write(gameItem.Simbol);
 		Console.ForegroundColor = ConsoleColor.White;
+	}
+
+	void IDisplayable.DisplayGameInfo(List<GameInfo> infoList)
+	{
+		foreach (var info in infoList)
+		{
+			Console.SetCursorPosition(info.GameInfoPosition.XPos, info.GameInfoPosition.YPos);
+			Console.Write(info.GameInfoString);
+		}
 	}
 
 	void IDisplayable.DisplayMap(Map map)
