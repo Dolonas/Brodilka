@@ -40,7 +40,7 @@ internal abstract class Unit : GameItem, IDamagable
 		}
 	}
 
-	protected int Health
+	internal int Health
 	{
 		get => _health;
 		set => _health = value < 0 ? 0 : _health = value;

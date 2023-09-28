@@ -92,7 +92,7 @@ internal class Wolf : Enemy
 			command = Command.Right;
 		else if (angle is < -1.965 and > -2.75)
 			command = Command.RightDown;
-		else if (angle is < -2.75 or > -2.75)
+		else if (angle is < -2.75 or > 2.75)
 			command = Command.Down;
 		else if (angle is > 1.965 and < 2.75)
 			command = Command.LeftDown;

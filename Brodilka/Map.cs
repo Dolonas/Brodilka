@@ -29,7 +29,15 @@ public class Map
 		Width = Field.GetLength(0) + 2;
 		Height = Field.GetLength(1) + 4;
 		GameInfo = new List<GameInfo>();
-		GameInfo.Add(new GameInfo(new Point(0, Field.GetLength(1)+2), $"Player name: {CurrPlayer.Name}", ItemColor.Cyan));
+		var infoLine = Field.GetLength(1) + 1;
+		var gInfo1 = new GameInfo(new Point(1, infoLine), "Player name: ", ItemColor.Cyan);
+		var gInfo2 = new GameInfo(new Point($"Player name: ".Length + 2, infoLine), CurrPlayer.Name, ItemColor.Yellow);
+		var gInfo3 = new GameInfo(new Point(25, infoLine), "Health", ItemColor.White);
+		var gInfo4 = new GameInfo(new Point(33, infoLine), CurrPlayer.Health.ToString(), ItemColor.White);
+		GameInfo.Add(gInfo1);
+		GameInfo.Add(gInfo2);
+		GameInfo.Add(gInfo3);
+		GameInfo.Add(gInfo4);
 	}
 
 	internal Player CurrPlayer { get; set; }
