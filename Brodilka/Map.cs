@@ -28,16 +28,16 @@ public class Map
 		SortItems(Field);
 		Width = Field.GetLength(0) + 2;
 		Height = Field.GetLength(1) + 4;
-		GameInfo = new List<GameInfo>();
 		var infoLine = Field.GetLength(1) + 1;
-		var gInfo1 = new GameInfo(new Point(1, infoLine), "Player name: ", ItemColor.Cyan);
-		var gInfo2 = new GameInfo(new Point($"Player name: ".Length + 2, infoLine), CurrPlayer.Name, ItemColor.Yellow);
-		var gInfo3 = new GameInfo(new Point(25, infoLine), "Health", ItemColor.White);
-		var gInfo4 = new GameInfo(new Point(33, infoLine), CurrPlayer.Health.ToString(), ItemColor.White);
-		GameInfo.Add(gInfo1);
-		GameInfo.Add(gInfo2);
-		GameInfo.Add(gInfo3);
-		GameInfo.Add(gInfo4);
+		InfoList = new GameInfoList(infoLine, 2);
+		var gInfo1 = new GameInfo("Player name: ", ItemColor.Cyan);
+		var gInfo2 = new GameInfo(CurrPlayer.Name, ItemColor.Yellow);
+		var gInfo3 = new GameInfo("Health: ", ItemColor.White);
+		var gInfo4 = new GameInfo(CurrPlayer.Health.ToString(), ItemColor.White);
+		InfoList.Add(gInfo1);
+		InfoList.Add(gInfo2);
+		InfoList.Add(gInfo3);
+		InfoList.Add(gInfo4);
 	}
 
 	internal Player CurrPlayer { get; set; }
@@ -46,7 +46,7 @@ public class Map
 	internal List<Enemy> Enemies { get; set; }
 	internal List<Obstacle> Snags { get; set; }
 	internal List<Bonus> Bonuses { get; set; }
-	internal List<GameInfo> GameInfo { get; set; }
+	internal GameInfoList InfoList { get; set; }
 	public GameItem[,] Field { get; set; }
 	public int Width
 	{

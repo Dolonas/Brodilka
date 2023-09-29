@@ -43,14 +43,16 @@ internal class ConsolePresentation : IDisplayable
 		Console.ForegroundColor = ConsoleColor.DarkGray;
 	}
 
-	void IDisplayable.DisplayGameInfo(List<GameInfo> infoList)
+	void IDisplayable.DisplayGameInfo(GameInfoList infoList)
 	{
-		foreach (var info in infoList)
+		var startXPos = infoList.StartXPosition;
+		foreach (var info in infoList.List)
 		{
-			Console.SetCursorPosition(info.GameInfoPosition.XPos, info.GameInfoPosition.YPos);
+			Console.SetCursorPosition(startXPos, infoList.InfoLinePosition);
 			Console.ForegroundColor = ConverToConsoleColor(info.InfoColor);
 			Console.Write(info.GameInfoString);
 			Console.ForegroundColor = ConsoleColor.DarkGray;
+			startXPos += info.GameInfoString.Length + 1;
 		}
 	}
 

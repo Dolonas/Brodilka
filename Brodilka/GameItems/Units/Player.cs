@@ -20,7 +20,7 @@ internal sealed class Player : Unit
 		ItemDefaultColor = ItemColor.Blue;
 	}
 
-	internal sealed override int Damage { get; set; }
+	internal override int Damage { get; set; }
 	public override char Simbol { get; }
 
 

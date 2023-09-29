@@ -23,8 +23,6 @@ internal class GameProcessor
 	internal GameProcessor()
 	{
 		CurrMap = new Map(MapData.ReadMapAsync(FilePass)?.Result);
-		//CurrMap.SyncItemsOnField(Items);
-		//SortItems();
 		ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
 	}
 
@@ -58,7 +56,7 @@ internal class GameProcessor
 	{
 		foreach (var gameItem in CurrMap.Items.Where(gi => gi is not null && gi.IsExist))
 			ConsolePresents.Display(gameItem);
-		ConsolePresents.DisplayGameInfo(CurrMap.GameInfo);
+		ConsolePresents.DisplayGameInfo(CurrMap.InfoList);
 		CurrMap.SyncItemsOnField();
 	}
 
