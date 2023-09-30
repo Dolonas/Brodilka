@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Brodilka.GameItems;
 using Brodilka.GameItems.Bonuses;
 using Brodilka.GameItems.Obstacles;
 using Brodilka.GameItems.Units;
@@ -28,16 +29,6 @@ public class Map
 		SortItems(Field);
 		Width = Field.GetLength(0) + 2;
 		Height = Field.GetLength(1) + 4;
-		var infoLine = Field.GetLength(1) + 1;
-		InfoList = new GameInfoList(infoLine, 2);
-		var gInfo1 = new GameInfo("Player name: ", ItemColor.Cyan);
-		var gInfo2 = new GameInfo(CurrPlayer.Name, ItemColor.Yellow);
-		var gInfo3 = new GameInfo("Health: ", ItemColor.White);
-		var gInfo4 = new GameInfo(CurrPlayer.Health.ToString(), ItemColor.White);
-		InfoList.Add(gInfo1);
-		InfoList.Add(gInfo2);
-		InfoList.Add(gInfo3);
-		InfoList.Add(gInfo4);
 	}
 
 	internal Player CurrPlayer { get; set; }
@@ -46,7 +37,7 @@ public class Map
 	internal List<Enemy> Enemies { get; set; }
 	internal List<Obstacle> Snags { get; set; }
 	internal List<Bonus> Bonuses { get; set; }
-	internal GameInfoList InfoList { get; set; }
+
 	public GameItem[,] Field { get; set; }
 	public int Width
 	{
@@ -62,7 +53,7 @@ public class Map
 	public void CalculateMoves(Action<int, int> makeSound)
 	{
 		foreach (var enemy in Enemies)
-			enemy.CurrPos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection(CurrPlayer.CurrPos)));
+			enemy.Pos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection(CurrPlayer.Pos)));
 	}
 
 	private Command SolveCollisions(Unit unit, Command command)
@@ -95,17 +86,17 @@ public class Map
 		{
 			new Thread(() => makeSound(635, 50)).Start();
 			nextItem.IsExist = false;
-			CurrPlayer.CurrPos = CurrPlayer.Move(command);
+			CurrPlayer.Pos = CurrPlayer.Move(command);
 			return;
 		}
 		if (nextItem is not null && nextItem.IsItBlock)
 			return;
-		CurrPlayer.CurrPos = CurrPlayer.Move(command);
+		CurrPlayer.Pos = CurrPlayer.Move(command);
 	}
 	public void SyncItemsOnField()
 	{
 		Field = new GameItem[Width, Height];
-		foreach (var gameItem in Items) Field[gameItem.CurrPos.XPos, gameItem.CurrPos.YPos] = gameItem;
+		foreach (var gameItem in Items) Field[gameItem.Pos.XPos, gameItem.Pos.YPos] = gameItem;
 	}
 
 	private void SortItems(GameItem[,] field)

@@ -17,8 +17,14 @@ internal class Wolf : Enemy
 		Health = WolfMaxHealth;
 		var rnd = new Random();
 		_tick = rnd.NextDouble();
-		_x1 = _x2 = CurrPos.XPos;
-		_y1 = _y2 = CurrPos.YPos;
+		_x1 = _x2 = Pos.XPos;
+		_y1 = _y2 = Pos.YPos;
+	}
+
+	internal sealed override int Damage
+	{
+		get { return base.Damage; }
+		set { base.Damage = value; }
 	}
 
 	public override char Simbol { get; }
@@ -56,12 +62,12 @@ internal class Wolf : Enemy
 
 	private UnitStatus IsHumanNear(Point humanPoint)
 	{
-		double distance = 0;
-		if (CurrPos != null)
+		double distance;
+		if (Pos != null)
 			distance =
 				Math.Pow(
-					Math.Pow(CurrPos.XPos - humanPoint.XPos, 2) +
-					Math.Pow(CurrPos.YPos - humanPoint.YPos, 2), 0.5);
+					Math.Pow(Pos.XPos - humanPoint.XPos, 2) +
+					Math.Pow(Pos.YPos - humanPoint.YPos, 2), 0.5);
 		else
 			throw new NullReferenceException();
 
@@ -83,22 +89,22 @@ internal class Wolf : Enemy
 	{
 		UnitStatus = UnitStatus.Pursuit;
 		var command = Command.Non;
-		var angle = Math.Atan2(CurrPos.XPos - humanPoint.XPos, CurrPos.YPos - humanPoint.YPos);
-		if (angle is > 0 and < 0.395 or < 0 and > -0.395)
+		var angle = Math.Atan2(Pos.XPos - humanPoint.XPos, Pos.YPos - humanPoint.YPos);
+		if (angle is >= 0 and < 0.395 or <= 0 and > -0.395)
 			command = Command.Up;
 		else if (angle is < -0.395 and > -1.18)
 			command = Command.RightUp;
-		else if (angle is < -1.18 and > -1.965)
+		else if (angle is <= -1.18 and > -1.965)
 			command = Command.Right;
-		else if (angle is < -1.965 and > -2.75)
+		else if (angle is <= -1.965 and > -2.75)
 			command = Command.RightDown;
-		else if (angle is < -2.75 or > 2.75)
+		else if (angle is <= -2.75 or >= 2.75)
 			command = Command.Down;
-		else if (angle is > 1.965 and < 2.75)
+		else if (angle is >= 1.965 and < 2.75)
 			command = Command.LeftDown;
 		else if (angle is > 1.18 and < 1.965)
 			command = Command.Left;
-		else if (angle is > 0.395 and < 1.18)
+		else if (angle is >= 0.395 and <= 1.18)
 			command = Command.LeftUp;
 		return command;
 	}

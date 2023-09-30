@@ -5,7 +5,7 @@ internal class Apple : Bonus
 	private readonly int healthUp = 70;
 	private readonly int speedUp = 0;
 
-	public Apple(Point currPoint) : base(currPoint)
+	public Apple(Point point) : base(point)
 	{
 		Simbol = 'a';
 		SpeedUpForPlayer = speedUp;

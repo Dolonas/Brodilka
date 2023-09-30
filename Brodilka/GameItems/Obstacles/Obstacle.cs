@@ -6,7 +6,7 @@ public abstract class Obstacle : GameItem
 {
 	protected Obstacle(Point position) : base(position)
 	{
-		CurrPos = position;
+		Pos = position;
 		IsExist = true;
 		IsItBlock = true;
 		ItemColor = ItemColor.Yellow;

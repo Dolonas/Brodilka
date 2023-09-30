@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Brodilka.GameItems;
 using Brodilka.GameItems.Bonuses;
 using Brodilka.GameItems.Obstacles;
 using Brodilka.GameItems.Units;

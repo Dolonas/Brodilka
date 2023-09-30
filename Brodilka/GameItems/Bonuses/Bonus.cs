@@ -4,7 +4,7 @@ namespace Brodilka.GameItems.Bonuses;
 
 internal abstract class Bonus : GameItem
 {
-	protected Bonus(Point currPoint) : base(currPoint)
+	protected Bonus(Point point) : base(point)
 	{
 		IsItBlock = false;
 		ItemDefaultColor = ItemColor.Magenta;

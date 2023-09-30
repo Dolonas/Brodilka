@@ -1,5 +1,4 @@
-﻿using System;
-using Brodilka.Interfaces;
+﻿using Brodilka.Interfaces;
 
 namespace Brodilka.GameItems.Units;
 
@@ -15,13 +14,13 @@ internal abstract class Unit : GameItem, IDamagable
 
 	protected Unit(Point position) : base(position)
 	{
-		PreviousPosition = CurrPos;
+		PreviousPosition = Pos;
 		IsItBlock = false;
 		IsExist = true;
 		UnitStatus = UnitStatus.Patrol;
 	}
 
-	public override bool IsItBlock { get; set; }
+	public sealed override bool IsItBlock { get; set; }
 	public Point PreviousPosition { get; set; }
 
 	protected UnitStatus UnitStatus
@@ -48,9 +47,9 @@ internal abstract class Unit : GameItem, IDamagable
 
 	internal abstract int Damage { get; set; }
 
-	public void ToDamage(Unit unit, int damage)
+	public void ToDamage(Unit unit)
 	{
-		unit.GetDamage(damage);
+		unit.GetDamage(Damage);
 	}
 
 	public void GetDamage(int damage)
@@ -60,18 +59,18 @@ internal abstract class Unit : GameItem, IDamagable
 
 	public Point Move(Command command)
 	{
-		PreviousPosition = new Point(CurrPos.XPos, CurrPos.YPos);
+		PreviousPosition = new Point(Pos.XPos, Pos.YPos);
 		return command switch
 		{
-			Command.Left => new Point(CurrPos.XPos - 1, CurrPos.YPos),
-			Command.LeftUp => new Point(CurrPos.XPos - 1, CurrPos.YPos - 1),
-			Command.Up => new Point(CurrPos.XPos, CurrPos.YPos - 1),
-			Command.RightUp => new Point(CurrPos.XPos + 1, CurrPos.YPos - 1),
-			Command.Right => new Point(CurrPos.XPos + 1, CurrPos.YPos),
-			Command.RightDown => new Point(CurrPos.XPos + 1, CurrPos.YPos + 1),
-			Command.Down => new Point(CurrPos.XPos, CurrPos.YPos + 1),
-			Command.LeftDown => new Point(CurrPos.XPos - 1, CurrPos.YPos + 1),
-			_ => new Point(CurrPos.XPos, CurrPos.YPos)
+			Command.Left => new Point(Pos.XPos - 1, Pos.YPos),
+			Command.LeftUp => new Point(Pos.XPos - 1, Pos.YPos - 1),
+			Command.Up => new Point(Pos.XPos, Pos.YPos - 1),
+			Command.RightUp => new Point(Pos.XPos + 1, Pos.YPos - 1),
+			Command.Right => new Point(Pos.XPos + 1, Pos.YPos),
+			Command.RightDown => new Point(Pos.XPos + 1, Pos.YPos + 1),
+			Command.Down => new Point(Pos.XPos, Pos.YPos + 1),
+			Command.LeftDown => new Point(Pos.XPos - 1, Pos.YPos + 1),
+			_ => new Point(Pos.XPos, Pos.YPos)
 		};
 	}
 }

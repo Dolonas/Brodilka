@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace Brodilka;
+﻿namespace Brodilka.GameItems;
 
 public abstract class GameItem
 {
 	private ItemColor _itemDefaultColor = ItemColor.White;
-	public GameItem(Point currPos) => CurrPos = currPos;
+	public GameItem(Point pos) => Pos = pos;
 
 	public bool IsExist { get; set; }
 
@@ -17,7 +15,7 @@ public abstract class GameItem
 
 	public ItemColor ItemColor { get; protected set; }
 
-	public Point CurrPos { get; set; }
+	public Point Pos { get; set; }
 
 	public abstract bool IsItBlock { get; set; }
 	public abstract char Simbol { get; }

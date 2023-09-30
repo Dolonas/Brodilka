@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Brodilka.GameItems.Units;
+﻿namespace Brodilka.GameItems.Units;
 
 internal sealed class Player : Unit
 {

@@ -24,11 +24,12 @@ internal class GameProcessor
 	{
 		CurrMap = new Map(MapData.ReadMapAsync(FilePass)?.Result);
 		ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
+		InitializeGameInfo();
 	}
 
 	private IDisplayable ConsolePresents { get; }
-
 	private Map CurrMap { get; }
+	internal GameInfoList InfoList { get; set; }
 
 	internal void Run()
 	{
@@ -56,7 +57,7 @@ internal class GameProcessor
 	{
 		foreach (var gameItem in CurrMap.Items.Where(gi => gi is not null && gi.IsExist))
 			ConsolePresents.Display(gameItem);
-		ConsolePresents.DisplayGameInfo(CurrMap.InfoList);
+		ConsolePresents.DisplayGameInfo(InfoList);
 		CurrMap.SyncItemsOnField();
 	}
 
@@ -77,5 +78,19 @@ internal class GameProcessor
 			ConsoleKey.Delete => Command.Redraw,
 			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
 		};
+	}
+
+	private void InitializeGameInfo()
+	{
+		var infoLine = CurrMap.Field.GetLength(1) + 1;
+		InfoList = new GameInfoList(infoLine, 2);
+		var gInfo1 = new GameInfo("Player name:", ItemColor.Cyan);
+		var gInfo2 = new GameInfo(CurrMap.CurrPlayer.Name, ItemColor.Yellow);
+		var gInfo3 = new GameInfo("Health:", ItemColor.White);
+		var gInfo4 = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
+		InfoList.Add(gInfo1);
+		InfoList.Add(gInfo2);
+		InfoList.Add(gInfo3);
+		InfoList.Add(gInfo4);
 	}
 }

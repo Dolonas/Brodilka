@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Brodilka.GameItems;
 using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
 
@@ -35,10 +36,10 @@ internal class ConsolePresentation : IDisplayable
 	void IDisplayable.Display(GameItem gameItem)
 	{
 		Console.ForegroundColor = ConverToConsoleColor(gameItem.ItemColor);
-		var previousPos = gameItem is Unit unit ? unit.PreviousPosition : gameItem.CurrPos;
+		var previousPos = gameItem is Unit unit ? unit.PreviousPosition : gameItem.Pos;
 		Console.SetCursorPosition(previousPos.XPos, previousPos.YPos);
 		Console.Write(' ');
-		Console.SetCursorPosition(gameItem.CurrPos.XPos, gameItem.CurrPos.YPos);
+		Console.SetCursorPosition(gameItem.Pos.XPos, gameItem.Pos.YPos);
 		Console.Write(gameItem.Simbol);
 		Console.ForegroundColor = ConsoleColor.DarkGray;
 	}
