@@ -37,6 +37,7 @@ public class Map
 	internal List<Enemy> Enemies { get; set; }
 	internal List<Obstacle> Snags { get; set; }
 	internal List<Bonus> Bonuses { get; set; }
+	internal List<NextLevelZone> NextLevelZones { get; set; }
 
 	public GameItem[,] Field { get; set; }
 	public int Width
@@ -71,27 +72,30 @@ public class Map
 		return command;
 	}
 
-	public void SolvePlayerCollisions(Command command, Action<int, int> makeSound)
+	public bool SolvePlayerCollisions(Command command, Action<int, int> makeSound)
 	{
 		if (command == Command.Non)
-			return;
+			return false;
 		var nextPos = CurrPlayer.Move(command);
 		if (nextPos.XPos < 0 ||
 		    nextPos.YPos < 0 ||
 		    nextPos.XPos > Width - 1 ||
 		    nextPos.YPos > Height - 1)
-				return;
+				return false;
 		var nextItem = Field[nextPos.XPos, nextPos.YPos];
+		if (nextItem is NextLevelZone)
+			return true;
 		if (nextItem is Bonus && nextItem.IsExist)
 		{
 			new Thread(() => makeSound(635, 50)).Start();
 			nextItem.IsExist = false;
 			CurrPlayer.Pos = CurrPlayer.Move(command);
-			return;
+			return false;
 		}
 		if (nextItem is not null && nextItem.IsItBlock)
-			return;
+			return false;
 		CurrPlayer.Pos = CurrPlayer.Move(command);
+		return false;
 	}
 	public void SyncItemsOnField()
 	{

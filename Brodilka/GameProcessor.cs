@@ -45,7 +45,8 @@ internal class GameProcessor
 
 			receive = GetKeyboardReceive();
 			//if (receive == Command.Redraw) ConsolePresents.DisplayMap(CurrMap);
-			CurrMap.SolvePlayerCollisions(receive, makeSound);
+			if (CurrMap.SolvePlayerCollisions(receive, makeSound))
+				break;
 			DisplayAll();
 			Thread.Sleep(200);
 		}

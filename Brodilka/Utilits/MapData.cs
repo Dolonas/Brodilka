@@ -34,11 +34,6 @@ public class MapData
 		var lines = textMap.Split('\n');
 		var mapWidth = lines.Max(s => s.Length);
 		var field = new GameItem[mapWidth, lines.Length];
-		// for(var i = 0; i < lines.Length; i++)
-		// {
-		// 	lines[i] +=  new string(' ', mapWidth - lines[i].Length);
-		// }
-		//var itemsDictionaryFull = new Dictionary<int, Dictionary<int, char>>();
 		var isItFirstPlayer = true;
 		for (var y = 0; y < lines.Length; y++)
 		{
@@ -72,6 +67,9 @@ public class MapData
 						break;
 					case 'o':
 						field[x, y] = new Stone(new Point(x, y));
+						break;
+					case 'X':
+						field[x, y] = new NextLevelZone(new Point(x, y));
 						break;
 				}
 		}
