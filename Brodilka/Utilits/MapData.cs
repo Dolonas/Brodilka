@@ -14,25 +14,29 @@ namespace Brodilka.Utilits;
 
 public class MapData
 {
-	public MapData(Map mapsDirectory) => MapList = mapsDirectory;
+	public MapData(List<GameItem[,]> fieldList) => FieldList = fieldList;
 
-	private List<Map> MapList { get; }
+	private List<GameItem[,]> FieldList { get; }
 
 
-	public static async Task<GameItem[,]>? ReadMapAsync(string mapsDirectory)
+	public static async Task<List<GameItem[,]>>? ReadMapAsync(string mapsDirectory)
 	{
-		string textMap;
+		//string textMap;
+		var mapList = new List<GameItem[,]>();
 		var pathes = Directory.GetFiles(mapsDirectory);
 		foreach (var fileName in pathes)
 		{
-			var file = Directory.GetFiles(mapsDirectory);
+			string textMap;
+			using (var reader = new StreamReader(fileName, Encoding.Default))
 			{
 				textMap = await reader.ReadToEndAsync().ConfigureAwait(false);
 			}
+			mapList.Add(DecodeMap(textMap)); ;
 		}
 
+		return mapList;
 
-		return DecodeMap(textMap);
+
 	}
 
 	private static GameItem[,] DecodeMap(string textMap)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Brodilka.GameItems;
 using Brodilka.Interfaces;
 using Brodilka.Utilits;
 
@@ -23,8 +24,18 @@ internal class GameProcessor
 
 	internal GameProcessor()
 	{
-		MapList = new Map(MapData.ReadMapAsync(MapsDirectory)?.Result);
-		ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
+		MapList = new List<Map>();
+		var gameItemsEnumerable = MapData.ReadMapAsync(MapsDirectory)?.Result;
+		if (gameItemsEnumerable != null)
+		{
+			var gameItemList = new List<GameItem[,]>(gameItemsEnumerable);
+			foreach (var item  in gameItemList)
+			{
+				MapList?.Add(new Map(item));
+			}
+		}
+		if (MapList != null) CurrMap = MapList[0];
+		if (CurrMap != null) ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
 		InitializeGameInfo();
 	}
 
