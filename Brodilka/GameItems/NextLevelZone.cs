@@ -5,7 +5,7 @@ public class NextLevelZone : GameItem
 	public NextLevelZone(Point position) : base(position)
 	{
 		Pos = position;
-		IsExist = true;
+		IsExist = false;
 		IsItBlock = false;
 		ItemColor = ItemColor.Gray;
 		Simbol = 'X';

@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,18 +14,23 @@ namespace Brodilka.Utilits;
 
 public class MapData
 {
-	public MapData(Map currentMap) => CurrentMap = currentMap;
+	public MapData(Map mapsDirectory) => MapList = mapsDirectory;
 
-	private Map CurrentMap { get; }
+	private List<Map> MapList { get; }
 
 
-	public static async Task<GameItem[,]>? ReadMapAsync(string filePath)
+	public static async Task<GameItem[,]>? ReadMapAsync(string mapsDirectory)
 	{
 		string textMap;
-		using (var reader = new StreamReader(filePath, Encoding.Default))
+		var pathes = Directory.GetFiles(mapsDirectory);
+		foreach (var fileName in pathes)
 		{
-			textMap = await reader.ReadToEndAsync().ConfigureAwait(false);
+			var file = Directory.GetFiles(mapsDirectory);
+			{
+				textMap = await reader.ReadToEndAsync().ConfigureAwait(false);
+			}
 		}
+
 
 		return DecodeMap(textMap);
 	}

@@ -83,15 +83,17 @@ public class Map
 		    nextPos.YPos > Height - 1)
 				return false;
 		var nextItem = Field[nextPos.XPos, nextPos.YPos];
-		if (nextItem is NextLevelZone)
-			return true;
-		if (nextItem is Bonus && nextItem.IsExist)
+		switch (nextItem)
 		{
-			new Thread(() => makeSound(635, 50)).Start();
-			nextItem.IsExist = false;
-			CurrPlayer.Pos = CurrPlayer.Move(command);
-			return false;
+			case NextLevelZone:
+				return true;
+			case Bonus when nextItem.IsExist:
+				new Thread(() => makeSound(635, 50)).Start();
+				nextItem.IsExist = false;
+				CurrPlayer.Pos = CurrPlayer.Move(command);
+				return false;
 		}
+
 		if (nextItem is not null && nextItem.IsItBlock)
 			return false;
 		CurrPlayer.Pos = CurrPlayer.Move(command);
@@ -107,7 +109,7 @@ public class Map
 	{
 		for (var y = 0; y < field.GetLength(1); y++)
 		for (var x = 0; x < field.GetLength(0); x++)
-			if (field[x, y] is not null && field[x, y].IsExist)
+			if (field[x, y] is not null && (field[x, y].IsExist || field[x, y] is NextLevelZone))
 				Items.Add(field[x, y]);
 		CurrPlayer = (Player)Items.FirstOrDefault(x => x is Player);
 

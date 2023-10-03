@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Brodilka.Interfaces;
@@ -18,18 +19,20 @@ public enum ItemColor
 
 internal class GameProcessor
 {
-	private const string FilePass = "../../../Data/Maps/map03.dat";
+	private const string MapsDirectory = "../../../Data/Maps";
 
 	internal GameProcessor()
 	{
-		CurrMap = new Map(MapData.ReadMapAsync(FilePass)?.Result);
+		MapList = new Map(MapData.ReadMapAsync(MapsDirectory)?.Result);
 		ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
 		InitializeGameInfo();
 	}
 
 	private IDisplayable ConsolePresents { get; }
+	private List<Map> MapList { get; }
 	private Map CurrMap { get; }
-	internal GameInfoList InfoList { get; set; }
+
+	private GameInfoList InfoList { get; set; }
 
 	internal void Run()
 	{
@@ -46,7 +49,9 @@ internal class GameProcessor
 			receive = GetKeyboardReceive();
 			//if (receive == Command.Redraw) ConsolePresents.DisplayMap(CurrMap);
 			if (CurrMap.SolvePlayerCollisions(receive, makeSound))
-				break;
+			{
+				GetNextLevel();
+			}
 			DisplayAll();
 			Thread.Sleep(200);
 		}
