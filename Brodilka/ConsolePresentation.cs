@@ -47,6 +47,9 @@ internal class ConsolePresentation : IDisplayable
 	void IDisplayable.DisplayGameInfo(GameInfoList infoList)
 	{
 		var startXPos = infoList.StartXPosition;
+		Console.SetCursorPosition(startXPos, infoList.InfoLinePosition);
+		Console.WriteLine(new string(' ', _windowWidth - 10));
+
 		foreach (var info in infoList.List)
 		{
 			Console.SetCursorPosition(startXPos, infoList.InfoLinePosition);
@@ -111,5 +114,13 @@ internal class ConsolePresentation : IDisplayable
 			ItemColor.DarkYellow => ConsoleColor.DarkYellow,
 			_ => throw new ArgumentOutOfRangeException(nameof(itemColor), itemColor, null)
 		};
+	}
+
+	void IDisplayable.ShowGameOverScreen()
+	{
+		Console.Clear();
+		Console.ForegroundColor = ConsoleColor.Red;
+		Console.SetCursorPosition(WindowWidth/2 - 8, WindowHeight / 2);
+		Console.WriteLine("G a m e   O v e r!");
 	}
 }

@@ -37,7 +37,7 @@ public class Map
 	internal List<Enemy> Enemies { get; set; }
 	internal List<Obstacle> Snags { get; set; }
 	internal List<Bonus> Bonuses { get; set; }
-	internal List<NextLevelZone> NextLevelZones { get; set; }
+	//internal List<NextLevelZone> NextLevelZones { get; set; }
 
 	public GameItem[,] Field { get; set; }
 	public int Width
@@ -54,7 +54,12 @@ public class Map
 	public void CalculateMoves(Action<int, int> makeSound)
 	{
 		foreach (var enemy in Enemies)
+		{
 			enemy.Pos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection(CurrPlayer.Pos)));
+			if (enemy.UnitStatus == UnitStatus.Attack)
+				enemy.ToDamage(CurrPlayer);
+		}
+
 	}
 
 	private Command SolveCollisions(Unit unit, Command command)

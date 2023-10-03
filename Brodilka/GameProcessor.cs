@@ -21,6 +21,7 @@ public enum ItemColor
 internal class GameProcessor
 {
 	private const string MapsDirectory = "../../../Data/Maps";
+	private int _mapIndex = 0;
 
 	internal GameProcessor()
 	{
@@ -34,14 +35,14 @@ internal class GameProcessor
 				MapList?.Add(new Map(item));
 			}
 		}
-		if (MapList != null) CurrMap = MapList[0];
+		if (MapList != null) CurrMap = MapList[_mapIndex];
 		if (CurrMap != null) ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
 		InitializeGameInfo();
 	}
 
 	private IDisplayable ConsolePresents { get; }
 	private List<Map> MapList { get; }
-	private Map CurrMap { get; }
+	private Map CurrMap { get; set; }
 
 	private GameInfoList InfoList { get; set; }
 
@@ -56,12 +57,25 @@ internal class GameProcessor
 		{
 			var makeSound = ConsolePresents.MakeSound;
 			CurrMap.CalculateMoves(makeSound);
+			InfoList.List[3] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
+			ConsolePresents.DisplayGameInfo(InfoList);
+
+			if (CurrMap.CurrPlayer.Health < 1)
+			{
+				GameOver();
+				Thread.Sleep(16000);
+				Console.ReadKey();
+				break;
+			}
+
 
 			receive = GetKeyboardReceive();
 			//if (receive == Command.Redraw) ConsolePresents.DisplayMap(CurrMap);
 			if (CurrMap.SolvePlayerCollisions(receive, makeSound))
 			{
-				GetNextLevel();
+				GoNextLevel();
+				CurrMap.SyncItemsOnField();
+				ConsolePresents.Redraw();
 			}
 			DisplayAll();
 			Thread.Sleep(200);
@@ -109,5 +123,15 @@ internal class GameProcessor
 		InfoList.Add(gInfo2);
 		InfoList.Add(gInfo3);
 		InfoList.Add(gInfo4);
+	}
+
+	private void GoNextLevel()
+	{
+		CurrMap = MapList[++_mapIndex];
+	}
+
+	private void GameOver()
+	{
+		ConsolePresents.ShowGameOverScreen();
 	}
 }

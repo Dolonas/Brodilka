@@ -2,7 +2,7 @@
 
 internal class Bear : Enemy
 {
-	private readonly int _bearDamage = 40;
+	private readonly int _bearDamage = 2;
 	private readonly int _bearHealth = 70;
 
 	public Bear(Point currentPosition)

@@ -10,4 +10,5 @@ internal interface IDisplayable
 	void DisplayMap(Map map);
 	void Redraw();
 	void MakeSound(int frequency, int duration);
+	void ShowGameOverScreen();
 }

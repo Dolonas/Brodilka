@@ -23,9 +23,9 @@ internal abstract class Unit : GameItem, IDamagable
 	public sealed override bool IsItBlock { get; set; }
 	public Point PreviousPosition { get; set; }
 
-	protected UnitStatus UnitStatus
+	public UnitStatus UnitStatus
 	{
-		//get => _unitStatus;
+		get => _unitStatus;
 		set
 		{
 			_unitStatus = value;
