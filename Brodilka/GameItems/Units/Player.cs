@@ -2,7 +2,7 @@
 
 internal sealed class Player : Unit
 {
-	private const int MaxDamage = 80;
+	private const int MaxDamage = 30;
 	private const int StartHealth = 100;
 	private readonly string _name;
 

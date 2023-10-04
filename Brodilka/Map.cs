@@ -51,7 +51,7 @@ public class Map
 		private init => _height = value is > 30 and < 160 ? value : 60;
 	}
 
-	public void CalculateMoves(Action<int, int> makeSound)
+	public void CalculateMoves()
 	{
 		foreach (var enemy in Enemies)
 		{
@@ -81,6 +81,16 @@ public class Map
 	{
 		if (command == Command.Non)
 			return false;
+		if (command == Command.Attack1)
+		{
+			var surroundedEnemies = GetSurroundedEnemies();
+			foreach (var enemy in surroundedEnemies)
+			{
+				CurrPlayer.ToDamage(enemy);
+				if (enemy.Health < 1)
+					enemy.IsExist = false;
+			}
+		}
 		var nextPos = CurrPlayer.Move(command);
 		if (nextPos.XPos < 0 ||
 		    nextPos.YPos < 0 ||
@@ -122,5 +132,29 @@ public class Map
 		Enemies = Items.OfType<Enemy>().ToList();
 		Snags = Items.OfType<Obstacle>().ToList();
 		Bonuses = Items.OfType<Bonus>().ToList();
+	}
+
+	private IEnumerable<Enemy> GetSurroundedEnemies()
+	{
+		var surroundedEnemies = new List<Enemy>();
+		var pos = CurrPlayer.Pos;
+		if (Field[pos.XPos - 1, pos.YPos - 1] is Enemy)
+			surroundedEnemies.Add(Field[pos.XPos - 1, pos.YPos - 1] as Enemy);
+		if (Field[pos.XPos, pos.YPos - 1] is Enemy)
+			surroundedEnemies.Add(Field[pos.XPos, pos.YPos - 1] as Enemy);
+		if (Field[pos.XPos + 1, pos.YPos - 1] is Enemy)
+			surroundedEnemies.Add(Field[pos.XPos + 1, pos.YPos - 1] as Enemy);
+		if (Field[pos.XPos + 1, pos.YPos] is Enemy)
+			surroundedEnemies.Add(Field[pos.XPos + 1, pos.YPos] as Enemy);
+		if (Field[pos.XPos + 1, pos.YPos + 1] is Enemy)
+			surroundedEnemies.Add(Field[pos.XPos + 1, pos.YPos + 1] as Enemy);
+		if (Field[pos.XPos, pos.YPos + 1] is Enemy)
+			surroundedEnemies.Add(Field[pos.XPos, pos.YPos + 1] as Enemy);
+		if (Field[pos.XPos - 1, pos.YPos + 1] is Enemy)
+			surroundedEnemies.Add(Field[pos.XPos - 1, pos.YPos + 1] as Enemy);
+		if (Field[pos.XPos - 1, pos.YPos] is Enemy)
+			surroundedEnemies.Add(Field[pos.XPos - 1, pos.YPos] as Enemy);
+
+		return surroundedEnemies;
 	}
 }

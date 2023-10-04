@@ -56,7 +56,7 @@ internal class GameProcessor
 		while (receive != Command.Escape)
 		{
 			var makeSound = ConsolePresents.MakeSound;
-			CurrMap.CalculateMoves(makeSound);
+			CurrMap.CalculateMoves();
 			InfoList.List[3] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
 			ConsolePresents.DisplayGameInfo(InfoList);
 
@@ -107,6 +107,7 @@ internal class GameProcessor
 			ConsoleKey.UpArrow => Command.Up,
 			ConsoleKey.DownArrow => Command.Down,
 			ConsoleKey.Delete => Command.Redraw,
+			ConsoleKey.A => Command.Attack1,
 			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
 		};
 	}
