@@ -26,7 +26,7 @@ public class Map
 		{
 			Field = field;
 		}
-		SortItems(Field);
+		SortItems();
 		Width = Field.GetLength(0) + 2;
 		Height = Field.GetLength(1) + 4;
 	}
@@ -83,13 +83,16 @@ public class Map
 			return false;
 		if (command == Command.Attack1)
 		{
+			CurrPlayer.UnitStatus = UnitStatus.Attack;
 			var surroundedEnemies = GetSurroundedEnemies();
 			foreach (var enemy in surroundedEnemies)
 			{
 				CurrPlayer.ToDamage(enemy);
-				if (enemy.Health < 1)
-					enemy.IsExist = false;
+				if (enemy.Health >= 1) continue;
+				Field[enemy.Pos.XPos, enemy.Pos.YPos] = null;
+				SortItems();
 			}
+			return false;
 		}
 		var nextPos = CurrPlayer.Move(command);
 		if (nextPos.XPos < 0 ||
@@ -120,12 +123,13 @@ public class Map
 		foreach (var gameItem in Items) Field[gameItem.Pos.XPos, gameItem.Pos.YPos] = gameItem;
 	}
 
-	private void SortItems(GameItem[,] field)
+	private void SortItems()
 	{
-		for (var y = 0; y < field.GetLength(1); y++)
-		for (var x = 0; x < field.GetLength(0); x++)
-			if (field[x, y] is not null && (field[x, y].IsExist || field[x, y] is NextLevelZone))
-				Items.Add(field[x, y]);
+		Items = new List<GameItem>();
+		for (var y = 0; y < Field.GetLength(1); y++)
+		for (var x = 0; x < Field.GetLength(0); x++)
+			if (Field[x, y] is not null && (Field[x, y].IsExist || Field[x, y] is NextLevelZone))
+				Items.Add(Field[x, y]);
 		CurrPlayer = (Player)Items.FirstOrDefault(x => x is Player);
 
 		Units = Items.OfType<Unit>().ToList();

@@ -63,7 +63,7 @@ internal class GameProcessor
 			if (CurrMap.CurrPlayer.Health < 1)
 			{
 				GameOver();
-				Thread.Sleep(16000);
+				Thread.Sleep(6000);
 				Console.ReadKey();
 				break;
 			}
