@@ -2,14 +2,14 @@
 
 internal class Apple : Bonus
 {
-	private readonly int healthUp = 70;
-	private readonly int speedUp = 0;
+	private readonly int _healthUp = 70;
+	private readonly int _speedUp = 0;
 
 	public Apple(Point point) : base(point)
 	{
 		Simbol = 'a';
-		SpeedUpForPlayer = speedUp;
-		HealthUpForPlayer = healthUp;
+		SpeedUpForPlayer = _speedUp;
+		HealthUpForPlayer = _healthUp;
 		IsExist = true;
 	}
 

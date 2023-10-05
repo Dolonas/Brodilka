@@ -105,9 +105,11 @@ public class Map
 		{
 			case NextLevelZone:
 				return true;
-			case Bonus when nextItem.IsExist:
+			case Bonus bonus when bonus.IsExist:
 				new Thread(() => makeSound(635, 50)).Start();
-				nextItem.IsExist = false;
+				bonus.IsExist = false;
+				CurrPlayer.Health += bonus.HealthUpForPlayer;
+				CurrPlayer.Speed += bonus.SpeedUpForPlayer;
 				CurrPlayer.Pos = CurrPlayer.Move(command);
 				return false;
 		}

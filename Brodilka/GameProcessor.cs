@@ -30,11 +30,12 @@ internal class GameProcessor
 		if (gameItemsEnumerable != null)
 		{
 			var gameItemList = new List<GameItem[,]>(gameItemsEnumerable);
-			foreach (var item  in gameItemList)
+			foreach (var item in gameItemList)
 			{
 				MapList?.Add(new Map(item));
 			}
 		}
+
 		if (MapList != null) CurrMap = MapList[_mapIndex];
 		if (CurrMap != null) ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
 		InitializeGameInfo();
@@ -62,10 +63,8 @@ internal class GameProcessor
 
 			if (CurrMap.CurrPlayer.Health < 1)
 			{
-				GameOver();
-				Thread.Sleep(6000);
-				Console.ReadKey();
-				break;
+				ConsolePresents.ShowGameOverScreen();
+
 			}
 
 
@@ -73,10 +72,19 @@ internal class GameProcessor
 			//if (receive == Command.Redraw) ConsolePresents.DisplayMap(CurrMap);
 			if (CurrMap.SolvePlayerCollisions(receive, makeSound))
 			{
-				GoNextLevel();
+				if (_mapIndex < MapList.Count - 1)
+					CurrMap = MapList[++_mapIndex];
+				else
+				{
+					ConsolePresents.GoToWinScreen();
+					Thread.Sleep(6000);
+					Console.ReadKey();
+					break;
+				}
 				CurrMap.SyncItemsOnField();
 				ConsolePresents.Redraw();
 			}
+
 			DisplayAll();
 			Thread.Sleep(200);
 		}
@@ -128,11 +136,6 @@ internal class GameProcessor
 
 	private void GoNextLevel()
 	{
-		CurrMap = MapList[++_mapIndex];
-	}
 
-	private void GameOver()
-	{
-		ConsolePresents.ShowGameOverScreen();
 	}
 }

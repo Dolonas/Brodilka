@@ -11,4 +11,5 @@ internal interface IDisplayable
 	void Redraw();
 	void MakeSound(int frequency, int duration);
 	void ShowGameOverScreen();
+	void GoToWinScreen();
 }

@@ -116,11 +116,21 @@ internal class ConsolePresentation : IDisplayable
 		};
 	}
 
+	void IDisplayable.GoToWinScreen()
+	{
+		Console.Clear();
+		Console.ForegroundColor = ConsoleColor.Cyan;
+		Console.SetCursorPosition(WindowWidth/2 - 8, WindowHeight / 2);
+		Console.WriteLine("Y o u   w i n !");
+	}
+
 	void IDisplayable.ShowGameOverScreen()
 	{
 		Console.Clear();
 		Console.ForegroundColor = ConsoleColor.Red;
 		Console.SetCursorPosition(WindowWidth/2 - 8, WindowHeight / 2);
-		Console.WriteLine("G a m e   O v e r!");
+		Console.WriteLine("G a m e   O v e r !");
 	}
+
+
 }

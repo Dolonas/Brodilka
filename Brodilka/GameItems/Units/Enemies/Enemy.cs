@@ -2,8 +2,6 @@
 
 namespace Brodilka.GameItems.Units.Enemies;
 
-
-
 internal class Enemy : Unit
 {
 	public Enemy(Point currentPosition)
@@ -16,8 +14,6 @@ internal class Enemy : Unit
 
 	internal override int Damage { get; set; }
 	public override char Simbol { get; }
-
-	//public ConsoleColor ItemColor = ConsoleColor.Green;
 
 	public virtual Command GetEnemyDirection(Point humanPoint)
 	{

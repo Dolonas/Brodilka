@@ -45,6 +45,8 @@ internal abstract class Unit : GameItem, IDamagable
 		set => _health = value < 0 ? 0 : _health = value;
 	}
 
+	internal int Speed { get; set; }
+
 	internal abstract int Damage { get; set; }
 
 	public void ToDamage(Unit unit)
