@@ -64,9 +64,7 @@ internal class GameProcessor
 			if (CurrMap.CurrPlayer.Health < 1)
 			{
 				ConsolePresents.ShowGameOverScreen();
-
 			}
-
 
 			receive = GetKeyboardReceive();
 			//if (receive == Command.Redraw) ConsolePresents.DisplayMap(CurrMap);
@@ -132,10 +130,5 @@ internal class GameProcessor
 		InfoList.Add(gInfo2);
 		InfoList.Add(gInfo3);
 		InfoList.Add(gInfo4);
-	}
-
-	private void GoNextLevel()
-	{
-
 	}
 }

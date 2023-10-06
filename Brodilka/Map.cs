@@ -59,7 +59,6 @@ public class Map
 			if (enemy.UnitStatus == UnitStatus.Attack)
 				enemy.ToDamage(CurrPlayer);
 		}
-
 	}
 
 	private Command SolveCollisions(Unit unit, Command command)

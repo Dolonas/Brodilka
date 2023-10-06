@@ -44,6 +44,17 @@ internal class ConsolePresentation : IDisplayable
 		Console.ForegroundColor = ConsoleColor.DarkGray;
 	}
 
+	void IDisplayable.DisplayMap(Map map)
+	{
+		for (var i = 0; i < map.Height; i++)
+		for (var j = 0; j < map.Width; j++)
+		{
+			Console.SetCursorPosition(j, i);
+			if (map.Field[j, i] is not null)
+				Console.Write(map.Field[j, i].Simbol);
+		}
+	}
+
 	void IDisplayable.DisplayGameInfo(GameInfoList infoList)
 	{
 		var startXPos = infoList.StartXPosition;
@@ -58,17 +69,7 @@ internal class ConsolePresentation : IDisplayable
 			Console.ForegroundColor = ConsoleColor.DarkGray;
 			startXPos += info.GameInfoString.Length + 1;
 		}
-	}
-
-	void IDisplayable.DisplayMap(Map map)
-	{
-		for (var i = 0; i < map.Height; i++)
-		for (var j = 0; j < map.Width; j++)
-		{
-			Console.SetCursorPosition(j, i);
-			if (map.Field[j, i] is not null)
-				Console.Write(map.Field[j, i].Simbol);
-		}
+		Console.SetCursorPosition(0, 0);
 	}
 
 	void IDisplayable.Redraw()
