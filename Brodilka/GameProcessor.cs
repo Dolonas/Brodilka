@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Brodilka.GameItems;
+using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
 using Brodilka.Utilits;
 
@@ -67,7 +68,6 @@ internal class GameProcessor
 			}
 
 			receive = GetKeyboardReceive();
-			//if (receive == Command.Redraw) ConsolePresents.DisplayMap(CurrMap);
 			if (CurrMap.SolvePlayerCollisions(receive, makeSound))
 			{
 				if (_mapIndex < MapList.Count - 1)
@@ -84,9 +84,9 @@ internal class GameProcessor
 			}
 
 			DisplayAll();
-			Thread.Sleep(200);
+			Unit.SpeedCounter++;
+			Thread.Sleep(50);
 		}
-
 		Environment.Exit(0);
 	}
 

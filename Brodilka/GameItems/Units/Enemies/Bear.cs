@@ -2,15 +2,17 @@
 
 internal class Bear : Enemy
 {
-	private readonly int _bearDamage = 2;
-	private readonly int _bearHealth = 70;
+	private const int BearDamage = 2;
+	private const int BearHealth = 70;
+	private const int NormalSpeed = 15;
 
 	public Bear(Point currentPosition)
 		: base(currentPosition)
 	{
 		Simbol = 'B';
-		Damage = _bearDamage;
-		Health = _bearHealth;
+		Damage = BearDamage;
+		Health = BearHealth;
+		Speed = NormalSpeed;
 	}
 
 	public override char Simbol { get; }

@@ -18,10 +18,12 @@ internal abstract class Unit : GameItem, IDamagable
 		IsItBlock = false;
 		IsExist = true;
 		UnitStatus = UnitStatus.Patrol;
+		SpeedCounter = 0;
 	}
 
 	public sealed override bool IsItBlock { get; set; }
 	public Point PreviousPosition { get; set; }
+	public static int SpeedCounter { get; set; }
 
 	public UnitStatus UnitStatus
 	{

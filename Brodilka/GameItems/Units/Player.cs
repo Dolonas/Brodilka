@@ -4,6 +4,7 @@ internal sealed class Player : Unit
 {
 	private const int MaxDamage = 30;
 	private const int StartHealth = 100;
+	private const int NormalSpeed = 18;
 	private readonly string _name;
 
 
@@ -14,6 +15,7 @@ internal sealed class Player : Unit
 		Name = name;
 		Simbol = 'P';
 		Health = StartHealth;
+		Speed = NormalSpeed;
 		Damage = MaxDamage;
 		ItemDefaultColor = ItemColor.Blue;
 	}

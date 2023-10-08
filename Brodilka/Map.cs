@@ -53,7 +53,7 @@ public class Map
 
 	public void CalculateMoves()
 	{
-		foreach (var enemy in Enemies)
+		foreach (var enemy in Enemies.Where(enemy => Unit.SpeedCounter % (20 - enemy.Speed) == 0))
 		{
 			enemy.Pos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection(CurrPlayer.Pos)));
 			if (enemy.UnitStatus == UnitStatus.Attack)
@@ -93,6 +93,7 @@ public class Map
 			}
 			return false;
 		}
+		if (Unit.SpeedCounter % (20 - CurrPlayer.Speed) != 0) return false;
 		var nextPos = CurrPlayer.Move(command);
 		if (nextPos.XPos < 0 ||
 		    nextPos.YPos < 0 ||

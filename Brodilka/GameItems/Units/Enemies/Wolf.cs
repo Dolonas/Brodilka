@@ -6,6 +6,7 @@ internal class Wolf : Enemy
 {
 	private const int WolfDamage = 2;
 	private const int WolfMaxHealth = 40;
+	private const int NormalSpeed = 16;
 	private double _tick;
 	private int _x1, _y1, _x2, _y2;
 
@@ -15,6 +16,7 @@ internal class Wolf : Enemy
 		Simbol = 'w';
 		Damage = WolfDamage;
 		Health = WolfMaxHealth;
+		Speed = NormalSpeed;
 		var rnd = new Random();
 		_tick = rnd.NextDouble();
 		_x1 = _x2 = Pos.XPos;
