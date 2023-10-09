@@ -76,15 +76,18 @@ public class Map
 		return command;
 	}
 
-	public void SolvePlayerCollisions(GameItem nextItem, Action<int, int> makeSound)
+	public void SolvePlayerCollisions(Point nextPos)
 	{
-		if (nextItem.Pos.XPos < 0 ||
-		    nextItem.Pos.YPos < 0 ||
-		    nextItem.Pos.XPos > Width - 1 ||
-		    nextItem.Pos.YPos > Height - 1 ||
-		    !nextItem.IsItBlock ||
-		    CurrPlayer.SpeedCounter++ % (20 - CurrPlayer.Speed) != 0)
-			CurrPlayer.Pos = CurrPlayer.Move(nextItem.Pos);
+		var nextItem = Field[nextPos.XPos, nextPos.YPos];
+		if (nextPos.XPos < 0 ||
+		    nextPos.YPos < 0 ||
+		    nextPos.XPos > Width - 1 ||
+		    nextPos.YPos > Height - 1)
+			return;
+		if (nextItem == null)
+			CurrPlayer.Pos = nextPos;
+		else if (nextItem.IsExist && !nextItem.IsItBlock && CurrPlayer.SpeedCounter++ % (20 - CurrPlayer.Speed) != 0)
+			CurrPlayer.Pos = nextPos;
 	}
 
 	public void DoPlayerAttack()

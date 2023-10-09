@@ -51,11 +51,11 @@ internal class GameProcessor
 	internal void Run()
 	{
 		DisplayAll();
-		var receive = Command.Non;
+		var kbResponse = Command.Non;
 		if (Console.KeyAvailable)
-			receive = GetKeyboardReceive();
+			kbResponse = GetKeyboardReceive();
 
-		while (receive != Command.Escape)
+		while (kbResponse != Command.Escape)
 		{
 			var makeSound = ConsolePresents.MakeSound;
 			CurrMap.CalculateMoves();
@@ -67,36 +67,25 @@ internal class GameProcessor
 				ConsolePresents.ShowGameOverScreen();
 			}
 
-			receive = GetKeyboardReceive();
-			if (receive == Command.Attack1) CurrMap.DoPlayerAttack();
-			var nextPos = CurrMap.CurrPlayer.Move(receive);
-			var nextItem = CurrMap.GetNextItemOnPlayerWay(receive);
-			if (nextItem is NextLevelZone)
+			kbResponse = GetKeyboardReceive();
+			if (kbResponse == Command.Attack1) CurrMap.DoPlayerAttack();
+			var nextPos = CurrMap.CurrPlayer.Move(kbResponse);
+			var nextItem = CurrMap.GetNextItemOnPlayerWay(kbResponse);
+			switch (nextItem)
 			{
-				if (_mapIndex < MapList.Count - 1)
-					CurrMap = MapList[++_mapIndex];
-				else
-				{
-					ConsolePresents.GoToWinScreen();
-					Thread.Sleep(6000);
-					Console.ReadKey();
+				case NextLevelZone:
+					GetNextLevel();
 					break;
-				}
-				CurrMap.SyncItemsOnField();
-				ConsolePresents.Redraw();
+				case Bonus bonus:
+					new Thread(() => makeSound(635, 50)).Start();
+					CurrMap.CurrPlayer.Health += bonus.HealthUpForPlayer;
+					CurrMap.CurrPlayer.Speed += CurrMap.CurrPlayer.Speed + bonus.SpeedUpForPlayer <= 20 ? bonus.SpeedUpForPlayer : 0;
+					CurrMap.CurrPlayer.Pos = bonus.Pos;
+					bonus.IsExist = false;
+					break;
 			}
-
-			if (nextItem is not null && nextItem is Bonus)
-			{
-				new Thread(() => makeSound(635, 50)).Start();
-				CurrMap.CurrPlayer.Health += (Bonus)nextItem.HealthUpForPlayer;
-				CurrMap.CurrPlayer.Speed += CurrMap.CurrPlayer.Speed + nextItem.SpeedUpForPlayer <= 20 ? bonus.SpeedUpForPlayer : 0;
-				break;
-			}
-			CurrMap.SolvePlayerCollisions(nextItem, makeSound);
-
-
-
+			if (kbResponse != Command.Non)
+				CurrMap.SolvePlayerCollisions(nextPos);
 			DisplayAll();
 			Thread.Sleep(50);
 		}
@@ -131,6 +120,19 @@ internal class GameProcessor
 		};
 	}
 
+	private void GetNextLevel()
+	{
+		if (_mapIndex < MapList.Count - 1)
+			CurrMap = MapList[++_mapIndex];
+		else
+		{
+			ConsolePresents.GoToWinScreen();
+			Thread.Sleep(6000);
+			Console.ReadKey();
+		}
+		CurrMap.SyncItemsOnField();
+		ConsolePresents.Redraw();
+	}
 	private void InitializeGameInfo()
 	{
 		var infoLine = CurrMap.Field.GetLength(1) + 1;
