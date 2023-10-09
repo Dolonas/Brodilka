@@ -53,7 +53,7 @@ public class Map
 
 	public void CalculateMoves()
 	{
-		foreach (var enemy in Enemies.Where(enemy => Unit.SpeedCounter % (20 - enemy.Speed) == 0))
+		foreach (var enemy in Enemies.Where(enemy => enemy.SpeedCounter++ % (20 - enemy.Speed) == 0))
 		{
 			enemy.Pos = enemy.Move(SolveCollisions(enemy, enemy.GetEnemyDirection(CurrPlayer.Pos)));
 			if (enemy.UnitStatus == UnitStatus.Attack)
@@ -76,48 +76,35 @@ public class Map
 		return command;
 	}
 
-	public bool SolvePlayerCollisions(Command command, Action<int, int> makeSound)
+	public void SolvePlayerCollisions(GameItem nextItem, Action<int, int> makeSound)
 	{
-		if (command == Command.Non)
-			return false;
-		if (command == Command.Attack1)
-		{
-			CurrPlayer.UnitStatus = UnitStatus.Attack;
-			var surroundedEnemies = GetSurroundedEnemies();
-			foreach (var enemy in surroundedEnemies)
-			{
-				CurrPlayer.ToDamage(enemy);
-				if (enemy.Health >= 1) continue;
-				Field[enemy.Pos.XPos, enemy.Pos.YPos] = null;
-				SortItems();
-			}
-			return false;
-		}
-		if (Unit.SpeedCounter % (20 - CurrPlayer.Speed) != 0) return false;
-		var nextPos = CurrPlayer.Move(command);
-		if (nextPos.XPos < 0 ||
-		    nextPos.YPos < 0 ||
-		    nextPos.XPos > Width - 1 ||
-		    nextPos.YPos > Height - 1)
-				return false;
-		var nextItem = Field[nextPos.XPos, nextPos.YPos];
-		switch (nextItem)
-		{
-			case NextLevelZone:
-				return true;
-			case Bonus bonus when bonus.IsExist:
-				new Thread(() => makeSound(635, 50)).Start();
-				bonus.IsExist = false;
-				CurrPlayer.Health += bonus.HealthUpForPlayer;
-				CurrPlayer.Speed += bonus.SpeedUpForPlayer;
-				CurrPlayer.Pos = CurrPlayer.Move(command);
-				return false;
-		}
+		if (nextItem.Pos.XPos < 0 ||
+		    nextItem.Pos.YPos < 0 ||
+		    nextItem.Pos.XPos > Width - 1 ||
+		    nextItem.Pos.YPos > Height - 1 ||
+		    !nextItem.IsItBlock ||
+		    CurrPlayer.SpeedCounter++ % (20 - CurrPlayer.Speed) != 0)
+			CurrPlayer.Pos = CurrPlayer.Move(nextItem.Pos);
+	}
 
-		if (nextItem is not null && nextItem.IsItBlock)
-			return false;
-		CurrPlayer.Pos = CurrPlayer.Move(command);
-		return false;
+	public void DoPlayerAttack()
+	{
+		CurrPlayer.UnitStatus = UnitStatus.Attack;
+		var surroundedEnemies = GetSurroundedEnemies();
+		foreach (var enemy in surroundedEnemies)
+		{
+			CurrPlayer.ToDamage(enemy);
+			if (enemy.Health >= 1) continue;
+			Field[enemy.Pos.XPos, enemy.Pos.YPos] = null;
+			SortItems();
+		}
+	}
+
+	public GameItem GetNextItemOnPlayerWay(Command command)
+	{
+		var nextPos = CurrPlayer.Move(command);
+		var nextItem = Field[nextPos.XPos, nextPos.YPos];
+		return nextItem;
 	}
 	public void SyncItemsOnField()
 	{

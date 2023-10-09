@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Brodilka.GameItems;
+using Brodilka.GameItems.Bonuses;
 using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
 using Brodilka.Utilits;
@@ -36,7 +37,6 @@ internal class GameProcessor
 				MapList?.Add(new Map(item));
 			}
 		}
-
 		if (MapList != null) CurrMap = MapList[_mapIndex];
 		if (CurrMap != null) ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
 		InitializeGameInfo();
@@ -68,7 +68,10 @@ internal class GameProcessor
 			}
 
 			receive = GetKeyboardReceive();
-			if (CurrMap.SolvePlayerCollisions(receive, makeSound))
+			if (receive == Command.Attack1) CurrMap.DoPlayerAttack();
+			var nextPos = CurrMap.CurrPlayer.Move(receive);
+			var nextItem = CurrMap.GetNextItemOnPlayerWay(receive);
+			if (nextItem is NextLevelZone)
 			{
 				if (_mapIndex < MapList.Count - 1)
 					CurrMap = MapList[++_mapIndex];
@@ -83,8 +86,18 @@ internal class GameProcessor
 				ConsolePresents.Redraw();
 			}
 
+			if (nextItem is not null && nextItem is Bonus)
+			{
+				new Thread(() => makeSound(635, 50)).Start();
+				CurrMap.CurrPlayer.Health += (Bonus)nextItem.HealthUpForPlayer;
+				CurrMap.CurrPlayer.Speed += CurrMap.CurrPlayer.Speed + nextItem.SpeedUpForPlayer <= 20 ? bonus.SpeedUpForPlayer : 0;
+				break;
+			}
+			CurrMap.SolvePlayerCollisions(nextItem, makeSound);
+
+
+
 			DisplayAll();
-			Unit.SpeedCounter++;
 			Thread.Sleep(50);
 		}
 		Environment.Exit(0);

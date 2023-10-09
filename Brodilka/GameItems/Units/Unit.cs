@@ -23,7 +23,7 @@ internal abstract class Unit : GameItem, IDamagable
 
 	public sealed override bool IsItBlock { get; set; }
 	public Point PreviousPosition { get; set; }
-	public static int SpeedCounter { get; set; }
+	public int SpeedCounter { get; set; }
 
 	public UnitStatus UnitStatus
 	{
