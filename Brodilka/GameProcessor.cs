@@ -65,7 +65,12 @@ internal class GameProcessor
 				ConsolePresents.ShowGameOverScreen();
 			}
 			kbResponse = GetKeyboardReceive();
-			if (kbResponse == Command.Attack1) CurrMap.DoPlayerAttack();
+			if (kbResponse == Command.Attack1)
+			{
+				CurrMap.DoPlayerAttack();
+				ConsolePresents.DisplayMap(CurrMap);
+			}
+			else CurrMap.CurrPlayer.UnitStatus = UnitStatus.Patrol;
 			var nextPos = CurrMap.CurrPlayer.Move(kbResponse);
 			var nextItem = CurrMap.GetNextItemOnPlayerWay(kbResponse);
 			switch (nextItem)

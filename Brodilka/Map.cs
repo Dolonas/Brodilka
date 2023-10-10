@@ -98,6 +98,7 @@ public class Map
 		{
 			CurrPlayer.ToDamage(enemy);
 			if (enemy.Health >= 1) continue;
+			enemy.IsExist = false;
 			Field[enemy.Pos.XPos, enemy.Pos.YPos] = null;
 			SortItems();
 		}

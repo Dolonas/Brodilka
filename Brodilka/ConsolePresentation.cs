@@ -50,7 +50,7 @@ internal class ConsolePresentation : IDisplayable
 		for (var j = 0; j < map.Width; j++)
 		{
 			Console.SetCursorPosition(j, i);
-			if (map.Field[j, i] is not null)
+			if (map.Field[j, i] is not null && map.Field[j, i].IsExist)
 				Console.Write(map.Field[j, i].Simbol);
 		}
 	}
