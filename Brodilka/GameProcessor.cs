@@ -38,14 +38,13 @@ internal class GameProcessor
 			}
 		}
 		if (MapList != null) CurrMap = MapList[_mapIndex];
-		if (CurrMap != null) ConsolePresents = new ConsolePresentation(CurrMap.Width, CurrMap.Height);
+		if (CurrMap != null) ConsolePresents = new ConsolePresentation(CurrMap.Width + 2, CurrMap.Height + 3);
 		InitializeGameInfo();
 	}
 
 	private IDisplayable ConsolePresents { get; }
 	private List<Map> MapList { get; }
 	private Map CurrMap { get; set; }
-
 	private GameInfoList InfoList { get; set; }
 
 	internal void Run()
@@ -67,8 +66,11 @@ internal class GameProcessor
 			kbResponse = GetKeyboardReceive();
 			if (kbResponse == Command.Attack1)
 			{
-				CurrMap.DoPlayerAttack();
-				ConsolePresents.DisplayMap(CurrMap);
+				var diedEnemiesPositions = CurrMap.DoPlayerAttack();
+				foreach (var bodyPos in diedEnemiesPositions)
+				{
+					ConsolePresents.Display(new NextLevelZone(bodyPos){IsExist = false});
+				}
 			}
 			else CurrMap.CurrPlayer.UnitStatus = UnitStatus.Patrol;
 			var nextPos = CurrMap.CurrPlayer.Move(kbResponse);
@@ -77,7 +79,7 @@ internal class GameProcessor
 			{
 				case NextLevelZone:
 					GetNextLevel();
-					break;
+					continue;
 				case Bonus bonus:
 					if (!bonus.IsExist) break;
 					new Thread(() => makeSound(635, 50)).Start();
@@ -125,16 +127,17 @@ internal class GameProcessor
 
 	private void GetNextLevel()
 	{
-		if (_mapIndex < MapList.Count - 1)
-			CurrMap = MapList[++_mapIndex];
-		else
+		if (_mapIndex == MapList.Count)
 		{
 			ConsolePresents.GoToWinScreen();
 			Thread.Sleep(6000);
 			Console.ReadKey();
+			return;
 		}
-		CurrMap.SyncItemsOnField();
+		CurrMap = new Map(MapList[++_mapIndex].Field);
+		CurrMap.CurrPlayer.PreviousPosition = CurrMap.CurrPlayer.Pos;
 		ConsolePresents.Redraw();
+		ConsolePresents.DisplayMap(CurrMap);
 	}
 	private void InitializeGameInfo()
 	{

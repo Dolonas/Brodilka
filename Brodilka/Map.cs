@@ -27,8 +27,8 @@ public class Map
 			Field = field;
 		}
 		SortItems();
-		Width = Field.GetLength(0) + 2;
-		Height = Field.GetLength(1) + 4;
+		Width = Field.GetLength(0);
+		Height = Field.GetLength(1);
 	}
 
 	internal Player CurrPlayer { get; set; }
@@ -90,18 +90,20 @@ public class Map
 			CurrPlayer.Pos = nextPos;
 	}
 
-	public void DoPlayerAttack()
+	public List<Point> DoPlayerAttack()
 	{
+		var diedEnemeysPos = new List<Point>();
 		CurrPlayer.UnitStatus = UnitStatus.Attack;
 		var surroundedEnemies = GetSurroundedEnemies();
 		foreach (var enemy in surroundedEnemies)
 		{
 			CurrPlayer.ToDamage(enemy);
 			if (enemy.Health >= 1) continue;
-			enemy.IsExist = false;
+			diedEnemeysPos.Add(enemy.Pos);
 			Field[enemy.Pos.XPos, enemy.Pos.YPos] = null;
 			SortItems();
 		}
+		return diedEnemeysPos;
 	}
 
 	public GameItem GetNextItemOnPlayerWay(Command command)
@@ -116,7 +118,7 @@ public class Map
 		foreach (var gameItem in Items) Field[gameItem.Pos.XPos, gameItem.Pos.YPos] = gameItem;
 	}
 
-	private void SortItems()
+	internal void SortItems()
 	{
 		Items = new List<GameItem>();
 		for (var y = 0; y < Field.GetLength(1); y++)

@@ -12,5 +12,4 @@ public class NextLevelZone : GameItem
 	}
 
 	public override bool IsItBlock { get; set; }
-	public override char Simbol { get; }
 }

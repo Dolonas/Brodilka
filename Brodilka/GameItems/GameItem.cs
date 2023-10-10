@@ -18,5 +18,5 @@ public abstract class GameItem
 	public Point Pos { get; set; }
 
 	public abstract bool IsItBlock { get; set; }
-	public abstract char Simbol { get; }
+	public char Simbol { get; protected init; }
 }

@@ -14,6 +14,4 @@ internal class Bear : Enemy
 		Health = BearHealth;
 		Speed = NormalSpeed;
 	}
-
-	public override char Simbol { get; }
 }

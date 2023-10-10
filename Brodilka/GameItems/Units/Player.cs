@@ -21,7 +21,7 @@ internal sealed class Player : Unit
 	}
 
 	internal override int Damage { get; set; }
-	public override char Simbol { get; }
+	//public char Simbol { get; }
 
 
 	internal string Name

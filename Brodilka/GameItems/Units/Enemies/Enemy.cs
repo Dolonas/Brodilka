@@ -13,7 +13,6 @@ internal class Enemy : Unit
 	}
 
 	internal override int Damage { get; set; }
-	public override char Simbol { get; }
 
 	public virtual Command GetEnemyDirection(Point humanPoint)
 	{

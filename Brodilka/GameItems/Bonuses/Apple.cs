@@ -12,6 +12,4 @@ internal class Apple : Bonus
 		HealthUpForPlayer = _healthUp;
 		IsExist = true;
 	}
-
-	public override char Simbol { get; }
 }

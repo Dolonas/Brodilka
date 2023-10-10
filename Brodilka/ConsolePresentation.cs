@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Brodilka.GameItems;
 using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
@@ -35,12 +33,12 @@ internal class ConsolePresentation : IDisplayable
 
 	void IDisplayable.Display(GameItem gameItem)
 	{
-		Console.ForegroundColor = ConverToConsoleColor(gameItem.ItemColor);
+		Console.ForegroundColor = ConvertToConsoleColor(gameItem.ItemColor);
 		var previousPos = gameItem is Unit unit ? unit.PreviousPosition : gameItem.Pos;
 		Console.SetCursorPosition(previousPos.XPos, previousPos.YPos);
 		Console.Write(' ');
 		Console.SetCursorPosition(gameItem.Pos.XPos, gameItem.Pos.YPos);
-		Console.Write(gameItem.Simbol);
+		if (gameItem.IsExist) Console.Write(gameItem.Simbol);
 		Console.ForegroundColor = ConsoleColor.DarkGray;
 	}
 
@@ -64,7 +62,7 @@ internal class ConsolePresentation : IDisplayable
 		foreach (var info in infoList.List)
 		{
 			Console.SetCursorPosition(startXPos, infoList.InfoLinePosition);
-			Console.ForegroundColor = ConverToConsoleColor(info.InfoColor);
+			Console.ForegroundColor = ConvertToConsoleColor(info.InfoColor);
 			Console.Write(info.GameInfoString);
 			Console.ForegroundColor = ConsoleColor.DarkGray;
 			startXPos += info.GameInfoString.Length + 1;
@@ -93,7 +91,7 @@ internal class ConsolePresentation : IDisplayable
 		Console.CursorVisible = false;
 	}
 
-	private ConsoleColor ConverToConsoleColor(ItemColor itemColor)
+	private static ConsoleColor ConvertToConsoleColor(ItemColor itemColor)
 	{
 		return (itemColor) switch
 		{
@@ -132,6 +130,4 @@ internal class ConsolePresentation : IDisplayable
 		Console.SetCursorPosition(WindowWidth/2 - 8, WindowHeight / 2);
 		Console.WriteLine("G a m e   O v e r !");
 	}
-
-
 }
