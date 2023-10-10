@@ -4,6 +4,7 @@
         <OutputType>Exe</OutputType>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <LangVersion>10</LangVersion>
+        <ApplicationIcon>Icon\brodilka_Icon.ico</ApplicationIcon>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <Optimize>true</Optimize>

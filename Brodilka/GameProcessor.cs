@@ -54,19 +54,16 @@ internal class GameProcessor
 		var kbResponse = Command.Non;
 		if (Console.KeyAvailable)
 			kbResponse = GetKeyboardReceive();
-
 		while (kbResponse != Command.Escape)
 		{
 			var makeSound = ConsolePresents.MakeSound;
 			CurrMap.CalculateMoves();
 			InfoList.List[3] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
 			ConsolePresents.DisplayGameInfo(InfoList);
-
 			if (CurrMap.CurrPlayer.Health < 1)
 			{
 				ConsolePresents.ShowGameOverScreen();
 			}
-
 			kbResponse = GetKeyboardReceive();
 			if (kbResponse == Command.Attack1) CurrMap.DoPlayerAttack();
 			var nextPos = CurrMap.CurrPlayer.Move(kbResponse);
