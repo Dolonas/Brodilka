@@ -74,6 +74,7 @@ internal class GameProcessor
 					GetNextLevel();
 					break;
 				case Bonus bonus:
+					if (!bonus.IsExist) break;
 					new Thread(() => makeSound(635, 50)).Start();
 					CurrMap.CurrPlayer.Health += bonus.HealthUpForPlayer;
 					CurrMap.CurrPlayer.Speed += CurrMap.CurrPlayer.Speed + bonus.SpeedUpForPlayer <= 20 ? bonus.SpeedUpForPlayer : 0;
