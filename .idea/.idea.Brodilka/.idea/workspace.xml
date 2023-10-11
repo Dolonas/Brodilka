@@ -4,11 +4,8 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="Cleanup code">
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="Win screen now is correct">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Map.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,46 +15,52 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="748d33281e11b99d16d33b3a4edef453564fd821" />
       </map>
     </option>
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0b5567882521e02aa3d40a7bce81b7235ccac4db588866e3498e614c3bc/CastHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18c7de6a7132663af691f7f0e1c8e3c5f672c6a69b7844a1cd0d8bcf94d87e9/ThrowHelper.Serialization.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/198a6261cebc324728dcc4c178edc5f2894123f711722c80e8557cbfd27651/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1af51483c9bf18871cce649b9f966dd7be686536f998c33bba3c5fc4adea4a0/Task.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea95343b9387b73062a9b61b7538f826c54ce3529632b4472ba4494044d23/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/56996bd5b7b025988834f7db72d610de6637f12f9a6dc6f25950f7f158ef3fc4/ConsolePal.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69593afc69483659e9373e173c8361fd966106a5d50f639c51b48388ddeb29/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/974fa14c57bab8fe29f1bddd39b1a6548b9cc8cf9e0ef5e670c2407a56d9/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9dbe8869135194d1c9164298b9e1fc1aa7f5391d2f0e7c06fdcd03179d3f16/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf408839e35535896e3625c8578c2bfb7bf56ef7ab2c4549ae59c3a19db9ae/Console.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1da7b6c7c71a954fe3eb2531c6476711b3e6d93a8d76795386d326bb9dbc/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6ad457575d35dcbff26c9a5e3fb1d92f1d3c55f25ef6ebf475367b5d8/List.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f2103c576aef635626cde2a8c1caee4f5b23ca724d7d5f17e13aeb1e04cad/Random.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Develop/Projects/Brodilka/Brodilka/GameItems/Bonuses/Apple.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Brodilka/GameProcessor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/JsonIO/JsonReadWrite.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectId" id="2T3hXFXZi6e0npdMUfmM6QIeh5f" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49714285&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.49714285",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Brodilka" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Brodilka/bin/Debug/net6.0/Brodilka.exe" />
@@ -78,7 +81,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="1" Folder0="D:\Develop\ru-dictionary" CustomDictionaries="1" CustomDictionary0="D:\Develop\ru-dictionary\dict_ru_ru-0.6.aff" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="" />
@@ -108,6 +111,21 @@
       <workItem from="1695488908520" duration="7033000" />
       <workItem from="1695497502430" duration="2422000" />
       <workItem from="1695580088578" duration="2147000" />
+      <workItem from="1695806288649" duration="2563000" />
+      <workItem from="1695892254701" duration="3091000" />
+      <workItem from="1695979716431" duration="1990000" />
+      <workItem from="1696237859696" duration="2741000" />
+      <workItem from="1696324116489" duration="3131000" />
+      <workItem from="1696410882947" duration="360000" />
+      <workItem from="1696411753242" duration="1662000" />
+      <workItem from="1696497094021" duration="2779000" />
+      <workItem from="1696584022154" duration="426000" />
+      <workItem from="1696584462489" duration="1928000" />
+      <workItem from="1696842756777" duration="2794000" />
+      <workItem from="1696855221096" duration="76000" />
+      <workItem from="1696928982103" duration="2937000" />
+      <workItem from="1696932077683" duration="37000" />
+      <workItem from="1697015741920" duration="687000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -242,7 +260,126 @@
       <option name="project" value="LOCAL" />
       <updated>1695580735128</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="separation of enemy and Player collisions">
+      <created>1695635972528</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1695635972528</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added unit status: patrol, pursuit, attack">
+      <created>1695808844386</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1695808844386</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Player can move again!">
+      <created>1695893672766</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1695893672766</updated>
+    </task>
+    <task id="LOCAL-00023" summary="starting to add game info display">
+      <created>1695895357333</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1695895357333</updated>
+    </task>
+    <task id="LOCAL-00024" summary="add new logic to display game info">
+      <created>1695981716965</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1695981716965</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added development diary post to Program.cs">
+      <created>1696239325083</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1696239325083</updated>
+    </task>
+    <task id="LOCAL-00026" summary="start realization next level zone">
+      <created>1696240607540</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1696240607540</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Getting several map files">
+      <created>1696326317794</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1696326317794</updated>
+    </task>
+    <task id="LOCAL-00028" summary="start reading several files and maps">
+      <created>1696327262926</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1696327262926</updated>
+    </task>
+    <task id="LOCAL-00029" summary="start implementation of Player Attacking">
+      <created>1696413416069</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1696413416069</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Winscreen added. Player get bonuses: healthUp and speedUp">
+      <created>1696499880611</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1696499880611</updated>
+    </task>
+    <task id="LOCAL-00031" summary="ideas of units speed implementation">
+      <created>1696586392883</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1696586392883</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Moving realisation">
+      <created>1696845563940</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1696845563940</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Application icon has been added">
+      <created>1696930901123</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1696930901123</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Bonus working if them exist">
+      <created>1696931167470</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1696931167470</updated>
+    </task>
+    <task id="LOCAL-00035" summary="An attempt to make dead units disappear from the map">
+      <created>1696931935359</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1696931935359</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Win screen now is correct">
+      <created>1697016251168</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1697016251168</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,17 +400,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Elements moved to the directories" />
-    <MESSAGE value="Reorganization structure of project" />
-    <MESSAGE value="GameProcessor.cs refactoring" />
-    <MESSAGE value="some changes" />
-    <MESSAGE value="redesign of the project structure" />
-    <MESSAGE value="Resolved some things of CurrentPosition" />
-    <MESSAGE value="attributes for JSON's List recording has been deleting." />
-    <MESSAGE value="Added Field array in Map class" />
-    <MESSAGE value="removed unused namespaces" />
-    <MESSAGE value="refactoring and corrected uml diagram" />
-    <MESSAGE value="refactoring code and correcting uml-diagram" />
     <MESSAGE value="refactoring, new map03.dat" />
     <MESSAGE value="gaming with map03" />
     <MESSAGE value="enemies stops if front of obstacles&#10;new algorithm" />
@@ -282,7 +408,24 @@
     <MESSAGE value="gameplay algorithm has been remake" />
     <MESSAGE value="Added the geometrical algorithm of Wolf way&#10;The Wolf potential can move to the Player side if them not far from Wolf." />
     <MESSAGE value="Cleanup code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup code" />
+    <MESSAGE value="separation of enemy and Player collisions" />
+    <MESSAGE value="Added unit status: patrol, pursuit, attack" />
+    <MESSAGE value="Player can move again!" />
+    <MESSAGE value="starting to add game info display" />
+    <MESSAGE value="add new logic to display game info" />
+    <MESSAGE value="Added development diary post to Program.cs" />
+    <MESSAGE value="start realization next level zone" />
+    <MESSAGE value="Getting several map files" />
+    <MESSAGE value="start reading several files and maps" />
+    <MESSAGE value="start implementation of Player Attacking" />
+    <MESSAGE value="Winscreen added. Player get bonuses: healthUp and speedUp" />
+    <MESSAGE value="ideas of units speed implementation" />
+    <MESSAGE value="Moving realisation" />
+    <MESSAGE value="Application icon has been added" />
+    <MESSAGE value="Bonus working if them exist" />
+    <MESSAGE value="An attempt to make dead units disappear from the map" />
+    <MESSAGE value="Win screen now is correct" />
+    <option name="LAST_COMMIT_MESSAGE" value="Win screen now is correct" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
