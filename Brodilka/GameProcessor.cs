@@ -87,6 +87,8 @@ internal class GameProcessor
 						? bonus.SpeedUpForPlayer
 						: 0;
 					CurrMap.CurrPlayer.Pos = bonus.Pos;
+					InfoList.List[5] = new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White);
+					ConsolePresents.DisplayGameInfo(InfoList);
 					bonus.IsExist = false;
 					break;
 			}
@@ -150,12 +152,16 @@ internal class GameProcessor
 		var infoLine = CurrMap.Field.GetLength(1) + 1;
 		InfoList = new GameInfoList(infoLine, 2);
 		var gInfo1 = new GameInfo("Player name:", ItemColor.Cyan);
-		var gInfo2 = new GameInfo(CurrMap.CurrPlayer.Name, ItemColor.Yellow);
+		var gInfo2 = new GameInfo(CurrMap.CurrPlayer.Name + " |", ItemColor.Yellow);
 		var gInfo3 = new GameInfo("Health:", ItemColor.White);
 		var gInfo4 = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
+		var gInfo5 = new GameInfo("Speed:", ItemColor.White);
+		var gInfo6 = new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White);
 		InfoList.Add(gInfo1);
 		InfoList.Add(gInfo2);
 		InfoList.Add(gInfo3);
 		InfoList.Add(gInfo4);
+		InfoList.Add(gInfo5);
+		InfoList.Add(gInfo6);
 	}
 }

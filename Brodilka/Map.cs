@@ -118,7 +118,7 @@ public class Map
 		foreach (var gameItem in Items) Field[gameItem.Pos.XPos, gameItem.Pos.YPos] = gameItem;
 	}
 
-	internal void SortItems()
+	private void SortItems()
 	{
 		Items = new List<GameItem>();
 		for (var y = 0; y < Field.GetLength(1); y++)

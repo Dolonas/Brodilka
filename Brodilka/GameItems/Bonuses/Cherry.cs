@@ -3,7 +3,7 @@
 internal class Cherry : Bonus
 {
 	private readonly int _healthUp = 0;
-	private readonly int _speedUp = 5;
+	private readonly int _speedUp = 1;
 
 	public Cherry(Point point) : base(point)
 	{
