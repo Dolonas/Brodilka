@@ -127,11 +127,12 @@ internal class GameProcessor
 
 	private void GetNextLevel()
 	{
-		if (_mapIndex == MapList.Count)
+		if (_mapIndex == MapList.Count-1)
 		{
 			ConsolePresents.GoToWinScreen();
 			Thread.Sleep(6000);
 			Console.ReadKey();
+			Environment.Exit(0);
 			return;
 		}
 		CurrMap = new Map(MapList[++_mapIndex].Field);
