@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using Brodilka.GameItems;
 using Brodilka.GameItems.Bonuses;
 using Brodilka.GameItems.Obstacles;
@@ -19,13 +17,10 @@ public class Map
 	{
 		Items = new List<GameItem>();
 		if (field.GetLength(0) > 160 || field.GetLength(1) > 80)
-		{
 			Field = new GameItem[3, 3];
-		}
 		else
-		{
 			Field = field;
-		}
+
 		SortItems();
 		Width = Field.GetLength(0);
 		Height = Field.GetLength(1);
@@ -36,15 +31,18 @@ public class Map
 	internal List<Unit> Units { get; set; }
 	internal List<Enemy> Enemies { get; set; }
 	internal List<Obstacle> Snags { get; set; }
+
 	internal List<Bonus> Bonuses { get; set; }
 	//internal List<NextLevelZone> NextLevelZones { get; set; }
 
 	public GameItem[,] Field { get; set; }
+
 	public int Width
 	{
 		get => _width;
 		private init => _width = value is > 30 and < 160 ? value : 60;
 	}
+
 	public int Height
 	{
 		get => _height;
@@ -103,6 +101,7 @@ public class Map
 			Field[enemy.Pos.XPos, enemy.Pos.YPos] = null;
 			SortItems();
 		}
+
 		return diedEnemeysPos;
 	}
 
@@ -112,6 +111,7 @@ public class Map
 		var nextItem = Field[nextPos.XPos, nextPos.YPos];
 		return nextItem;
 	}
+
 	public void SyncItemsOnField()
 	{
 		Field = new GameItem[Width, Height];

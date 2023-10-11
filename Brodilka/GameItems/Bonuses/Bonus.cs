@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Brodilka.GameItems.Bonuses;
+﻿namespace Brodilka.GameItems.Bonuses;
 
 internal abstract class Bonus : GameItem
 {

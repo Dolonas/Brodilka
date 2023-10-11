@@ -17,13 +17,14 @@ public enum Command
 
 public enum ItemColor
 {
-	White, Black, Blue, Cyan, Gray, Green, Magenta, Red, Yellow, DarkBlue, DarkCyan, DarkGray, DarkGreen, DarkMagenta, DarkRed, DarkYellow
+	White, Black, Blue, Cyan, Gray, Green, Magenta, Red, Yellow, DarkBlue, DarkCyan, DarkGray, DarkGreen, DarkMagenta,
+	DarkRed, DarkYellow
 }
 
 internal class GameProcessor
 {
 	private const string MapsDirectory = "../../../Data/Maps";
-	private int _mapIndex = 0;
+	private int _mapIndex;
 
 	internal GameProcessor()
 	{
@@ -32,11 +33,9 @@ internal class GameProcessor
 		if (gameItemsEnumerable != null)
 		{
 			var gameItemList = new List<GameItem[,]>(gameItemsEnumerable);
-			foreach (var item in gameItemList)
-			{
-				MapList?.Add(new Map(item));
-			}
+			foreach (var item in gameItemList) MapList?.Add(new Map(item));
 		}
+
 		if (MapList != null) CurrMap = MapList[_mapIndex];
 		if (CurrMap != null) ConsolePresents = new ConsolePresentation(CurrMap.Width + 2, CurrMap.Height + 3);
 		InitializeGameInfo();
@@ -59,20 +58,20 @@ internal class GameProcessor
 			CurrMap.CalculateMoves();
 			InfoList.List[3] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
 			ConsolePresents.DisplayGameInfo(InfoList);
-			if (CurrMap.CurrPlayer.Health < 1)
-			{
-				ConsolePresents.ShowGameOverScreen();
-			}
+			if (CurrMap.CurrPlayer.Health < 1) ConsolePresents.ShowGameOverScreen();
+
 			kbResponse = GetKeyboardReceive();
 			if (kbResponse == Command.Attack1)
 			{
 				var diedEnemiesPositions = CurrMap.DoPlayerAttack();
 				foreach (var bodyPos in diedEnemiesPositions)
-				{
-					ConsolePresents.Display(new NextLevelZone(bodyPos){IsExist = false});
-				}
+					ConsolePresents.Display(new NextLevelZone(bodyPos) { IsExist = false });
 			}
-			else CurrMap.CurrPlayer.UnitStatus = UnitStatus.Patrol;
+			else
+			{
+				CurrMap.CurrPlayer.UnitStatus = UnitStatus.Patrol;
+			}
+
 			var nextPos = CurrMap.CurrPlayer.Move(kbResponse);
 			var nextItem = CurrMap.GetNextItemOnPlayerWay(kbResponse);
 			switch (nextItem)
@@ -84,16 +83,20 @@ internal class GameProcessor
 					if (!bonus.IsExist) break;
 					new Thread(() => makeSound(635, 50)).Start();
 					CurrMap.CurrPlayer.Health += bonus.HealthUpForPlayer;
-					CurrMap.CurrPlayer.Speed += CurrMap.CurrPlayer.Speed + bonus.SpeedUpForPlayer <= 20 ? bonus.SpeedUpForPlayer : 0;
+					CurrMap.CurrPlayer.Speed += CurrMap.CurrPlayer.Speed + bonus.SpeedUpForPlayer <= 20
+						? bonus.SpeedUpForPlayer
+						: 0;
 					CurrMap.CurrPlayer.Pos = bonus.Pos;
 					bonus.IsExist = false;
 					break;
 			}
+
 			if (kbResponse != Command.Non)
 				CurrMap.SolvePlayerCollisions(nextPos);
 			DisplayAll();
 			Thread.Sleep(50);
 		}
+
 		Environment.Exit(0);
 	}
 
@@ -127,7 +130,7 @@ internal class GameProcessor
 
 	private void GetNextLevel()
 	{
-		if (_mapIndex == MapList.Count-1)
+		if (_mapIndex == MapList.Count - 1)
 		{
 			ConsolePresents.GoToWinScreen();
 			Thread.Sleep(6000);
@@ -135,11 +138,13 @@ internal class GameProcessor
 			Environment.Exit(0);
 			return;
 		}
+
 		CurrMap = new Map(MapList[++_mapIndex].Field);
 		CurrMap.CurrPlayer.PreviousPosition = CurrMap.CurrPlayer.Pos;
 		ConsolePresents.Redraw();
 		ConsolePresents.DisplayMap(CurrMap);
 	}
+
 	private void InitializeGameInfo()
 	{
 		var infoLine = CurrMap.Field.GetLength(1) + 1;

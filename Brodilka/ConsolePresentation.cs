@@ -67,6 +67,7 @@ internal class ConsolePresentation : IDisplayable
 			Console.ForegroundColor = ConsoleColor.DarkGray;
 			startXPos += info.GameInfoString.Length + 1;
 		}
+
 		Console.SetCursorPosition(0, 0);
 	}
 
@@ -78,6 +79,22 @@ internal class ConsolePresentation : IDisplayable
 	void IDisplayable.MakeSound(int frequency, int duration)
 	{
 		Console.Beep(frequency, duration);
+	}
+
+	void IDisplayable.GoToWinScreen()
+	{
+		Console.Clear();
+		Console.ForegroundColor = ConsoleColor.Cyan;
+		Console.SetCursorPosition((WindowWidth / 2) - 8, WindowHeight / 2);
+		Console.WriteLine("Y o u   w i n !");
+	}
+
+	void IDisplayable.ShowGameOverScreen()
+	{
+		Console.Clear();
+		Console.ForegroundColor = ConsoleColor.Red;
+		Console.SetCursorPosition((WindowWidth / 2) - 8, WindowHeight / 2);
+		Console.WriteLine("G a m e   O v e r !");
 	}
 
 	private static void DisplayInitialize()
@@ -93,7 +110,7 @@ internal class ConsolePresentation : IDisplayable
 
 	private static ConsoleColor ConvertToConsoleColor(ItemColor itemColor)
 	{
-		return (itemColor) switch
+		return itemColor switch
 		{
 			ItemColor.White => ConsoleColor.White,
 			ItemColor.Black => ConsoleColor.Black,
@@ -113,21 +130,5 @@ internal class ConsolePresentation : IDisplayable
 			ItemColor.DarkYellow => ConsoleColor.DarkYellow,
 			_ => throw new ArgumentOutOfRangeException(nameof(itemColor), itemColor, null)
 		};
-	}
-
-	void IDisplayable.GoToWinScreen()
-	{
-		Console.Clear();
-		Console.ForegroundColor = ConsoleColor.Cyan;
-		Console.SetCursorPosition(WindowWidth/2 - 8, WindowHeight / 2);
-		Console.WriteLine("Y o u   w i n !");
-	}
-
-	void IDisplayable.ShowGameOverScreen()
-	{
-		Console.Clear();
-		Console.ForegroundColor = ConsoleColor.Red;
-		Console.SetCursorPosition(WindowWidth/2 - 8, WindowHeight / 2);
-		Console.WriteLine("G a m e   O v e r !");
 	}
 }

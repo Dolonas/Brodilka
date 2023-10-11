@@ -31,12 +31,12 @@ public class MapData
 			{
 				textMap = await reader.ReadToEndAsync().ConfigureAwait(false);
 			}
-			mapList.Add(DecodeMap(textMap)); ;
+
+			mapList.Add(DecodeMap(textMap));
+			;
 		}
 
 		return mapList;
-
-
 	}
 
 	private static GameItem[,] DecodeMap(string textMap)

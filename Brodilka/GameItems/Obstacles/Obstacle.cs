@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Brodilka.GameItems.Obstacles;
+﻿namespace Brodilka.GameItems.Obstacles;
 
 public abstract class Obstacle : GameItem
 {
