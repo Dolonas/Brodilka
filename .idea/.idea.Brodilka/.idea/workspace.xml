@@ -4,11 +4,13 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="project was reformated">
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/GameItems/Bonuses/Cherry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameItems/Bonuses/Cherry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Brodilka.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Brodilka.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/ConsolePresentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/GameInfoList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameInfoDict.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/GameProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brodilka/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Map.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brodilka/Interfaces/IDisplayable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Brodilka/Interfaces/IDisplayable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,18 +37,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6ad457575d35dcbff26c9a5e3fb1d92f1d3c55f25ef6ebf475367b5d8/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f2103c576aef635626cde2a8c1caee4f5b23ca724d7d5f17e13aeb1e04cad/Random.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/GameItems/Bonuses/Bonus.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/GameItems/Bonuses/Bonus.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Brodilka/GameProcessor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/GameProcessor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/Develop/Projects/Brodilka/Brodilka/Utilits/MapData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/JsonIO/JsonReadWrite.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="SWEA" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2T3hXFXZi6e0npdMUfmM6QIeh5f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -56,17 +54,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.49714285",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49714285&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Brodilka" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Brodilka/bin/Debug/net6.0/Brodilka.exe" />
@@ -131,7 +129,8 @@
       <workItem from="1696855221096" duration="76000" />
       <workItem from="1696928982103" duration="2937000" />
       <workItem from="1696932077683" duration="37000" />
-      <workItem from="1697015741920" duration="2290000" />
+      <workItem from="1697015741920" duration="2482000" />
+      <workItem from="1697101901989" duration="2653000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -399,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697017072763</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Player speed now is displayed">
+      <created>1697018226413</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1697018226413</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +426,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="enemies stops if front of obstacles&#10;new algorithm" />
     <MESSAGE value="rewrote namespaces" />
     <MESSAGE value="new trajectory moving of enemies has been start coding" />
     <MESSAGE value="gameplay algorithm has been remake" />
@@ -445,7 +450,8 @@
     <MESSAGE value="Win screen now is correct" />
     <MESSAGE value="line separators was changed to crlf" />
     <MESSAGE value="project was reformated" />
-    <option name="LAST_COMMIT_MESSAGE" value="project was reformated" />
+    <MESSAGE value="Player speed now is displayed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player speed now is displayed" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
