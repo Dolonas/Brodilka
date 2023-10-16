@@ -56,7 +56,7 @@ internal class GameProcessor
 		{
 			var makeSound = ConsolePresents.MakeSound;
 			CurrMap.CalculateMoves();
-			InfoDict.["Health"] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
+			InfoDict.InfoDict["Health"] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
 			ConsolePresents.DisplayGameInfo(InfoDict);
 			if (CurrMap.CurrPlayer.Health < 1) ConsolePresents.ShowGameOverScreen();
 
@@ -87,7 +87,7 @@ internal class GameProcessor
 						? bonus.SpeedUpForPlayer
 						: 0;
 					CurrMap.CurrPlayer.Pos = bonus.Pos;
-					InfoDict.List[5] = new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White);
+					InfoDict.InfoDict["Speed"] = new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White);
 					ConsolePresents.DisplayGameInfo(InfoDict);
 					bonus.IsExist = false;
 					break;
