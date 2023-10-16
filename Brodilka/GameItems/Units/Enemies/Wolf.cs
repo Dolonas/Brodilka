@@ -14,9 +14,9 @@ internal class Wolf : Enemy
 		: base(currentPosition)
 	{
 		Simbol = 'w';
-		Damage = WolfDamage;
-		Health = WolfMaxHealth;
-		Speed = NormalSpeed;
+		Damage = 2;
+		Health = 40;
+		Speed = 16;
 		var rnd = new Random();
 		_tick = rnd.NextDouble();
 		_x1 = _x2 = Pos.XPos;

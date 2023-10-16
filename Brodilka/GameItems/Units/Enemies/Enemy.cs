@@ -32,12 +32,14 @@ internal abstract class Enemy : Unit
 	{
 		double distance;
 		if (Pos != null)
+		{
 			distance =
 				Math.Pow(
 					Math.Pow(Pos.XPos - humanPoint.XPos, 2) +
 					Math.Pow(Pos.YPos - humanPoint.YPos, 2), 0.5);
+		}
 		else
-			throw new NullReferenceException();
+			return UnitStatus.Patrol;
 
 		switch (distance)
 		{

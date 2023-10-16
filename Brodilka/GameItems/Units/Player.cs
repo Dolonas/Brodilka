@@ -2,27 +2,20 @@
 
 internal sealed class Player : Unit
 {
-	private const int MaxDamage = 30;
-	private const int StartHealth = 100;
-	private const int NormalSpeed = 18;
 	private readonly string _name;
-
-
 	internal Player(string name, Point currentPosition)
 		: base(currentPosition)
 	{
 		PreviousPosition = currentPosition;
 		Name = name;
 		Simbol = 'P';
-		Health = StartHealth;
-		Speed = NormalSpeed;
-		Damage = MaxDamage;
+		Health = 100;
+		Speed = 18;
+		Damage = 30;
 		ItemDefaultColor = ItemColor.Blue;
 	}
 
 	internal override int Damage { get; set; }
-	//public char Simbol { get; }
-
 
 	internal string Name
 	{
