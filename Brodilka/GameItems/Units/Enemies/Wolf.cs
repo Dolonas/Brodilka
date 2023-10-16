@@ -29,7 +29,7 @@ internal class Wolf : Enemy
 		set => base.Damage = value;
 	}
 
-	public override Command GetEnemyDirection(Point humanPoint)
+	internal override Command GetEnemyDirection(Point humanPoint)
 	{
 		if (IsHumanNear(humanPoint) == UnitStatus.Pursuit)
 			return ChasingHuman(humanPoint);

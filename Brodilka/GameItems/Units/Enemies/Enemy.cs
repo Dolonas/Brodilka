@@ -2,9 +2,9 @@
 
 namespace Brodilka.GameItems.Units.Enemies;
 
-internal class Enemy : Unit
+internal abstract class Enemy : Unit
 {
-	public Enemy(Point currentPosition)
+	internal Enemy(Point currentPosition)
 		: base(currentPosition)
 	{
 		IsItBlock = true;
@@ -14,7 +14,7 @@ internal class Enemy : Unit
 
 	internal override int Damage { get; set; }
 
-	public virtual Command GetEnemyDirection(Point humanPoint)
+	internal virtual Command GetEnemyDirection(Point humanPoint)
 	{
 		var rnd = new Random();
 		var seed = rnd.Next(4);
@@ -28,7 +28,7 @@ internal class Enemy : Unit
 		};
 	}
 
-	protected UnitStatus IsHumanNear(Point humanPoint)
+	internal UnitStatus IsHumanNear(Point humanPoint)
 	{
 		double distance;
 		if (Pos != null)
@@ -53,7 +53,7 @@ internal class Enemy : Unit
 		}
 	}
 
-	protected Command ChasingHuman(Point humanPoint)
+	internal Command ChasingHuman(Point humanPoint)
 	{
 		UnitStatus = UnitStatus.Pursuit;
 		var command = Command.Non;

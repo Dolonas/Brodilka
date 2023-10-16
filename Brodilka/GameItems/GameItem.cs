@@ -1,22 +1,22 @@
 ﻿namespace Brodilka.GameItems;
 
-public abstract class GameItem
+internal abstract class GameItem
 {
 	private ItemColor _itemDefaultColor = ItemColor.White;
-	public GameItem(Point pos) => Pos = pos;
+	internal GameItem(Point pos) => Pos = pos;
 
-	public bool IsExist { get; set; }
+	internal bool IsExist { get; set; }
 
-	protected ItemColor ItemDefaultColor
+	internal ItemColor ItemDefaultColor
 	{
 		get => _itemDefaultColor;
 		set => _itemDefaultColor = ItemColor = value;
 	}
 
-	public ItemColor ItemColor { get; protected set; }
+	internal ItemColor ItemColor { get; set; }
 
-	public Point Pos { get; set; }
+	internal Point Pos { get; set; }
 
-	public abstract bool IsItBlock { get; set; }
-	public char Simbol { get; protected init; }
+	internal abstract bool IsItBlock { get; set; }
+	internal char Simbol { get; init; }
 }

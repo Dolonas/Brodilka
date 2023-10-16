@@ -8,7 +8,7 @@ internal abstract class Bonus : GameItem
 		ItemDefaultColor = ItemColor.Magenta;
 	}
 
-	public int SpeedUpForPlayer { get; set; }
-	public int HealthUpForPlayer { get; set; }
-	public override bool IsItBlock { get; set; }
+	internal int SpeedUpForPlayer { get; set; }
+	internal int HealthUpForPlayer { get; set; }
+	internal override bool IsItBlock { get; set; }
 }

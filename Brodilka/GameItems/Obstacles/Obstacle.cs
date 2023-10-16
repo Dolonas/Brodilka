@@ -1,8 +1,8 @@
 ﻿namespace Brodilka.GameItems.Obstacles;
 
-public abstract class Obstacle : GameItem
+internal abstract class Obstacle : GameItem
 {
-	protected Obstacle(Point position) : base(position)
+	internal Obstacle(Point position) : base(position)
 	{
 		Pos = position;
 		IsExist = true;
@@ -10,5 +10,5 @@ public abstract class Obstacle : GameItem
 		ItemColor = ItemColor.Yellow;
 	}
 
-	public override bool IsItBlock { get; set; }
+	internal override bool IsItBlock { get; set; }
 }

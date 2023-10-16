@@ -8,12 +8,12 @@ using Brodilka.GameItems.Units.Enemies;
 
 namespace Brodilka;
 
-public class Map
+internal class Map
 {
 	private readonly int _height;
 	private readonly int _width;
 
-	public Map(GameItem[,] field)
+	internal Map(GameItem[,] field)
 	{
 		Items = new List<GameItem>();
 		if (field.GetLength(0) > 160 || field.GetLength(1) > 80)
@@ -35,21 +35,21 @@ public class Map
 	internal List<Bonus> Bonuses { get; set; }
 	//internal List<NextLevelZone> NextLevelZones { get; set; }
 
-	public GameItem[,] Field { get; set; }
+	internal GameItem[,] Field { get; set; }
 
-	public int Width
+	internal int Width
 	{
 		get => _width;
 		private init => _width = value is > 30 and < 160 ? value : 60;
 	}
 
-	public int Height
+	internal int Height
 	{
 		get => _height;
 		private init => _height = value is > 30 and < 160 ? value : 60;
 	}
 
-	public void CalculateMoves()
+	internal void CalculateMoves()
 	{
 		foreach (var enemy in Enemies.Where(enemy => enemy.SpeedCounter++ % (20 - enemy.Speed) == 0))
 		{
@@ -74,7 +74,7 @@ public class Map
 		return command;
 	}
 
-	public void SolvePlayerCollisions(Point nextPos)
+	internal void SolvePlayerCollisions(Point nextPos)
 	{
 		var nextItem = Field[nextPos.XPos, nextPos.YPos];
 		if (nextPos.XPos < 0 ||
@@ -88,7 +88,7 @@ public class Map
 			CurrPlayer.Pos = nextPos;
 	}
 
-	public List<Point> DoPlayerAttack()
+	internal List<Point> DoPlayerAttack()
 	{
 		var diedEnemeysPos = new List<Point>();
 		CurrPlayer.UnitStatus = UnitStatus.Attack;
@@ -105,14 +105,14 @@ public class Map
 		return diedEnemeysPos;
 	}
 
-	public GameItem GetNextItemOnPlayerWay(Command command)
+	internal GameItem GetNextItemOnPlayerWay(Command command)
 	{
 		var nextPos = CurrPlayer.Move(command);
 		var nextItem = Field[nextPos.XPos, nextPos.YPos];
 		return nextItem;
 	}
 
-	public void SyncItemsOnField()
+	internal void SyncItemsOnField()
 	{
 		Field = new GameItem[Width, Height];
 		foreach (var gameItem in Items) Field[gameItem.Pos.XPos, gameItem.Pos.YPos] = gameItem;

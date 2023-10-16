@@ -1,6 +1,6 @@
 ﻿namespace Brodilka.GameItems;
 
-public class NextLevelZone : GameItem
+internal class NextLevelZone : GameItem
 {
 	public NextLevelZone(Point position) : base(position)
 	{
@@ -11,5 +11,5 @@ public class NextLevelZone : GameItem
 		Simbol = 'X';
 	}
 
-	public override bool IsItBlock { get; set; }
+	internal override bool IsItBlock { get; set; }
 }

@@ -8,7 +8,7 @@ internal sealed class Player : Unit
 	private readonly string _name;
 
 
-	public Player(string name, Point currentPosition)
+	internal Player(string name, Point currentPosition)
 		: base(currentPosition)
 	{
 		PreviousPosition = currentPosition;

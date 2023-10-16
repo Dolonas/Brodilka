@@ -21,7 +21,7 @@ internal abstract class Unit : GameItem, IDamagable
 		SpeedCounter = 0;
 	}
 
-	public sealed override bool IsItBlock { get; set; }
+	internal sealed override bool IsItBlock { get; set; }
 	public Point PreviousPosition { get; set; }
 	public int SpeedCounter { get; set; }
 

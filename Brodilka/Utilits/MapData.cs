@@ -12,14 +12,14 @@ using Brodilka.GameItems.Units.Enemies;
 
 namespace Brodilka.Utilits;
 
-public class MapData
+internal class MapData
 {
-	public MapData(List<GameItem[,]> fieldList) => FieldList = fieldList;
+	internal MapData(List<GameItem[,]> fieldList) => FieldList = fieldList;
 
 	private List<GameItem[,]> FieldList { get; }
 
 
-	public static async Task<List<GameItem[,]>>? ReadMapAsync(string mapsDirectory)
+	internal static async Task<List<GameItem[,]>>? ReadMapAsync(string mapsDirectory)
 	{
 		//string textMap;
 		var mapList = new List<GameItem[,]>();

@@ -1,6 +1,6 @@
 ﻿namespace Brodilka.GameItems.Obstacles;
 
-public class Tree : Obstacle
+internal class Tree : Obstacle
 {
 	public Tree(Point position) : base(position) => Simbol = 't';
 }
