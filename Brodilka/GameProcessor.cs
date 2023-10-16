@@ -54,7 +54,6 @@ internal class GameProcessor
 			kbResponse = GetKeyboardReceive();
 		while (kbResponse != Command.Escape)
 		{
-			var makeSound = ConsolePresents.MakeSound;
 			CurrMap.CalculateMoves();
 			InfoDict.InfoDict["Health"] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
 			ConsolePresents.DisplayGameInfo(InfoDict);
@@ -74,25 +73,7 @@ internal class GameProcessor
 
 			var nextPos = CurrMap.CurrPlayer.Move(kbResponse);
 			var nextItem = CurrMap.GetNextItemOnPlayerWay(kbResponse);
-			switch (nextItem)
-			{
-				case NextLevelZone:
-					GetNextLevel();
-					continue;
-				case Bonus bonus:
-					if (!bonus.IsExist) break;
-					new Thread(() => makeSound(635, 50)).Start();
-					CurrMap.CurrPlayer.Health += bonus.HealthUpForPlayer;
-					CurrMap.CurrPlayer.Speed += CurrMap.CurrPlayer.Speed + bonus.SpeedUpForPlayer <= 20
-						? bonus.SpeedUpForPlayer
-						: 0;
-					CurrMap.CurrPlayer.Pos = bonus.Pos;
-					InfoDict.InfoDict["Speed"] = new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White);
-					ConsolePresents.DisplayGameInfo(InfoDict);
-					bonus.IsExist = false;
-					break;
-			}
-
+			GetPrices(nextItem);
 			if (kbResponse != Command.Non)
 				CurrMap.SolvePlayerCollisions(nextPos);
 			DisplayAll();
@@ -128,6 +109,29 @@ internal class GameProcessor
 			ConsoleKey.A => Command.Attack1,
 			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
 		};
+	}
+
+	private void GetPrices(GameItem nextItem)
+	{
+		var makeSound = ConsolePresents.MakeSound;
+		switch (nextItem)
+		{
+			case NextLevelZone:
+				GetNextLevel();
+				return;
+			case Bonus bonus:
+				if (!bonus.IsExist) break;
+				new Thread(() => makeSound(635, 50)).Start();
+				CurrMap.CurrPlayer.Health += bonus.HealthUpForPlayer;
+				CurrMap.CurrPlayer.Speed += CurrMap.CurrPlayer.Speed + bonus.SpeedUpForPlayer <= 20
+					? bonus.SpeedUpForPlayer
+					: 0;
+				CurrMap.CurrPlayer.Pos = bonus.Pos;
+				InfoDict.InfoDict["Speed"] = new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White);
+				ConsolePresents.DisplayGameInfo(InfoDict);
+				bonus.IsExist = false;
+				break;
+		}
 	}
 
 	private void GetNextLevel()
