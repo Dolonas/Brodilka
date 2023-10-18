@@ -4,6 +4,7 @@ namespace Brodilka.GameItems.Units.Enemies;
 
 internal abstract class Enemy : Unit
 {
+	readonly Random _rnd = new Random();
 	internal Enemy(Point currentPosition)
 		: base(currentPosition)
 	{
@@ -16,8 +17,8 @@ internal abstract class Enemy : Unit
 
 	internal virtual Command GetEnemyDirection(Point humanPoint)
 	{
-		var rnd = new Random();
-		var seed = rnd.Next(4);
+
+		var seed = _rnd.Next(4);
 		return (seed + 1) switch
 		{
 			1 => Command.Left,
