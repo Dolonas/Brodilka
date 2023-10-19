@@ -7,7 +7,7 @@ internal enum UnitStatus
 	Patrol, Pursuit, Attack
 }
 
-internal abstract class Unit : GameItem, IDamagable
+internal abstract class Unit : GameItem
 {
 	private int _health;
 	private UnitStatus _unitStatus;
