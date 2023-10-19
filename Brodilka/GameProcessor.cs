@@ -1,82 +1,166 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using Autofac;
-using Brodilka.Snags;
-using Brodilka.Units;
+using Brodilka.GameItems;
+using Brodilka.GameItems.Bonuses;
+using Brodilka.GameItems.Units;
+using Brodilka.Interfaces;
+using Brodilka.Utilits;
 
-namespace Brodilka
+namespace Brodilka;
+
+public enum Command
 {
-    internal class GameProcessor
-    {
-        private IDisplayble ConsolePresents { get; set; }
-        private Player CurrentPlayer { get; set; }
-        private List<GameItem> Items { get; set; }
-        private List<Unit> Units { get; set; }
-        private List<Enemy> Enemies { get; set; }
-        private List<Snag> Snags { get; set; }
-        private List<Bonus> Bonuses { get; set; }
+	Left, Up, Right, Down, LeftUp, LeftDown, RightUp, RightDown, Attack1, Stop, Redraw, Escape, Non
+}
 
-        private Map CurrentMap { get; set; }
+public enum ItemColor
+{
+	White, Black, Blue, Cyan, Gray, Green, Magenta, Red, Yellow, DarkBlue, DarkCyan, DarkGray, DarkGreen, DarkMagenta,
+	DarkRed, DarkYellow
+}
 
-        internal GameProcessor()
-        {
-            Items = new List<GameItem>();
-            CurrentMap = new Map(60, 40);
-            Items.Add(new Player(new Point(15, 18), CurrentMap, "Luidgy") as GameItem);
-            Items.Add(new Wolf(new Point(15, 18), CurrentMap) as GameItem );
-            Items.Add(new Wolf(new Point(48, 3), CurrentMap) as GameItem);
-            Items.Add(new Bear(new Point(18, 17), CurrentMap) as GameItem);
-            Items.Add(new Bear(new Point(48, 6), CurrentMap) as GameItem);
-            Items.Add(new Cherry(new Point(8, 12), CurrentMap) as GameItem);
-            Items.Add(new Cherry(new Point(38, 6), CurrentMap) as GameItem);
-            Items.Add(new Apple(new Point(48, 14), CurrentMap) as GameItem);
-            Items.Add(new Apple(new Point(23, 32), CurrentMap) as GameItem);
-            Items.Add(new Tree(new Point(21, 16), CurrentMap) as GameItem);
-            Items.Add(new Tree(new Point(8, 12), CurrentMap) as GameItem);
-            Items.Add(new Stone(new Point(21, 16), CurrentMap) as GameItem);
-            Items.Add(new Stone(new Point(8, 12), CurrentMap) as GameItem);
-            SortItems();
+internal class GameProcessor
+{
+	private const string MapsDirectory = "../../../Data/Maps";
+	private int _mapIndex;
 
-            ConsolePresents = new ConsolePresentation(150, 120);
+	internal GameProcessor()
+	{
+		MapList = new List<Map>();
+		var gameItemsEnumerable = MapData.ReadMapAsync(MapsDirectory)?.Result;
+		if (gameItemsEnumerable != null)
+		{
+			var gameItemList = new List<GameItem[,]>(gameItemsEnumerable);
+			foreach (var item in gameItemList) MapList?.Add(new Map(item));
+		}
 
-        }
+		if (MapList != null) CurrMap = MapList[_mapIndex];
+		if (CurrMap != null) ConsolePresents = new ConsolePresentation(CurrMap.Width + 2, CurrMap.Height + 3);
+		InitializeGameInfo();
+	}
 
-        internal void Run()
-        {
-            ConsoleKeyInfo cki;
-            do
-            {
-                cki = Console.ReadKey();
-                CurrentPlayer.Move(cki.Key);
-                foreach (var enemy in Enemies)
-                {
-                    enemy.Move();
-                }
+	private IDisplayable ConsolePresents { get; }
+	private List<Map> MapList { get; }
+	private Map CurrMap { get; set; }
+	private GameInfoDict InfoDict { get; set; }
 
-                foreach (var item in Items)
-                {
-                    ConsolePresents.Display(item);
-                }
-                Thread.Sleep(100);
+	internal void Run()
+	{
+		DisplayAll();
+		var kbResponse = Command.Non;
+		if (Console.KeyAvailable)
+			kbResponse = GetKeyboardReceive();
+		while (kbResponse != Command.Escape)
+		{
+			CurrMap.CalculateMoves();
+			InfoDict.InfoDict["Health"] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
+			ConsolePresents.DisplayGameInfo(InfoDict);
+			if (CurrMap.CurrPlayer.Health < 1) ConsolePresents.ShowGameOverScreen();
 
-            } while (cki.Key != ConsoleKey.Escape);
+			kbResponse = GetKeyboardReceive();
+			if (kbResponse == Command.Attack1)
+			{
+				var diedEnemiesPositions = CurrMap.DoPlayerAttack();
+				foreach (var bodyPos in diedEnemiesPositions)
+					ConsolePresents.Display(new NextLevelZone(bodyPos) { IsExist = false });
+			}
+			else
+			{
+				CurrMap.CurrPlayer.UnitStatus = UnitStatus.Patrol;
+			}
 
-        }
+			var nextPos = CurrMap.CurrPlayer.Move(kbResponse);
+			var nextItem = CurrMap.GetNextItemOnPlayerWay(kbResponse);
+			GetPrices(nextItem);
+			if (kbResponse != Command.Non)
+				CurrMap.SolvePlayerCollisions(nextPos);
+			DisplayAll();
+			Thread.Sleep(50);
+		}
 
-        internal void SortItems()
-        {
-            CurrentPlayer = (Player)Items.FirstOrDefault(x => x is Player);
+		Environment.Exit(0);
+	}
 
-            Units = Items.OfType<Unit>().ToList();
-            Enemies = Items.OfType<Enemy>().ToList();
-            Snags = Items.OfType<Snag>().ToList();
-            Bonuses = Items.OfType<Bonus>().ToList();
-        }
-        
-    }
+	private void DisplayAll()
+	{
+		foreach (var gameItem in CurrMap.Items.Where(gi => gi is not null && gi.IsExist))
+			ConsolePresents.Display(gameItem);
+		ConsolePresents.DisplayGameInfo(InfoDict);
+		CurrMap.SyncItemsOnField();
+	}
 
+	private Command GetKeyboardReceive()
+	{
+		ConsoleKeyInfo cki;
+		if (Console.KeyAvailable)
+			cki = Console.ReadKey();
+		else
+			return Command.Non;
+
+		return cki.Key switch
+		{
+			ConsoleKey.RightArrow => Command.Right,
+			ConsoleKey.LeftArrow => Command.Left,
+			ConsoleKey.UpArrow => Command.Up,
+			ConsoleKey.DownArrow => Command.Down,
+			ConsoleKey.Delete => Command.Redraw,
+			ConsoleKey.A => Command.Attack1,
+			_ => cki.Key == ConsoleKey.Escape ? Command.Escape : Command.Stop
+		};
+	}
+
+	private void GetPrices(GameItem nextItem)
+	{
+		var makeSound = ConsolePresents.MakeSound;
+		switch (nextItem)
+		{
+			case NextLevelZone:
+				GetNextLevel();
+				return;
+			case Bonus bonus:
+				if (!bonus.IsExist) break;
+				new Thread(() => makeSound(635, 50)).Start();
+				CurrMap.CurrPlayer.Health += bonus.HealthUpForPlayer;
+				CurrMap.CurrPlayer.Speed += CurrMap.CurrPlayer.Speed + bonus.SpeedUpForPlayer <= 20
+					? bonus.SpeedUpForPlayer
+					: 0;
+				CurrMap.CurrPlayer.Pos = bonus.Pos;
+				InfoDict.InfoDict["Speed"] = new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White);
+				ConsolePresents.DisplayGameInfo(InfoDict);
+				bonus.IsExist = false;
+				break;
+		}
+	}
+
+	private void GetNextLevel()
+	{
+		if (_mapIndex == MapList.Count - 1)
+		{
+			ConsolePresents.GoToWinScreen();
+			Thread.Sleep(6000);
+			Console.ReadKey();
+			Environment.Exit(0);
+			return;
+		}
+
+		CurrMap = new Map(MapList[++_mapIndex].Field);
+		CurrMap.CurrPlayer.PreviousPosition = CurrMap.CurrPlayer.Pos;
+		ConsolePresents.Redraw();
+		ConsolePresents.DisplayMap(CurrMap);
+	}
+
+	private void InitializeGameInfo()
+	{
+		var infoLine = CurrMap.Field.GetLength(1) + 1;
+		InfoDict = new GameInfoDict(infoLine, 2);
+
+		InfoDict.Add("playerNameTitle", new GameInfo("Player name:", ItemColor.Cyan));
+		InfoDict.Add("playerName",new GameInfo(CurrMap.CurrPlayer.Name + " |", ItemColor.Yellow));
+		InfoDict.Add("HealthTitle", new GameInfo("Health:", ItemColor.White));
+		InfoDict.Add("Health", new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White));
+		InfoDict.Add("SpeedTitle", new GameInfo("Speed:", ItemColor.White));
+		InfoDict.Add("Speed", new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White));
+	}
 }

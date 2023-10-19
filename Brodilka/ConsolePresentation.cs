@@ -1,63 +1,134 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Brodilka.GameItems;
+using Brodilka.GameItems.Units;
+using Brodilka.Interfaces;
 
-namespace Brodilka
+namespace Brodilka;
+
+internal class ConsolePresentation : IDisplayable
 {
-    internal class ConsolePresentation: IDisplayble
-    {
-        private static int _windowXSize;
-        private static int _windowYSize;
-        private const  int MaxXWindowSize = 90;
-        private const int MaxYWindowSize = 30;
+	private const int MaxWindowWidth = 140;
+	private const int MaxWindowHeight = 80;
+	private static int _windowWidth;
+	private static int _windowHeight;
 
-        private static int WindowXSize
-        {
-            get => _windowXSize;
-            set => _windowXSize = value <= MaxXWindowSize ? value : MaxXWindowSize;
-        }
+	public ConsolePresentation(int width, int height)
+	{
+		WindowWidth = width;
+		WindowHeight = height;
+		DisplayInitialize();
+	}
 
-        private static int WindowYSize
-        {
-            get => _windowYSize;
-            set => _windowYSize = value <= MaxYWindowSize ? value : MaxYWindowSize;
-        }
+	private static int WindowWidth
+	{
+		get => _windowWidth;
+		set => _windowWidth = value <= MaxWindowWidth ? value : MaxWindowWidth;
+	}
 
-        public ConsolePresentation() : this (MaxXWindowSize, MaxYWindowSize)
-        {
-        }
+	private static int WindowHeight
+	{
+		get => _windowHeight;
+		set => _windowHeight = value <= MaxWindowHeight ? value : MaxWindowHeight;
+	}
 
-        public ConsolePresentation(int xSize, int ySize)
-        {
-            WindowXSize = xSize;
-            WindowYSize = ySize;
-            DisplayInitialize();
-        }
+	void IDisplayable.Display(GameItem gameItem)
+	{
+		Console.ForegroundColor = ConvertToConsoleColor(gameItem.ItemColor);
+		var previousPos = gameItem is Unit unit ? unit.PreviousPosition : gameItem.Pos;
+		Console.SetCursorPosition(previousPos.XPos, previousPos.YPos);
+		Console.Write(' ');
+		Console.SetCursorPosition(gameItem.Pos.XPos, gameItem.Pos.YPos);
+		if (gameItem.IsExist) Console.Write(gameItem.Simbol);
+		Console.ForegroundColor = ConsoleColor.DarkGray;
+	}
 
-        private void DisplayInitialize()
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Clear();
-            WindowXSize = MaxXWindowSize;
-            WindowYSize = MaxYWindowSize;
-            Console.SetWindowSize(WindowXSize, WindowYSize);
-            Console.SetBufferSize(WindowXSize, WindowYSize);
-            
+	void IDisplayable.DisplayMap(Map map)
+	{
+		for (var i = 0; i < map.Height; i++)
+		for (var j = 0; j < map.Width; j++)
+		{
+			Console.SetCursorPosition(j, i);
+			if (map.Field[j, i] is not null && map.Field[j, i].IsExist)
+				Console.Write(map.Field[j, i].Simbol);
+		}
+	}
 
-            Console.Title = "Brodilka";
-            
-        }
+	void IDisplayable.DisplayGameInfo(GameInfoDict infoDict)
+	{
+		var startXPos = infoDict.StartXPosition;
+		Console.SetCursorPosition(startXPos, infoDict.InfoLineYPosition);
+		Console.WriteLine(new string(' ', _windowWidth - 10));
 
-         void IDisplayble.Display(GameItem gameItem)
-        {
-            Console.SetCursorPosition(gameItem.CurrPoint.XPos, gameItem.CurrPoint.YPos);
-            var str = Char.ConvertFromUtf32(Convert.ToUInt16(gameItem.SignCode));
-            Console.Write(str);
+		foreach (var info in infoDict.InfoDict)
+		{
+			Console.SetCursorPosition(startXPos, infoDict.InfoLineYPosition);
+			Console.ForegroundColor = ConvertToConsoleColor(info.Value.InfoColor);
+			Console.Write(info.Value.GameInfoString);
+			Console.ForegroundColor = ConsoleColor.DarkGray;
+			startXPos += info.Value.GameInfoString.Length + 1;
+		}
 
-        }
+		Console.SetCursorPosition(0, 0);
+	}
 
-    }
+	void IDisplayable.Redraw()
+	{
+		Console.Clear();
+	}
+
+	void IDisplayable.MakeSound(int frequency, int duration)
+	{
+		Console.Beep(frequency, duration);
+	}
+
+	void IDisplayable.GoToWinScreen()
+	{
+		Console.Clear();
+		Console.ForegroundColor = ConsoleColor.Cyan;
+		Console.SetCursorPosition((WindowWidth / 2) - 8, WindowHeight / 2);
+		Console.WriteLine("Y o u   w i n !");
+	}
+
+	void IDisplayable.ShowGameOverScreen()
+	{
+		Console.Clear();
+		Console.ForegroundColor = ConsoleColor.Red;
+		Console.SetCursorPosition((WindowWidth / 2) - 8, WindowHeight / 2);
+		Console.WriteLine("G a m e   O v e r !");
+	}
+
+	private static void DisplayInitialize()
+	{
+		Console.BackgroundColor = ConsoleColor.Black;
+		Console.ForegroundColor = ConsoleColor.White;
+		Console.Clear();
+		Console.SetWindowSize(WindowWidth, WindowHeight);
+		Console.SetBufferSize(WindowWidth, WindowHeight);
+		Console.Title = "Brodilka";
+		Console.CursorVisible = false;
+	}
+
+	private static ConsoleColor ConvertToConsoleColor(ItemColor itemColor)
+	{
+		return itemColor switch
+		{
+			ItemColor.White => ConsoleColor.White,
+			ItemColor.Black => ConsoleColor.Black,
+			ItemColor.Blue => ConsoleColor.Blue,
+			ItemColor.Cyan => ConsoleColor.Cyan,
+			ItemColor.Gray => ConsoleColor.Gray,
+			ItemColor.Green => ConsoleColor.Green,
+			ItemColor.Magenta => ConsoleColor.Magenta,
+			ItemColor.Red => ConsoleColor.Red,
+			ItemColor.Yellow => ConsoleColor.Yellow,
+			ItemColor.DarkBlue => ConsoleColor.DarkBlue,
+			ItemColor.DarkCyan => ConsoleColor.DarkCyan,
+			ItemColor.DarkGray => ConsoleColor.DarkGray,
+			ItemColor.DarkGreen => ConsoleColor.DarkGreen,
+			ItemColor.DarkMagenta => ConsoleColor.DarkMagenta,
+			ItemColor.DarkRed => ConsoleColor.DarkRed,
+			ItemColor.DarkYellow => ConsoleColor.DarkYellow,
+			_ => throw new ArgumentOutOfRangeException(nameof(itemColor), itemColor, null)
+		};
+	}
 }
