@@ -9,8 +9,8 @@ internal class ConsolePresentation : IDisplayable
 {
 	private const int MaxWindowWidth = 140;
 	private const int MaxWindowHeight = 80;
-	private static int _windowWidth;
-	private static int _windowHeight;
+	private static int windowWidth;
+	private static int windowHeight;
 
 	public ConsolePresentation(int width, int height)
 	{
@@ -21,14 +21,14 @@ internal class ConsolePresentation : IDisplayable
 
 	private static int WindowWidth
 	{
-		get => _windowWidth;
-		set => _windowWidth = value <= MaxWindowWidth ? value : MaxWindowWidth;
+		get => windowWidth;
+		set => windowWidth = value <= MaxWindowWidth ? value : MaxWindowWidth;
 	}
 
 	private static int WindowHeight
 	{
-		get => _windowHeight;
-		set => _windowHeight = value <= MaxWindowHeight ? value : MaxWindowHeight;
+		get => windowHeight;
+		set => windowHeight = value <= MaxWindowHeight ? value : MaxWindowHeight;
 	}
 
 	void IDisplayable.Display(GameItem gameItem)
@@ -57,7 +57,7 @@ internal class ConsolePresentation : IDisplayable
 	{
 		var startXPos = infoDict.StartXPosition;
 		Console.SetCursorPosition(startXPos, infoDict.InfoLineYPosition);
-		Console.WriteLine(new string(' ', _windowWidth - 10));
+		Console.WriteLine(new string(' ', windowWidth - 10));
 
 		foreach (var info in infoDict.InfoDict)
 		{
