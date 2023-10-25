@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Brodilka.GameItems;
 using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
@@ -53,7 +54,7 @@ internal class ConsolePresentation : IDisplayable
 		}
 	}
 
-	void IDisplayable.DisplayGameInfo(GameInfoDict infoDict)
+	void IDisplayable.DisplayGameInfo(List<GameInfoDict> infoDict)
 	{
 		var startXPos = infoDict.StartXPosition;
 		Console.SetCursorPosition(startXPos, infoDict.InfoLineYPosition);

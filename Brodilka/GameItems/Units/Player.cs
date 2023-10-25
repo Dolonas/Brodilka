@@ -13,6 +13,7 @@ internal sealed class Player : Unit
 		Speed = 18;
 		Damage = 30;
 		ItemDefaultColor = ItemColor.Blue;
+		IsItBlock = true;
 	}
 
 	internal override int Damage { get; set; }
