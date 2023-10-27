@@ -54,21 +54,23 @@ internal class ConsolePresentation : IDisplayable
 		}
 	}
 
-	void IDisplayable.DisplayGameInfo(List<GameInfoDict> infoDict)
+	void IDisplayable.DisplayGameInfo(List<GameInfoDict> gameInfo)
 	{
-		var startXPos = infoDict.StartXPosition;
-		Console.SetCursorPosition(startXPos, infoDict.InfoLineYPosition);
-		Console.WriteLine(new string(' ', windowWidth - 10));
-
-		foreach (var info in infoDict.InfoDict)
+		foreach (var gInfoLine in gameInfo)
 		{
-			Console.SetCursorPosition(startXPos, infoDict.InfoLineYPosition);
-			Console.ForegroundColor = ConvertToConsoleColor(info.Value.InfoColor);
-			Console.Write(info.Value.GameInfoString);
-			Console.ForegroundColor = ConsoleColor.DarkGray;
-			startXPos += info.Value.GameInfoString.Length + 1;
-		}
+			var startXPos = gInfoLine.StartXPosition;
+			Console.SetCursorPosition(startXPos, gInfoLine.InfoLineYPosition);
+			Console.WriteLine(new string(' ', windowWidth - 10));
 
+			foreach (var info in gInfoLine.InfoDict)
+			{
+				Console.SetCursorPosition(startXPos, gInfoLine.InfoLineYPosition);
+				Console.ForegroundColor = ConvertToConsoleColor(info.Value.InfoColor);
+				Console.Write(info.Value.GameInfoString);
+				Console.ForegroundColor = ConsoleColor.DarkGray;
+				startXPos += info.Value.GameInfoString.Length + 1;
+			}
+		}
 		Console.SetCursorPosition(0, 0);
 	}
 
