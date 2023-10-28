@@ -11,5 +11,5 @@ internal class NextLevelZone : GameItem
 		Simbol = 'X';
 	}
 
-	internal override bool IsItBlock { get; set; }
+	internal sealed override bool IsItBlock { get; set; }
 }

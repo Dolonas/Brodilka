@@ -6,7 +6,7 @@ namespace Brodilka.Interfaces;
 internal interface IDisplayable
 {
 	void Display(GameItem gameItem);
-	void DisplayGameInfo(List<GameInfoDict> infoDict);
+	void DisplayGameInfo(List<GameInfoLine> infoDict);
 	void DisplayMap(Map map);
 	void Redraw();
 	void MakeSound(int frequency, int duration);

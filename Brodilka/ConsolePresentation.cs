@@ -54,7 +54,7 @@ internal class ConsolePresentation : IDisplayable
 		}
 	}
 
-	void IDisplayable.DisplayGameInfo(List<GameInfoDict> gameInfo)
+	void IDisplayable.DisplayGameInfo(List<GameInfoLine> gameInfo)
 	{
 		foreach (var gInfoLine in gameInfo)
 		{
@@ -71,6 +71,7 @@ internal class ConsolePresentation : IDisplayable
 				startXPos += info.Value.GameInfoString.Length + 1;
 			}
 		}
+
 		Console.SetCursorPosition(0, 0);
 	}
 

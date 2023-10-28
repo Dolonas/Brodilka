@@ -38,14 +38,14 @@ internal class GameProcessor
 
 		if (MapList != null) CurrMap = MapList[_mapIndex];
 		if (CurrMap != null) ConsolePresents = new ConsolePresentation(CurrMap.Width + 2, CurrMap.Height + 5);
-		GameInfo = new List<GameInfoDict>();
+		GameInfoLines = new List<GameInfoLine>();
 		InitializeGameInfo();
 	}
 
 	private IDisplayable ConsolePresents { get; }
 	private List<Map> MapList { get; }
 	private Map CurrMap { get; set; }
-	private List<GameInfoDict> GameInfo { get; set; }
+	private List<GameInfoLine> GameInfoLines { get; set; }
 
 	internal void Run()
 	{
@@ -56,10 +56,15 @@ internal class GameProcessor
 		while (kbResponse != Command.Escape)
 		{
 			CurrMap.CalculateMoves();
-			GameInfo[0].InfoDict["Health"] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
-			ConsolePresents.DisplayGameInfo(GameInfo);
-			if (CurrMap.CurrPlayer.Health < 1) ConsolePresents.ShowGameOverScreen();
-
+			GameInfoLines[0].InfoDict["Health"] = new GameInfo(CurrMap.CurrPlayer.Health.ToString(), ItemColor.White);
+			ConsolePresents.DisplayGameInfo(GameInfoLines);
+			if (CurrMap.CurrPlayer.Health < 1)
+			{
+				ConsolePresents.ShowGameOverScreen();
+				Thread.Sleep(6000);
+				Console.ReadKey();
+				Environment.Exit(0);
+			}
 			kbResponse = GetKeyboardReceive();
 			if (kbResponse == Command.Attack1)
 			{
@@ -88,7 +93,7 @@ internal class GameProcessor
 	{
 		foreach (var gameItem in CurrMap.Items.Where(gi => gi is not null && gi.IsExist))
 			ConsolePresents.Display(gameItem);
-		ConsolePresents.DisplayGameInfo(GameInfo);
+		ConsolePresents.DisplayGameInfo(GameInfoLines);
 		CurrMap.SyncItemsOnField();
 	}
 
@@ -128,8 +133,8 @@ internal class GameProcessor
 					? bonus.SpeedUpForPlayer
 					: 0;
 				CurrMap.CurrPlayer.Pos = bonus.Pos;
-				GameInfo[1].InfoDict["Speed"] = new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White);
-				ConsolePresents.DisplayGameInfo(GameInfo);
+				GameInfoLines[0].InfoDict["Speed"] = new GameInfo((CurrMap.CurrPlayer.Speed - 10).ToString(), ItemColor.White);
+				ConsolePresents.DisplayGameInfo(GameInfoLines);
 				bonus.IsExist = false;
 				break;
 		}
@@ -157,7 +162,7 @@ internal class GameProcessor
 
 		var infoLine1 = CurrMap.Field.GetLength(1) + 1;
 
-		var infoDict1 = new GameInfoDict(infoLine1, 2);
+		var infoDict1 = new GameInfoLine(infoLine1, 2);
 
 		infoDict1.Add("playerNameTitle", new GameInfo("Player name:", ItemColor.Cyan));
 		infoDict1.Add("playerName",new GameInfo(CurrMap.CurrPlayer.Name + " |", ItemColor.Yellow));
@@ -168,7 +173,7 @@ internal class GameProcessor
 		infoDict1.Add("Space", new GameInfo("      \n", ItemColor.White));
 
 		var infoLine2 = infoLine1 + 1;
-		var infoDict2 = new GameInfoDict(infoLine2, 2);
+		var infoDict2 = new GameInfoLine(infoLine2, 2);
 		infoDict2.Add("LegendTitle", new GameInfo("Legend:", ItemColor.White));
 		infoDict2.Add("P", new GameInfo("P", ItemColor.Blue));
 		infoDict2.Add("Player", new GameInfo("-player, ", ItemColor.DarkGray));
@@ -186,12 +191,12 @@ internal class GameProcessor
 		infoDict2.Add("stone", new GameInfo(" -stone, ", ItemColor.DarkGray));
 
 		var infoLine3 = infoLine2 + 1;
-		var infoDict3 = new GameInfoDict(infoLine3, 2);
+		var infoDict3 = new GameInfoLine(infoLine3, 2);
 
-		infoDict3.Add("Legend2", new GameInfo("<-- left, --> right, ^ up, -down", ItemColor.DarkCyan));
+		infoDict3.Add("Legend2", new GameInfo("<-- left, --> right, ^ up, -down", ItemColor.Cyan));
 
-		GameInfo.Add(infoDict1);
-		GameInfo.Add(infoDict2);
-		GameInfo.Add(infoDict3);
+		GameInfoLines.Add(infoDict1);
+		GameInfoLines.Add(infoDict2);
+		GameInfoLines.Add(infoDict3);
 	}
 }
