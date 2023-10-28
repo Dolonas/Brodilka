@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Brodilka.GameItems;
 using Brodilka.GameItems.Units;
 using Brodilka.Interfaces;
@@ -9,8 +10,8 @@ internal class ConsolePresentation : IDisplayable
 {
 	private const int MaxWindowWidth = 140;
 	private const int MaxWindowHeight = 80;
-	private static int _windowWidth;
-	private static int _windowHeight;
+	private static int windowWidth;
+	private static int windowHeight;
 
 	public ConsolePresentation(int width, int height)
 	{
@@ -21,14 +22,14 @@ internal class ConsolePresentation : IDisplayable
 
 	private static int WindowWidth
 	{
-		get => _windowWidth;
-		set => _windowWidth = value <= MaxWindowWidth ? value : MaxWindowWidth;
+		get => windowWidth;
+		set => windowWidth = value <= MaxWindowWidth ? value : MaxWindowWidth;
 	}
 
 	private static int WindowHeight
 	{
-		get => _windowHeight;
-		set => _windowHeight = value <= MaxWindowHeight ? value : MaxWindowHeight;
+		get => windowHeight;
+		set => windowHeight = value <= MaxWindowHeight ? value : MaxWindowHeight;
 	}
 
 	void IDisplayable.Display(GameItem gameItem)
@@ -53,19 +54,22 @@ internal class ConsolePresentation : IDisplayable
 		}
 	}
 
-	void IDisplayable.DisplayGameInfo(GameInfoDict infoDict)
+	void IDisplayable.DisplayGameInfo(List<GameInfoLine> gameInfo)
 	{
-		var startXPos = infoDict.StartXPosition;
-		Console.SetCursorPosition(startXPos, infoDict.InfoLineYPosition);
-		Console.WriteLine(new string(' ', _windowWidth - 10));
-
-		foreach (var info in infoDict.InfoDict)
+		foreach (var gInfoLine in gameInfo)
 		{
-			Console.SetCursorPosition(startXPos, infoDict.InfoLineYPosition);
-			Console.ForegroundColor = ConvertToConsoleColor(info.Value.InfoColor);
-			Console.Write(info.Value.GameInfoString);
-			Console.ForegroundColor = ConsoleColor.DarkGray;
-			startXPos += info.Value.GameInfoString.Length + 1;
+			var startXPos = gInfoLine.StartXPosition;
+			Console.SetCursorPosition(startXPos, gInfoLine.InfoLineYPosition);
+			Console.WriteLine(new string(' ', windowWidth - 10));
+
+			foreach (var info in gInfoLine.InfoDict)
+			{
+				Console.SetCursorPosition(startXPos, gInfoLine.InfoLineYPosition);
+				Console.ForegroundColor = ConvertToConsoleColor(info.Value.InfoColor);
+				Console.Write(info.Value.GameInfoString);
+				Console.ForegroundColor = ConsoleColor.DarkGray;
+				startXPos += info.Value.GameInfoString.Length + 1;
+			}
 		}
 
 		Console.SetCursorPosition(0, 0);

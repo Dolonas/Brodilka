@@ -4,9 +4,6 @@ namespace Brodilka.GameItems.Units.Enemies;
 
 internal class Wolf : Enemy
 {
-	private const int WolfDamage = 2;
-	private const int WolfMaxHealth = 40;
-	private const int NormalSpeed = 16;
 	private double _tick;
 	private int _x1, _y1, _x2, _y2;
 

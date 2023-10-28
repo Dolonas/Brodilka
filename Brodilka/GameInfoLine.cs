@@ -2,9 +2,9 @@
 
 namespace Brodilka;
 
-public class GameInfoDict
+public class GameInfoLine
 {
-	public GameInfoDict(int infoLineYPosition, int startXPosition)
+	public GameInfoLine(int infoLineYPosition, int startXPosition)
 	{
 		InfoLineYPosition = infoLineYPosition;
 		StartXPosition = startXPosition;

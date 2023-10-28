@@ -4,7 +4,7 @@ namespace Brodilka.GameItems.Units.Enemies;
 
 internal abstract class Enemy : Unit
 {
-	readonly Random _rnd = new Random();
+	private readonly Random _rnd = new ();
 	internal Enemy(Point currentPosition)
 		: base(currentPosition)
 	{

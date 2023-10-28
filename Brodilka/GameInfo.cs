@@ -15,6 +15,6 @@ public class GameInfo
 	public string GameInfoString
 	{
 		get => _gameInfoString;
-		private init => _gameInfoString = value.Length > 20 ? value.Remove(20, value.Length) : value;
+		private init => _gameInfoString = value.Length > 50 ? value.Remove(50, value.Length-50) : value;
 	}
 }
