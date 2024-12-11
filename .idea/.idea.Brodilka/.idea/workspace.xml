@@ -4,9 +4,7 @@
     <projectFile>Brodilka/Brodilka.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Brodilka/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d1568ffb-b953-4f96-a0dd-e9c327e6a315" name="Changes" comment="deleting unused items" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +42,10 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectId" id="2T3hXFXZi6e0npdMUfmM6QIeh5f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -52,17 +54,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49714285&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.Brodilka.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.49714285",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Developer\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Developer\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Developer\\AppData\\Local\\Symbols\\src"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Brodilka" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Brodilka/bin/Debug/net6.0/Brodilka.exe" />
@@ -131,6 +145,7 @@
       <workItem from="1697101901989" duration="2838000" />
       <workItem from="1697188342308" duration="492000" />
       <workItem from="1697447380414" duration="1588000" />
+      <workItem from="1733944360294" duration="381000" />
     </task>
     <task id="LOCAL-00001" summary="Elements moved to the directories">
       <created>1690279466760</created>
@@ -426,13 +441,22 @@
       <option name="project" value="LOCAL" />
       <updated>1697448512487</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="deleting unused items">
+      <option name="closed" value="true" />
+      <created>1733944594902</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1733944594902</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -447,7 +471,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added the geometrical algorithm of Wolf way&#10;The Wolf potential can move to the Player side if them not far from Wolf." />
     <MESSAGE value="Cleanup code" />
     <MESSAGE value="separation of enemy and Player collisions" />
     <MESSAGE value="Added unit status: patrol, pursuit, attack" />
@@ -472,26 +495,10 @@
     <MESSAGE value="Dictionary of game info" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="access modifiers changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="access modifiers changed" />
+    <MESSAGE value="deleting unused items" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleting unused items" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Brodilka/GameProcessor.cs</url>
-          <line>125</line>
-          <properties documentPath="D:\Develop\Projects\Brodilka\Brodilka\GameProcessor.cs" initialLine="120" containingFunctionPresentation="method 'GetPrices'">
-            <startOffsets>
-              <option value="3409" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3424" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Brodilka.Point" memberName="XPos" />
